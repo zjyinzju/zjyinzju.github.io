@@ -32,6 +32,7 @@ nav:
   - 样式记录: 样式记录.md
 theme:
   name: material
+  language: zh
   favicon: kongmencang.png
   palette: 
     scheme: test
