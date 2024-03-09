@@ -1,0 +1,99 @@
+site_name: 打工戰士の笔记本
+repo_url: https://github.com/zjyinzju/zjyinzju.github.io/
+site_url: https://yuzi.cc
+repo_name: mynotebook
+nav:
+  - Home: index.md
+  - note: 
+    - cs:
+      - 编程语言:
+        - notes/cs/pl/index.md
+        - Python:
+          - notes/cs/pl/cs61a.md
+      - 数据结构与算法:
+        - fds:
+          - notes/cs/ds/index.md
+          - notes/cs/ds/01.md
+          - notes/cs/ds/02.md
+          - notes/cs/ds/hw.md
+      - 计算机逻辑设计基础:
+        - notes/cs/logic/index.md
+        - notes/cs/logic/01.md
+        - notes/cs/logic/02.md
+    - math:
+      - 数学分析:
+        - notes/math/math_analysis/index.md
+        - notes/math/math_analysis/famulas.md
+      - 离散数学:
+        - notes/math/discrete_math/index.md
+        - notes/math/discrete_math/01.md
+    - 其他:
+      - notes/others/history.md
+  - 记念: 记念.md
+  - 样式记录: 样式记录.md
+theme:
+  name: material
+  language: zh
+  favicon: kongmencang.png
+  palette: 
+    scheme: test
+  icon:
+    admonition:
+      info: fontawesome/solid/anchor
+      note: fontawesome/solid/pen-nib
+      abstract: fontawesome/solid/list
+      tip: fontawesome/solid/lightbulb
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: material/alien
+      danger: fontawesome/solid/virus
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/link
+
+  features:
+    - navigation.tracking
+    - navigation.top
+    - navigation.tabs
+    - navigation.footer
+    - navigation.indexes
+    - navigation.sections
+    - toc.follow
+    - header.autohide
+    - content.code.select
+    - content.code.annotate
+    - content.code.copy
+
+
+  
+
+markdown_extensions:
+  - toc: 
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
+  - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
