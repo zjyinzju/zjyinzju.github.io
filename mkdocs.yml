@@ -64,6 +64,16 @@ theme:
     - content.code.annotate
     - content.code.copy
 
+plugins:
+  - git-revision-date-localized:
+    type: datetime
+    timezone: Asia/Shanghai
+    locale: zh
+    enable_creation_date: true
+    exclude:
+      - index.md
+      - link.md
+    strict: false
 
 markdown_extensions:
   - toc: 
