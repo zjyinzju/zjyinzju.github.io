@@ -1,6 +1,6 @@
 site_name: 打工戰士の笔记本
 repo_url: https://github.com/zjyinzju/zjyinzju.github.io/
-repo_name: mynotebook
+repo_name: zjyinzju/zjyinzju.github.io
 nav:
   - Home: index.md
   - note: 
