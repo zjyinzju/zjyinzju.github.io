@@ -27,7 +27,6 @@ nav:
         - notes/math/discrete_math/index.md
         - notes/math/discrete_math/01.md
     - 其他:
-      - notes/others/history.md
   - 记念: 记念.md
   - 样式记录: 样式记录.md
 theme:
