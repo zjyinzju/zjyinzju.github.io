@@ -1061,6 +1061,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 1 基础：逻辑与证明
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1070,6 +1081,39 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propositional-logic" class="md-nav__link">
+    命题逻辑（Propositional Logic）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predicate-logic" class="md-nav__link">
+    谓词逻辑（Predicate Logic）
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1157,6 +1201,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propositional-logic" class="md-nav__link">
+    命题逻辑（Propositional Logic）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predicate-logic" class="md-nav__link">
+    谓词逻辑（Predicate Logic）
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1174,68 +1240,46 @@
 
 
 <h1 id="chapter-1">Chapter 1 基础：逻辑与证明<a class="headerlink" href="#chapter-1" title="Permanent link">&para;</a></h1>
-<details class="define">
-<summary>异或</summary>
-<p>p和q的异或（记作p⊕q）：当p与q中<strong>恰有一个为真</strong>时命题为真，否则为假(亦即只能二选一)</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>“我要用全部积蓄氪金抽满命胡桃或者去日本圣地巡礼” (显然只能完成一个) </p>
-</div>
-</details>
+<h2 id="propositional-logic">命题逻辑（Propositional Logic）<a class="headerlink" href="#propositional-logic" title="Permanent link">&para;</a></h2>
 <ul>
+<li>定义命题：命题是一个陈述句，<strong>非真即假</strong></li>
 <li>
-<p>条件语句 p-&gt;q 的真值判断：<strong>只有</strong>假设p为真且结论q为假时，p-&gt;q为假</p>
+<p>定义逻辑运算符：
+<span class="arithmatex">\(\neg\)</span>negation;
+<span class="arithmatex">\(\bigwedge\)</span>conjunction;
+<span class="arithmatex">\(\bigvee\)</span>disjunction;
+<span class="arithmatex">\(\bigoplus\)</span>exclusive or;
+<span class="arithmatex">\(\to\)</span>implies;
+<span class="arithmatex">\(\leftrightarrow\)</span>iff;
+<span class="arithmatex">\(\downarrow\)</span>nor;
+<span class="arithmatex">\(\mid\)</span>nand;</p>
 </li>
 <li>
-<p>双条件语句p&lt;-&gt;q真值判断：p与q真值相反时为假，否则为真</p>
+<p>逻辑等价：<span class="arithmatex">\(A \equiv B\)</span>，当且仅当<span class="arithmatex">\(A \leftrightarrow B\)</span>是一个永真式</p>
 </li>
-<li></li>
-<li>
-<p>位运算 OR AND XOR NOR NAND 
-通过位运算进行字符串之间的运算</p>
+<li>逻辑蕴含：<span class="arithmatex">\(A \to B\)</span>，当且仅当<span class="arithmatex">\(A \bigwedge \neg B\)</span>是一个永假式</li>
+<li>逻辑等价的性质：<ul>
+<li>反身性：<span class="arithmatex">\(A \equiv A\)</span></li>
+<li>对称性：<span class="arithmatex">\(A \equiv B \to B \equiv A\)</span></li>
+<li>传递性：<span class="arithmatex">\(A \equiv B \bigwedge B \equiv C \to A \equiv C\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge B \equiv C \to A \equiv C\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge A \equiv C \to B \equiv C\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge \neg A \equiv \neg B\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to A \bigwedge C \equiv B \bigwedge D\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to A \bigvee C \equiv B \bigvee D\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to A \to C \equiv B \to D\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to A \leftrightarrow C \equiv B \leftrightarrow D\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to \neg A \equiv \neg B \bigwedge \neg C \equiv \neg D\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to A \bigwedge \neg C \equiv B \bigwedge \neg D\)</span></li>
+<li><span class="arithmatex">\(A \equiv B \bigwedge C \equiv D \to A \bigvee \neg C \equiv B \bigvee \neg D\)</span></li>
+<li>$A \equiv B \bigwedge C \</li>
+</ul>
 </li>
 </ul>
-<p>真值表：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">x</th>
-<th style="text-align: center;">y</th>
-<th style="text-align: center;">x∨y</th>
-<th style="text-align: center;">x∧y</th>
-<th style="text-align: center;">x⊕y</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-</tr>
-</tbody>
-</table>
-<details class="extra">
-<summary>模糊逻辑</summary>
-<p>真值为0的命题为假，真值为1的命题为真。命题的真值介于0与1之间表明真值的不同程度</p>
-</details>
+<h2 id="predicate-logic">谓词逻辑（Predicate Logic）<a class="headerlink" href="#predicate-logic" title="Permanent link">&para;</a></h2>
 <ul>
-<li>门电路（gate）:懒，遂去<a href="https://zh.wikipedia.org/zh-cn/%E9%82%8F%E8%BC%AF%E9%96%98#%E7%AC%A6%E8%99%9F%E8%A1%A8" target="_blank">wiki</a>看吧</li>
+<li>定义谓词：谓词是一个函数，它的参数是命题</li>
+<li>定义量词：<span class="arithmatex">\(\forall\)</span>universal quantifier; <span class="arithmatex">\(\exists\)</span>existential quantifier</li>
 </ul>
 
   <hr>
@@ -1243,11 +1287,11 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 9, 2024</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月12日 15:48:30</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 9, 2024</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月9日 08:53:42</span>
       
     
   </small>
