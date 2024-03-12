@@ -23,3 +23,9 @@
 
         Let $ N/3^k = 1$, then $k = \log_{3}{N} $
 
+## week 2
+
+??? question "时间复杂度分析"
+    For a sequentially stored linear list of length N, the time complexities for deleting the first element and inserting the last element are O(1) and O(N), respectively.
+    ??? info "solution"
+        False. 文字游戏：“a sequentially stored linear list” 一般指数组，删除第一个元素需要移动N-1个元素，插入最后一个元素需要移动0个元素，所以时间复杂度分别为O(N)和O(1).

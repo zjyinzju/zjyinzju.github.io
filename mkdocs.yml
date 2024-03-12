@@ -64,8 +64,14 @@ theme:
 
 plugins:
   - git-revision-date-localized:
+      type: datetime
+      timezone: Asia/Shanghai
+      locale: zh
       enable_creation_date: true
-      type: date
+      exclude:
+        - index.md
+        - link.md
+      strict: false
       
 
 markdown_extensions:
