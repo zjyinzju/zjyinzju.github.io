@@ -1293,6 +1293,21 @@
 </ul>
 </li>
 <li>
+<p>栈的实现：</p>
+<ul>
+<li><a href="https://www.hello-algo.com/chapter_stack_and_queue/stack/#2">数组实现</a><ul>
+<li>自下而上，数组下标为栈顶</li>
+<li>注意栈满时的处理</li>
+</ul>
+</li>
+<li><a href="https://www.hello-algo.com/chapter_stack_and_queue/stack/#1">链表实现</a><ul>
+<li>自上而下，头节点为栈顶</li>
+<li>注意<code>malloc</code>和<code>free</code>(create a recycle bin)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
 <p>队列（queue）是 first-in-first-out (FIFO) 的</p>
 <div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Queue</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
@@ -1308,7 +1323,19 @@
 <li>出队（dequeue），在队首弹出元素</li>
 </ul>
 </li>
-<li>循环队列</li>
+<li>队列实现<ul>
+<li><a href="https://www.hello-algo.com/chapter_stack_and_queue/queue/#2">数组实现</a><ul>
+<li>注意队满和队空时的处理</li>
+</ul>
+</li>
+<li><a href="https://www.hello-algo.com/chapter_stack_and_queue/queue/#1">链表实现</a></li>
+</ul>
+</li>
+<li>循环队列<ul>
+<li>通过取模运算实现循环</li>
+<li>注意队满和队空时的处理</li>
+</ul>
+</li>
 </ul>
 <h2 id="_4">中缀、后缀与前缀<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1365,7 +1392,11 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 9, 2024</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月12日 17:00:28</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月9日 08:53:42</span>
       
     
   </small>
