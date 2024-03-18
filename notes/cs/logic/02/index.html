@@ -920,26 +920,67 @@
     Boolen Algebra
   </a>
   
+    <nav class="md-nav" aria-label="Boolen Algebra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基础运算律
+  </a>
+  
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    推广
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-functioncomplement-of-function" class="md-nav__link">
+    对偶函数(dual function)和反函数(complement of function)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consensus-theorem" class="md-nav__link">
+    一致性定理（Consensus Theorem）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    课上的例子
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-forms-canonical-forms" class="md-nav__link">
+    Standard Forms &amp; Canonical Forms
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard Forms & Canonical Forms">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#canonical-forms" class="md-nav__link">
     Canonical Forms
   </a>
   
-    <nav class="md-nav" aria-label="Canonical Forms">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#maxterm-and-minterm" class="md-nav__link">
-    Maxterm and Minterm
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#canonical-forms_1" class="md-nav__link">
-    Canonical Forms
+  <a href="#standard-forms" class="md-nav__link">
+    Standard Forms
   </a>
   
 </li>
@@ -1517,26 +1558,67 @@
     Boolen Algebra
   </a>
   
+    <nav class="md-nav" aria-label="Boolen Algebra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基础运算律
+  </a>
+  
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    推广
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual-functioncomplement-of-function" class="md-nav__link">
+    对偶函数(dual function)和反函数(complement of function)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consensus-theorem" class="md-nav__link">
+    一致性定理（Consensus Theorem）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    课上的例子
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-forms-canonical-forms" class="md-nav__link">
+    Standard Forms &amp; Canonical Forms
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard Forms & Canonical Forms">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#canonical-forms" class="md-nav__link">
     Canonical Forms
   </a>
   
-    <nav class="md-nav" aria-label="Canonical Forms">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#maxterm-and-minterm" class="md-nav__link">
-    Maxterm and Minterm
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#canonical-forms_1" class="md-nav__link">
-    Canonical Forms
+  <a href="#standard-forms" class="md-nav__link">
+    Standard Forms
   </a>
   
 </li>
@@ -1830,8 +1912,8 @@ Hi-Impedance Outputs, Three state buffer</li>
 <h2 id="gate-circuits-and-boolen-equations"><strong>Gate Circuits and Boolen Equations</strong><a class="headerlink" href="#gate-circuits-and-boolen-equations" title="Permanent link">&para;</a></h2>
 <h3 id="binary-logic-and-gates"><strong>Binary Logic and Gates</strong><a class="headerlink" href="#binary-logic-and-gates" title="Permanent link">&para;</a></h3>
 <h4 id="binary-logic">Binary Logic<a class="headerlink" href="#binary-logic" title="Permanent link">&para;</a></h4>
-<p>逻辑运算的对象是布尔变量 </p>
-<p><strong><em>e.g.</em></strong> True/False, On/Off, Yes/No, 1/0, g高电压/低电压</p>
+<p>逻辑运算的对象是布尔变量 
+如True/False, On/Off, Yes/No, 1/0, 高电压/低电压</p>
 <p>主要运算如下： </p>
 <ul>
 <li><strong><code>A AND B</code></strong> denoted by <span class="arithmatex">\(A\cdot B\)</span>或者<span class="arithmatex">\(AB\)</span>  </li>
@@ -1854,10 +1936,8 @@ Hi-Impedance Outputs, Three state buffer</li>
 <details class="extra">
 <summary>gate delay</summary>
 <p><img alt="" src="../img/04.png" />
-由于物理层面的实现，每个门电路在改变输入后，输出的改变都会有一定的延迟
-In actual physical gates, if one or more input changes causes the output to change, the output change does not occur instantaneously.  <br />
-The delay between an input change(s) and the resulting output change is the gate delay denoted by tG. <br />
-很多时候我们会做 tradeoff, 使用更昂贵的器材来获得更小的 delay.  </p>
+由于物理层面的实现，每个门电路在改变输入后，输出的改变都会有一定的延迟 
+很多时候我们会使用更昂贵的器材来获得更小的 delay.  </p>
 </details>
 <blockquote>
 <p>另：非门更多被称为 inverter 而不是 NOT</p>
@@ -1874,7 +1954,7 @@ The delay between an input change(s) and the resulting output change is the gate
 <p><img alt="" src="../img/03.png" />  </p>
 <p>等效于常闭开关</p>
 <p>下面是或非门、与非门和非门：</p>
-<p><img alt="20220921112516" src="https://s2.loli.net/2022/09/21/A8mMPf93slIwQp2.png" />  </p>
+<p><img alt="" src="../img/07.png" />  </p>
 <p><strong>通用门(Universal Gate):</strong>功能完全的，能够表示其他所有门的逻辑门。只有<strong>NAND</strong>和<strong>NOR</strong>是通用门   </p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -1886,18 +1966,40 @@ The delay between an input change(s) and the resulting output change is the gate
 三态门允许器件输出这样的结果.  </li>
 </ul>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>只有真值表是唯一, 确定的. 但公式, 原理图可以有多种形式.  </p>
-</div>
-<h3 id="boolen-algebra"><strong>Boolen Algebra</strong><a class="headerlink" href="#boolen-algebra" title="Permanent link">&para;</a></h3>
-<p><img alt="[ppt16]" src="https://s2.loli.net/2022/09/22/2q9jhpVlHw3JdWQ.png" /></p>
+<h3 id="boolen-algebra">Boolen Algebra<a class="headerlink" href="#boolen-algebra" title="Permanent link">&para;</a></h3>
+<h4 id="_1">基础运算律<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/06.png" /></p>
 <p>(左右公式是对偶的)</p>
-<p><strong>precedence</strong>: parentheses &gt; NOT &gt; AND &gt; OR   </p>
-<p>The <strong>dual</strong> of an algebraic expression is obtained by interchanging + and · and interchanging 0’s and 1’s. <br />
-对偶式可以用于函数化简.<br />
-<strong>注: 非不变!</strong><br />
-<strong>self-dual</strong>: the dual expression = the original expression.  </p>
+<p><strong>注意到公式15似乎有些反直觉，但实际上这只是（为了少写一些括号）人为规定的运算优先级问题，本质仍是And 对 Or 的分配律</strong></p>
+<p><strong>precedence</strong>: （） &gt; NOT &gt; AND &gt; OR   </p>
+<p>AND 和 OR 地位上是对等的，但是优先级不同</p>
+<h4 id="_2">推广<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../img/11.jpg" />
+<img alt="" src="../img/12.jpg" />
+实际上前三个和后三个互为对偶</p>
+<h4 id="dual-functioncomplement-of-function">对偶函数(dual function)和反函数(complement of function)<a class="headerlink" href="#dual-functioncomplement-of-function" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>区分“对偶函数”和“反函数”
+对偶函数是指将原函数中的 AND 和 OR 互换。</p>
+<p>反函数是指将原函数中的 AND 和 OR 互换，同时将所有的常数和变量取反。（也可看做是在对偶基础上进一步取反）</p>
+<p>注意为保证运算顺序，有时需要加括号。</p>
+<div class="admonition eg">
+<p class="admonition-title">example</p>
+<ul>
+<li>原函数：<span class="arithmatex">\(F=\overline{A}B+C\overline{B}\)</span>；</li>
+<li>其对偶函数：<span class="arithmatex">\(F=(\overline{A}+B)(C+\overline{B})\)</span>；</li>
+<li>其反函数：<span class="arithmatex">\(F=(A+\overline{B})(\overline{C}+B)\)</span>。</li>
+</ul>
+</div>
+</div>
+<h4 id="consensus-theorem">一致性定理（Consensus Theorem）<a class="headerlink" href="#consensus-theorem" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[
+XY+\overline{X}Z+YZ=XY+\overline{X}Z
+\]</div>
+<p>主要思想是为了合并而裂项：
+<span class="arithmatex">\(XY+\overline{X}Z+YZ=XY+\overline{X}Z+(X+\overline{X})YZ=XY+\overline{X}Z\)</span></p>
+<h4 id="_3">课上的例子<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <details class="example">
 <summary>Boolean Algebraic Proofs 1</summary>
 <p>AB + A'C + BC = AB + A'C (Consensus Theorem)<br />
@@ -1924,21 +2026,16 @@ X + X’ = 1<br />
 </details>
 <details class="example">
 <summary>Boolean Algebraic Proofs 3</summary>
-<p><div align=center> <img src="https://s2.loli.net/2022/09/22/BjRTKiAuZDbUqOn.png" width = 80%/> </div>   </p>
+<p><img alt="" src="../img/08.png" />   </p>
 </details>
-<p><strong>Complementing Functions</strong><br />
-Use Demorgan's Theroem  </p>
+<h3 id="standard-forms-canonical-forms"><strong>Standard Forms &amp; Canonical Forms</strong><a class="headerlink" href="#standard-forms-canonical-forms" title="Permanent link">&para;</a></h3>
+<p>真值表相同的布尔函数写法多而杂，我们希望能找到一种标准的写法。</p>
+<p>由此引入了两种标准的写法：
++ <strong>标准形式（Standard Forms）</strong>: 包括<strong>SOP</strong>和<strong>POS</strong></p>
 <ul>
-<li>interchange AND and OR operators.  </li>
-<li>complement each constant value and literal.  </li>
+<li><strong>规范形式（Canonical Forms）</strong>: <strong>SOM</strong>和<strong>POM</strong>。</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>对比反函数和对偶函数.  </p>
-</div>
-<h3 id="canonical-forms"><strong>Canonical Forms</strong><a class="headerlink" href="#canonical-forms" title="Permanent link">&para;</a></h3>
-<p>任何逻辑函数, 可以写为 Sum of Minterms(SOM) or Product of Maxterms(POM).   </p>
-<h4 id="maxterm-and-minterm"><strong>Maxterm and Minterm</strong><a class="headerlink" href="#maxterm-and-minterm" title="Permanent link">&para;</a></h4>
+<p>二者可以互相转化</p>
 <ul>
 <li>
 <p><strong>Minterms</strong>  <br />
@@ -1952,7 +2049,7 @@ n variables -&gt; <span class="arithmatex">\(2^n\)</span> maxterms   </p>
 </li>
 </ul>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
+<p class="admonition-title">index</p>
 <table>
 <thead>
 <tr>
@@ -1984,24 +2081,24 @@ n variables -&gt; <span class="arithmatex">\(2^n\)</span> maxterms   </p>
 </tr>
 </tbody>
 </table>
-<p>The <strong>index</strong> is important for describing which variables in the terms are true and which are complemented.<br />
-index 就是对应使得 minterm = 1 的唯一的取值. <strong><em>e.g.</em></strong> index = 1 means only when x = 0, y = 1 then <span class="arithmatex">\(\overline{x} y = 1\)</span><br />
-maxterm 与 minterm 对偶, 所以 index 是使得 maxterm = 0 的唯一的取值.<br />
-如 index = 1, 则 minterm 里对应的字母应为原变量, maxterm 里的字母应为反变量.<br />
-Note that the <strong>Standard Order</strong> of variables: usually <strong>alphabetically</strong>.  </p>
-</div>
-<p>We find that <span class="arithmatex">\(m_i = \overline{M_i}\)</span>.   </p>
+<p>index 是：</p>
 <ul>
-<li>
-<p>We can implement any function by "ORing" the minterms corresponding to "1" entries in the function table. These are called the <strong>minterms of the function</strong>.   </p>
-<div class="admonition example">
-<p class="admonition-title">Minterm Function Example</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/5bwIshKzpYTXyqc.png" width = 60%/> </div> <br />
-it can also be written as <span class="arithmatex">\(\sum m(1,4,7) = \sum(1,4,7)\)</span>. </p>
-</div>
-<ul>
-<li>We can implement any function by "ANDing" the maxterms corresponding to "0" entries in the function table. These are called the <strong>maxterms of the function</strong>.   </li>
+<li>使得 minterm = 1 的唯一的取值. </li>
+<li>使得 maxterm = 0 的唯一的取值.  </li>
 </ul>
+<p>如果有 n 个变量，则index 从 0 到 <span class="arithmatex">\(2^n-1\)</span></p>
+<p>将index写为二进制数，对应位置的 0 表示取反，1 表示不取反。将<strong>按照字母顺序排列</strong>的变量按照index的二进制数对应位取反或不取反，就可以得到 minterm 和 maxterm 的表达式。</p>
+</div>
+<p>对偶关系： <span class="arithmatex">\(m_i = \overline{M_i}\)</span>.   </p>
+<ul>
+<li><strong>minterms of the function</strong>： <br />
+    将所有结果为 1 的 minterm 取或，得到的就是原函数的表达式。
+    !!! Example "Minterm Function Example"
+        <div align=center> <img src="https://s2.loli.net/2022/10/03/5bwIshKzpYTXyqc.png" width = 60%/> </div> <br />
+        it can also be written as <span class="arithmatex">\(\sum m(1,4,7) = \sum(1,4,7)\)</span>. </li>
+<li>
+<p><strong>maxterms of the function</strong>：
+    将所有结果为 0 的 maxterm 取与，得到的也是原函数的表达式</p>
 <div class="admonition example">
 <p class="admonition-title">Maxterm Function Example</p>
 <p><div align=center> <img src="https://s2.loli.net/2022/10/03/3BMYe2q1naJ5Aro.png" width = 60%/> </div> 
@@ -2009,7 +2106,8 @@ it can also be written as <span class="arithmatex">\(\prod M(0, 2, 3, 5, 7) = \p
 </div>
 </li>
 </ul>
-<h4 id="canonical-forms_1"><strong>Canonical Forms</strong><a class="headerlink" href="#canonical-forms_1" title="Permanent link">&para;</a></h4>
+<p>两种写法等价，且不重不漏。（即一旦确定其中一个，另一个也可得出）</p>
+<h4 id="canonical-forms"><strong>Canonical Forms</strong><a class="headerlink" href="#canonical-forms" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p><strong>Canonical Sum of Minterms</strong> <br />
@@ -2031,22 +2129,7 @@ The method for Maxterms is similar, just "ORing" terms missing variables v with 
 </div>
 </li>
 </ul>
-<p><strong>Function Complements</strong><br />
-The complement of a function expressed as a sum of minterms is constructed by selecting the minterms missing in the sum-of-minterms canonical forms. <br />
-每一个 minterm 要么在函数里, 要么在其反函数里. 求函数的反函数, 只需要所有minterms 去掉原函数中存在的 minterms 即可.  </p>
-<p><strong><em>e.g.</em></strong> <span class="arithmatex">\(F(x,y,z)=\sum_m(1,3,5,7)\)</span> then <span class="arithmatex">\(\overline F(x,y,z) = \sum_m(0,2,4,6)\)</span><br />
-It also can be writed as <span class="arithmatex">\(\overline F= \overline m_1 \cdot \overline m_3 \cdot \overline m_5 \cdot \overline m_7 = M_1 \cdot M_3 \cdot M_5 \cdot M_7=\prod _M(1,3,5,7)\)</span>    </p>
-<div class="admonition note">
-<p class="admonition-title">Conversion between Forms</p>
-<p><strong>Idea</strong>: <span class="arithmatex">\(F=\sum_m m_i\)</span> while <span class="arithmatex">\(\overline{F} = \sum_M M_i\)</span><br />
-Maxterms 的求法不是很自然, 一般先求反函数的 Minterms 再将他们取反转为 Minterms.    </p>
-<ul>
-<li>Find the function complement by swapping terms in the list with terms not in the list.  </li>
-<li>Change from products to sums, or vice versa.  </li>
-</ul>
-<p>如上文的例子中  <span class="arithmatex">\(F(x,y,z)=\sum_m(1,3,5,7), \overline{F}=\sum_m(0,2,4,6)\)</span> 故 <span class="arithmatex">\(F = \prod_M(0,2,4,6)\)</span></p>
-</div>
-<p><strong>Standard Forms</strong>  </p>
+<h4 id="standard-forms"><strong>Standard Forms</strong><a class="headerlink" href="#standard-forms" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Standard Sum-of-Products (SOP) form:</strong> equations are written as an <strong><em>OR</em></strong> of <strong><em>AND</em></strong> terms.  </li>
 <li><strong>Standard Product-of-Sums (POS) form:</strong> equations are written as an <strong><em>AND</em></strong> of <strong><em>OR</em></strong> terms</li>
@@ -2558,7 +2641,7 @@ Numbers of inputs on first-level “gates” or directly to second-level “gate
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月9日 08:53:42</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月18日 09:10:56</span>
       
         <br>
         创建日期:
