@@ -972,15 +972,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#canonical-forms" class="md-nav__link">
-    Canonical Forms
+  <a href="#som-pom" class="md-nav__link">
+    最小项之和（SOM）&amp; 最大项之积（POM）
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#standard-forms" class="md-nav__link">
-    Standard Forms
+  <a href="#sop-pos" class="md-nav__link">
+    标准形式（SOP &amp; POS）
   </a>
   
 </li>
@@ -997,38 +997,11 @@
       
         <li class="md-nav__item">
   <a href="#circuit-optimization" class="md-nav__link">
-    Circuit Optimization
+    电路实现和优化（Circuit Optimization）
   </a>
   
-    <nav class="md-nav" aria-label="Circuit Optimization">
+    <nav class="md-nav" aria-label="电路实现和优化（Circuit Optimization）">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#two-level-optimization" class="md-nav__link">
-    Two-Level Optimization
-  </a>
-  
-    <nav class="md-nav" aria-label="Two-Level Optimization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#literal-cost" class="md-nav__link">
-    Literal Cost
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gate-input-cost" class="md-nav__link">
-    Gate Input Cost
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#map-manipulation" class="md-nav__link">
@@ -1610,15 +1583,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#canonical-forms" class="md-nav__link">
-    Canonical Forms
+  <a href="#som-pom" class="md-nav__link">
+    最小项之和（SOM）&amp; 最大项之积（POM）
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#standard-forms" class="md-nav__link">
-    Standard Forms
+  <a href="#sop-pos" class="md-nav__link">
+    标准形式（SOP &amp; POS）
   </a>
   
 </li>
@@ -1635,38 +1608,11 @@
       
         <li class="md-nav__item">
   <a href="#circuit-optimization" class="md-nav__link">
-    Circuit Optimization
+    电路实现和优化（Circuit Optimization）
   </a>
   
-    <nav class="md-nav" aria-label="Circuit Optimization">
+    <nav class="md-nav" aria-label="电路实现和优化（Circuit Optimization）">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#two-level-optimization" class="md-nav__link">
-    Two-Level Optimization
-  </a>
-  
-    <nav class="md-nav" aria-label="Two-Level Optimization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#literal-cost" class="md-nav__link">
-    Literal Cost
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gate-input-cost" class="md-nav__link">
-    Gate Input Cost
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#map-manipulation" class="md-nav__link">
@@ -1980,8 +1926,8 @@ Hi-Impedance Outputs, Three state buffer</li>
 <h4 id="dual-functioncomplement-of-function">对偶函数(dual function)和反函数(complement of function)<a class="headerlink" href="#dual-functioncomplement-of-function" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>区分“对偶函数”和“反函数”
-对偶函数是指将原函数中的 AND 和 OR 互换。</p>
+<p>区分“对偶函数”和“反函数”</p>
+<p>对偶函数是指将原函数中的 AND 和 OR 互换。</p>
 <p>反函数是指将原函数中的 AND 和 OR 互换，同时将所有的常数和变量取反。（也可看做是在对偶基础上进一步取反）</p>
 <p>注意为保证运算顺序，有时需要加括号。</p>
 <div class="admonition eg">
@@ -2030,119 +1976,127 @@ X + X’ = 1<br />
 </details>
 <h3 id="standard-forms-canonical-forms"><strong>Standard Forms &amp; Canonical Forms</strong><a class="headerlink" href="#standard-forms-canonical-forms" title="Permanent link">&para;</a></h3>
 <p>真值表相同的布尔函数写法多而杂，我们希望能找到一种标准的写法。</p>
-<p>由此引入了两种标准的写法：
-+ <strong>标准形式（Standard Forms）</strong>: 包括<strong>SOP</strong>和<strong>POS</strong></p>
-<ul>
-<li><strong>规范形式（Canonical Forms）</strong>: <strong>SOM</strong>和<strong>POM</strong>。</li>
-</ul>
-<p>二者可以互相转化</p>
+<p>由此引入了两种标准的写法：</p>
 <ul>
 <li>
-<p><strong>Minterms</strong>  <br />
-Minterms are <strong><em>AND</em></strong> terms with each variable present in either true or complemented form.(每个变量都会出现且只出现一次)<br />
-n variables -&gt; <span class="arithmatex">\(2^n\)</span> minterms  </p>
+<p><strong>标准形式（Standard Forms）</strong>: 包括<strong>SOP</strong>和<strong>POS</strong></p>
 </li>
 <li>
-<p><strong>Maxterms</strong><br />
-Maxterms are <strong><em>OR</em></strong> terms with each variable present in either true or complemented form.(每个变量都会出现且只出现一次)<br />
-n variables -&gt; <span class="arithmatex">\(2^n\)</span> maxterms   </p>
+<p><strong>规范形式（Canonical Forms）</strong>: <strong>SOM</strong>和<strong>POM</strong>。</p>
 </li>
 </ul>
-<div class="admonition example">
-<p class="admonition-title">index</p>
+<p>二者可以互相转化。</p>
+<p>初学的时候或许结合一个真值表来理解会更好一点。</p>
+<p>考虑一个由三个命题变量构成的复合命题，它的真值表如下：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Index</th>
-<th>Minterm</th>
-<th>Maxterm</th>
+<th style="text-align: center;">Index</th>
+<th style="text-align: center;">X</th>
+<th style="text-align: center;">Y</th>
+<th style="text-align: center;">Z</th>
+<th style="text-align: center;">Output</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">0</td>
-<td><span class="arithmatex">\(\overline x\ \overline y\)</span></td>
-<td><span class="arithmatex">\(x+y\)</span></td>
+<td style="text-align: center;">0 / <code>000</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">1</td>
-<td><span class="arithmatex">\(\overline x\ y\)</span></td>
-<td><span class="arithmatex">\(x+\overline y\)</span></td>
+<td style="text-align: center;">1 / <code>001</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">2</td>
-<td><span class="arithmatex">\(x\ \overline y\)</span></td>
-<td><span class="arithmatex">\(\overline x+y\)</span></td>
+<td style="text-align: center;">2 / <code>010</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>1</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">3</td>
-<td><span class="arithmatex">\(x\ y\)</span></td>
-<td><span class="arithmatex">\(\overline x+\overline y\)</span></td>
+<td style="text-align: center;">3 / <code>011</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">4 / <code>100</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">5 / <code>101</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">6 / <code>110</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">7 / <code>111</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>1</code></td>
 </tr>
 </tbody>
 </table>
-<p>index 是：</p>
+<blockquote>
+<p>注意到index的二进制写法各位数字对应的正是X、Y、Z的取值，<strong>0表示取反，1表示原命题</strong>，实际上正是用<span class="arithmatex">\(m_{index}\)</span>来表示最小项，<span class="arithmatex">\(M_{index}\)</span>来表示最大项。</p>
+</blockquote>
+<h4 id="som-pom">最小项之和（SOM）&amp; 最大项之积（POM）<a class="headerlink" href="#som-pom" title="Permanent link">&para;</a></h4>
 <ul>
-<li>使得 minterm = 1 的唯一的取值. </li>
-<li>使得 maxterm = 0 的唯一的取值.  </li>
+<li><strong>最小项Minterms</strong>    <blockquote>
+<p>Minterms are <strong><em>AND</em></strong> terms with each variable present in either true or complemented form. </p>
+</blockquote>
+</li>
 </ul>
-<p>如果有 n 个变量，则index 从 0 到 <span class="arithmatex">\(2^n-1\)</span></p>
-<p>将index写为二进制数，对应位置的 0 表示取反，1 表示不取反。将<strong>按照字母顺序排列</strong>的变量按照index的二进制数对应位取反或不取反，就可以得到 minterm 和 maxterm 的表达式。</p>
-</div>
-<p>对偶关系： <span class="arithmatex">\(m_i = \overline{M_i}\)</span>.   </p>
+<p>即：所有变量的取值组合中，使得函数值为1的取值。</p>
+<p>对应上表中所有Output为1的行：<span class="arithmatex">\(m_2=\overline{X}Y\overline{Z}\)</span>、<span class="arithmatex">\(m_4=X\overline{Y}\overline{Z}\)</span>、<span class="arithmatex">\(m_5=X\overline{Y}Z\)</span>、<span class="arithmatex">\(m_7=XYZ\)</span>。</p>
 <ul>
-<li><strong>minterms of the function</strong>： <br />
-    将所有结果为 1 的 minterm 取或，得到的就是原函数的表达式。
-    !!! Example "Minterm Function Example"
-        <div align=center> <img src="https://s2.loli.net/2022/10/03/5bwIshKzpYTXyqc.png" width = 60%/> </div> <br />
-        it can also be written as <span class="arithmatex">\(\sum m(1,4,7) = \sum(1,4,7)\)</span>. </li>
-<li>
-<p><strong>maxterms of the function</strong>：
-    将所有结果为 0 的 maxterm 取与，得到的也是原函数的表达式</p>
-<div class="admonition example">
-<p class="admonition-title">Maxterm Function Example</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/3BMYe2q1naJ5Aro.png" width = 60%/> </div> 
-it can also be written as <span class="arithmatex">\(\prod M(0, 2, 3, 5, 7) = \prod(0, 2, 3, 5, 7)\)</span></p>
+<li><strong>最大项Maxterms</strong>  <blockquote>
+<p>Maxterms are <strong><em>OR</em></strong> terms with each variable present in either true or complemented form.</p>
+</blockquote>
+</li>
+</ul>
+<p>即：所有变量的取值组合中，使得函数值为0的取值。</p>
+<p>对应上表中所有Output为0的行：<span class="arithmatex">\(M_0=X+Y+Z\)</span>、<span class="arithmatex">\(M_1=X+Y+\overline{Z}\)</span>、<span class="arithmatex">\(M_3=X+\overline{Y}+\overline{Z}\)</span>、<span class="arithmatex">\(M_6=\overline{X}+\overline{Y}+Z\)</span>。     </p>
+<div class="admonition warning">
+<p class="admonition-title">区分</p>
+<p>最小项中XYZ的是否取反与index二进制各位数字<strong>相对应</strong>，</p>
+<p>最大项中XYZ的是否取反与index二进制各位数字<strong>相反</strong></p>
 </div>
+<ul>
+<li>
+<p><strong>最小项之和（SOM）</strong>： <br />
+    将所有结果为 1 的 minterm 取或，得到的就是原函数的表达式。</p>
+</li>
+<li>
+<p><strong>最大项之积（POM）</strong>：
+    将所有结果为 0 的 maxterm 取与，得到的也是原函数的表达式</p>
 </li>
 </ul>
 <p>两种写法等价，且不重不漏。（即一旦确定其中一个，另一个也可得出）</p>
-<h4 id="canonical-forms"><strong>Canonical Forms</strong><a class="headerlink" href="#canonical-forms" title="Permanent link">&para;</a></h4>
+<h4 id="sop-pos"><strong>标准形式（SOP &amp; POS）</strong><a class="headerlink" href="#sop-pos" title="Permanent link">&para;</a></h4>
 <ul>
-<li>
-<p><strong>Canonical Sum of Minterms</strong> <br />
-Boolen function -&gt; Sum of Minterms: expand all terms first to explicitly list all minterms. Do this by "ANDing" any term missing a variable v with a term <span class="arithmatex">\((v+\overline{v})\)</span>.   </p>
-<div class="admonition example">
-<p class="admonition-title"><span class="arithmatex">\(F=A+\overline{B} C\)</span></p>
-<p>F = A(B + B’)(C + C’) + (A + A’) B’ C <br />
-= ABC + ABC’ + AB’C + AB’C’ + AB’C + A’B’C<br />
-= ABC + ABC’ + AB’C + AB’C’ + A’B’C<br />
-= m7 + m6 + m5 + m4 + m1 = m1 + m4 + m5 + m6 + m7   </p>
-</div>
-</li>
-<li>
-<p><strong>Canonical Product of Maxterms</strong><br />
-The method for Maxterms is similar, just "ORing" terms missing variables v with a term equal <span class="arithmatex">\(v\cdot \overline{v}\)</span> then applying the distributive law.  </p>
-<div class="admonition example">
-<p class="admonition-title"><span class="arithmatex">\(f(A,B,C)=A\overline C + BC+\overline A \overline B\)</span></p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/Fx29YWlHMsjebiI.png" width = 60%/> </div> </p>
-</div>
-</li>
-</ul>
-<h4 id="standard-forms"><strong>Standard Forms</strong><a class="headerlink" href="#standard-forms" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Standard Sum-of-Products (SOP) form:</strong> equations are written as an <strong><em>OR</em></strong> of <strong><em>AND</em></strong> terms.  </li>
-<li><strong>Standard Product-of-Sums (POS) form:</strong> equations are written as an <strong><em>AND</em></strong> of <strong><em>OR</em></strong> terms</li>
-</ul>
-<p>SOP and POS are <strong>two-level</strong> network of gates.  </p>
-<ul>
-<li>
-<p><strong>SOP</strong>  </p>
-<ul>
-<li>The first level consists of n-input <strong><em>AND</em></strong> gates  </li>
-<li>The second level is a single <strong><em>OR</em></strong> gate (with fewer than <span class="arithmatex">\(2^n\)</span> inputs)</li>
-</ul>
-</li>
+<li><strong>Standard Sum-of-Products (SOP) form:</strong> 积式的和（析取范式）</li>
+<li><strong>Standard Product-of-Sums (POS) form:</strong> 和式的积（合取范式）</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -2155,45 +2109,55 @@ SOP POS 也被称为<strong>两极函数</strong>.<br />
 电路门有延迟, 经过的电路门越多延迟越大, 意味着最后电路做出来的计算机不易提高功率.  </li>
 </ul>
 </div>
-<div class="admonition example">
-<p class="admonition-title"><span class="arithmatex">\(F = \overline A\overline  B C + A \overline B\overline  C + A\overline  B C + AB\overline C + ABC\)</span></p>
-<p>F = A’ B’ C + A (B’ C’ + B C’ + B’ C + B C)<br />
-  = A’ B’ C + A (B’ + B) (C’ + C)<br />
-  = A’ B’ C + A.1.1<br />
-  = A’ B’ C + A <br />
-  = B’C + A</p>
+<h2 id="circuit-optimization"><strong>电路实现和优化（Circuit Optimization）</strong><a class="headerlink" href="#circuit-optimization" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>在实际情况中，若直接通过标准形式实现电路，有时会导致成本过高以及电路冗余。因此引入“卡诺图（Karnaugh map）”来优化逻辑电路。</p>
+</blockquote>
+<p>在正式引入前，还需要定义一些定量衡量电路成本的量，亦即<strong>成本标准（cost criteria）</strong></p>
+<p>主要有以下三种：</p>
+<ul>
+<li><strong>L(Literal cost) </strong>：按照<strong>字面量</strong>计算</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>就是单纯的字面量，重复出现也要计算</p>
+<div class="admonition eg">
+<p class="admonition-title">Eg</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(F=BD+A\overline BC+ A\overline C\overline D\)</span>  L=8  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(F=BD+A\overline BC+ A\overline B\overline D + AB\overline C\)</span>  L=11  </p>
+</li>
+</ul>
 </div>
-<h2 id="circuit-optimization"><strong>Circuit Optimization</strong><a class="headerlink" href="#circuit-optimization" title="Permanent link">&para;</a></h2>
-<p><strong>Goal</strong>: To obtain the simplest implementation for a given function.  </p>
-<p>Distinct cost criteria we will use:  </p>
+</div>
 <ul>
-<li><strong>Literal cost (L)</strong></li>
-<li><strong>Gate input cost (G)</strong></li>
-<li><strong>Gate input cost with NOTs (GN)</strong></li>
+<li>
+<p><strong>G(Gate input cost) </strong>：按照<strong>门输入</strong>计算且<strong>不算非门</strong></p>
+</li>
+<li>
+<p><strong>GN(Gate input cost with NOTs)</strong>：按照<strong>门输入</strong>计且<strong>计算非门</strong></p>
+</li>
 </ul>
-<h3 id="two-level-optimization"><strong>Two-Level Optimization</strong><a class="headerlink" href="#two-level-optimization" title="Permanent link">&para;</a></h3>
-<h4 id="literal-cost"><strong>Literal Cost</strong><a class="headerlink" href="#literal-cost" title="Permanent link">&para;</a></h4>
-<p><strong>literal</strong> is a variable or its complement
-<strong>literal cost</strong> is the number of literal appearances in a Boolean expression corresponding to the logic circuit diagram.  </p>
-<p><strong><em>e.g.</em></strong>  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>所谓按照门输入，亦即按照<strong>逻辑门输入的引脚</strong>个数计算。单个字面量的引脚已经计算在了L中，这里G只需要在L的基础上再加上<strong>字面量运算后所得结果作为输入传入下一逻辑门的引脚</strong>个数</p>
+<p>在计算非门时，重复出现的只记一次</p>
+<div class="admonition eg">
+<p class="admonition-title">Eg</p>
 <ul>
-<li><span class="arithmatex">\(F=BD+A\overline BC+ A\overline C\overline D\)</span> its L=8  </li>
-<li><span class="arithmatex">\(F=BD+A\overline BC+ A\overline B\overline D + AB\overline C\)</span> its L=11  </li>
+<li>
+<p><span class="arithmatex">\(F=BD +A\overline BC+A\overline C\overline D\)</span>  G=8(L)+3=11, GN=11+3=14.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(F=BD+A\overline BC+A\overline B\overline D+AB\overline C\)</span> G=11+4=15, GN=15+3(only BCD)=18.  </p>
+</li>
 </ul>
-<h4 id="gate-input-cost"><strong>Gate Input Cost</strong><a class="headerlink" href="#gate-input-cost" title="Permanent link">&para;</a></h4>
-<p><strong>Gate input costs</strong> is the number of inputs to the gates in the implementation corresponding exactly to the given equation or equations. (G - inverters not counted, GN - inverters counted)   </p>
-<p>For SOP and POS equations: </p>
-<ul>
-<li>all literal appearances(L)  </li>
-<li>the number of terms <strong>excluding single literal terms</strong>, (G).<br />
-<strong><em>e.g.</em></strong> for A+BC its L=3 while G=1</li>
-<li>optionally, the number of <strong>distinct complemented</strong> single literals(GN).</li>
-</ul>
+</div>
+</div>
 <p><strong><em>e.g.</em></strong>   </p>
-<ul>
-<li><span class="arithmatex">\(F=BD +A\overline BC+A\overline C\overline D\)</span>  G=8(L)+3=11, GN=11+3=14.   </li>
-<li><span class="arithmatex">\(F=BD+A\overline BC+A\overline B\overline D+AB\overline C\)</span> G=11+4=15, GN=15+3(only BCD)=18.  </li>
-</ul>
 <div class="admonition example">
 <p class="admonition-title">Cost Criteria</p>
 <p><div align=center> <img src="https://s2.loli.net/2022/10/03/BopLzFutqDsecEX.png" width = 60%/> </div><br />
@@ -2641,7 +2605,7 @@ Numbers of inputs on first-level “gates” or directly to second-level “gate
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月18日 09:10:56</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月20日 00:17:47</span>
       
         <br>
         创建日期:
