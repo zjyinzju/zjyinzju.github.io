@@ -29,3 +29,23 @@
     For a sequentially stored linear list of length N, the time complexities for deleting the first element and inserting the last element are O(1) and O(N), respectively.
     ??? info "solution"
         False. 文字游戏：“a sequentially stored linear list” 一般指数组，删除第一个元素需要移动N-1个元素，插入最后一个元素需要移动0个元素，所以时间复杂度分别为O(N)和O(1).
+
+## week 3
+
+??? question "队列"
+    (HW3) Represent a queue by a singly linked list. Given the current status of the linked list as 1->2->3 where x->y means y is linked after x. Now if 4 is enqueued and then a dequeue is done, the resulting status must be:
+
+    >A. 1->2->3
+    
+    >B. 2->3->4
+    
+    >C. 4->1->2
+    
+    >D. not unique  
+
+    ??? info "solution"
+        B.
+
+        注意到由单向链表实现的队列，入队一定在链表尾，出队一定在链表头。
+
+        否则如果出队在尾，则会删除尾节点，尾指针rear无法移动至新的尾节点。
