@@ -784,6 +784,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#week-3" class="md-nav__link">
+    week 3
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1223,6 +1230,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#week-3" class="md-nav__link">
+    week 3
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1273,13 +1287,30 @@
 <p>False. 文字游戏：“a sequentially stored linear list” 一般指数组，删除第一个元素需要移动N-1个元素，插入最后一个元素需要移动0个元素，所以时间复杂度分别为O(N)和O(1).</p>
 </details>
 </details>
+<h2 id="week-3">week 3<a class="headerlink" href="#week-3" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>队列</summary>
+<p>(HW3) Represent a queue by a singly linked list. Given the current status of the linked list as 1-&gt;2-&gt;3 where x-&gt;y means y is linked after x. Now if 4 is enqueued and then a dequeue is done, the resulting status must be:</p>
+<blockquote>
+<p>A. 1-&gt;2-&gt;3</p>
+<p>B. 2-&gt;3-&gt;4</p>
+<p>C. 4-&gt;1-&gt;2</p>
+<p>D. not unique  </p>
+</blockquote>
+<details class="info">
+<summary>solution</summary>
+<p>B.</p>
+<p>注意到由单向链表实现的队列，入队一定在链表尾，出队一定在链表头。</p>
+<p>否则如果出队在尾，则会删除尾节点，尾指针rear无法移动至新的尾节点。</p>
+</details>
+</details>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月12日 15:48:30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月20日 00:17:47</span>
       
         <br>
         创建日期:
