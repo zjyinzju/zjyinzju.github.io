@@ -1169,8 +1169,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dual" class="md-nav__link">
+    Dual(对偶)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propositional-satisfiability" class="md-nav__link">
+    Propositional Satisfiability(命题可满足性)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propositional-normal-forms" class="md-nav__link">
+    Propositional Normal Forms(命题范式)
+  </a>
   
 </li>
         
@@ -1393,8 +1414,29 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dual" class="md-nav__link">
+    Dual(对偶)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propositional-satisfiability" class="md-nav__link">
+    Propositional Satisfiability(命题可满足性)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propositional-normal-forms" class="md-nav__link">
+    Propositional Normal Forms(命题范式)
+  </a>
   
 </li>
         
@@ -1541,12 +1583,19 @@
 <details class="info">
 <summary>NOR and NAND</summary>
 <p>NOR: ¬(p ∨ q)</p>
+<blockquote>
+<p>also called Peirce's arrow</p>
+</blockquote>
 <p>NAND: ¬(p ∧ q)</p>
+<blockquote>
+<p>also called Sheffer stroke</p>
+</blockquote>
 <p>NOR and NAND are called <strong>universal gates</strong> because any other logic gate can be constructed using <strong>only</strong> NOR or NAND gates.</p>
 <div class="admonition eg">
 <p class="admonition-title">Eg</p>
 <p>p↓p = ¬(p ∨ p) = ¬p;
-p|p = ¬(p ∧ p) = ¬p</p>
+p|p = ¬(p ∧ p) = ¬p;
+(p↓q)↓(p↓q) = p ∨ q;</p>
 </div>
 </details>
 <details class="info">
@@ -1627,6 +1676,33 @@ that means p ∨ q ∧ r actually is p ∨ (q ∧ r)</li>
 <img alt="" src="../img/2.bmp" /></p>
 </details>
 </details>
+<h4 id="dual">Dual(对偶)<a class="headerlink" href="#dual" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>The dual of a compound proposition is obtained by interchanging ∨  ∧ and ¬, and interchanging T and F.</p>
+</li>
+<li>
+<p>Theorem: For any compound proposition P and Q, <span class="arithmatex">\(P \Leftrightarrow Q\)</span> if and only if <span class="arithmatex">\(P^* \Leftrightarrow Q^*\)</span>.</p>
+</li>
+</ul>
+<h4 id="propositional-satisfiability">Propositional Satisfiability(命题可满足性)<a class="headerlink" href="#propositional-satisfiability" title="Permanent link">&para;</a></h4>
+<ul>
+<li>A compound proposition is satisfiable if <strong>there is an assignment of truth values to its variables that makes it true</strong>.</li>
+<li>A compound proposition is unsatisfiable iff it is a <strong>contradiction</strong> or <strong>its negation is a tautology</strong></li>
+</ul>
+<h3 id="propositional-normal-forms">Propositional Normal Forms(命题范式)<a class="headerlink" href="#propositional-normal-forms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Conjunctive Normal Form(CNF): a conjunction of disjunctions(合取范式)</li>
+<li>Disjunctive Normal Form(DNF): a disjunction of conjunctions(析取范式)</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">注</p>
+<ul>
+<li>$\neg (p \wedge q) \vee r $ is not a normal form, but <span class="arithmatex">\((\neg p \vee \neg q) \vee r\)</span> is.</li>
+</ul>
+<p>单个命题或字句也是 CNF 或 DNF
+如 <span class="arithmatex">\(p\)</span> 是 CNF 和 DNF，<span class="arithmatex">\(p \vee q\)</span> 也是 CNF 和 DNF</p>
+</div>
 <h2 id="part-2-predicate-logic">Part 2 Predicate Logic(谓词逻辑)<a class="headerlink" href="#part-2-predicate-logic" title="Permanent link">&para;</a></h2>
 <h3 id="predicates-and-quantifiers">Predicates and Quantifiers(谓词和量词)<a class="headerlink" href="#predicates-and-quantifiers" title="Permanent link">&para;</a></h3>
 <h3 id="logical-equivalences_1">Logical Equivalences(逻辑等价式)<a class="headerlink" href="#logical-equivalences_1" title="Permanent link">&para;</a></h3>
