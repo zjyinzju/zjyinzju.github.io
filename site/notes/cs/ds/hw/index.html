@@ -813,6 +813,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#week-4" class="md-nav__link">
+    week 4
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1259,6 +1266,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#week-4" class="md-nav__link">
+    week 4
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1278,6 +1292,7 @@
 
 
 <h1 id="_1">作业订正<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<hr />
 <h2 id="week-1">week 1<a class="headerlink" href="#week-1" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>时间复杂度计算</summary>
@@ -1300,6 +1315,7 @@
 <p>Let $ N/3^k = 1$, then $k = \log_{3}{N} $</p>
 </details>
 </details>
+<hr />
 <h2 id="week-2">week 2<a class="headerlink" href="#week-2" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>时间复杂度分析</summary>
@@ -1309,6 +1325,7 @@
 <p>False. 文字游戏：“a sequentially stored linear list” 一般指数组，删除第一个元素需要移动N-1个元素，插入最后一个元素需要移动0个元素，所以时间复杂度分别为O(N)和O(1).</p>
 </details>
 </details>
+<hr />
 <h2 id="week-3">week 3<a class="headerlink" href="#week-3" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>队列</summary>
@@ -1324,6 +1341,33 @@
 <p>B.</p>
 <p>注意到由单向链表实现的队列，入队一定在链表尾，出队一定在链表头。</p>
 <p>否则如果出队在尾，则会删除尾节点，尾指针rear无法移动至新的尾节点。</p>
+</details>
+</details>
+<hr />
+<h2 id="week-4">week 4<a class="headerlink" href="#week-4" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>树的表示</summary>
+<p>(HW4) It is always possible to represent a binary tree by a one-dimensional integer array</p>
+<details class="info">
+<summary>solution</summary>
+<p>True </p>
+<p>二叉树的可以用一维数组表示，而任何树可以通过First-Child-Next-Sibling表示法转化为二叉树。</p>
+</details>
+</details>
+<details class="question">
+<summary>遍历顺序</summary>
+<p>(HW4) If a general tree T is converted to a binary tree BT,then which of the following BT traversal gives the same sequence as that of the post-order traversal of T?</p>
+<blockquote>
+<p>A. Pre-order</p>
+<p>B. In-order</p>
+<p>C. Post-order</p>
+<p>D. Level-order</p>
+</blockquote>
+<details class="info">
+<summary>solution</summary>
+<p>C. </p>
+<p>任何树通过FirstChild-NextSibling表示法转化为二叉树.</p>
+<p>T 的先序遍历和 BT 的先序遍历相同，T 的后序遍历和 BT 的中序遍历相同。</p>
 </details>
 </details>
 

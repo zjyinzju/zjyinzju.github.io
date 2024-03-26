@@ -1026,11 +1026,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#map-manipulation" class="md-nav__link">
-    Map Manipulation
+  <a href="#karnaugh-maps" class="md-nav__link">
+    Karnaugh Maps(卡诺图)
   </a>
   
-    <nav class="md-nav" aria-label="Map Manipulation">
+    <nav class="md-nav" aria-label="Karnaugh Maps(卡诺图)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1055,15 +1055,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dont-cares-in-k-maps" class="md-nav__link">
-    Don't Cares(无关项) in K-Maps
+  <a href="#dont-cares" class="md-nav__link">
+    Don't Cares(无关项)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#systematic-simplification" class="md-nav__link">
-    Systematic Simplification
+  <a href="#implicantprime-implicant-essential-prime-implicant" class="md-nav__link">
+    implicant(蕴含项)、prime implicant(主蕴含项) essential prime implicant(基本主蕴含项)
   </a>
   
 </li>
@@ -1637,11 +1637,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#map-manipulation" class="md-nav__link">
-    Map Manipulation
+  <a href="#karnaugh-maps" class="md-nav__link">
+    Karnaugh Maps(卡诺图)
   </a>
   
-    <nav class="md-nav" aria-label="Map Manipulation">
+    <nav class="md-nav" aria-label="Karnaugh Maps(卡诺图)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1666,15 +1666,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dont-cares-in-k-maps" class="md-nav__link">
-    Don't Cares(无关项) in K-Maps
+  <a href="#dont-cares" class="md-nav__link">
+    Don't Cares(无关项)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#systematic-simplification" class="md-nav__link">
-    Systematic Simplification
+  <a href="#implicantprime-implicant-essential-prime-implicant" class="md-nav__link">
+    implicant(蕴含项)、prime implicant(主蕴含项) essential prime implicant(基本主蕴含项)
   </a>
   
 </li>
@@ -2179,33 +2179,22 @@ SOP POS 也被称为<strong>两极函数</strong>.<br />
 </ul>
 </div>
 </div>
-<p><strong><em>e.g.</em></strong>   </p>
-<div class="admonition example">
-<p class="admonition-title">Cost Criteria</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/BopLzFutqDsecEX.png" width = 60%/> </div><br />
-<div align=center> <img src="https://s2.loli.net/2022/10/03/LxDl5t7OEsAMcyG.png" width = 60%/> </div>  </p>
+<div class="admonition eg">
+<p class="admonition-title">图例</p>
+<p><img alt="" src="../img/09.png" />
++ 绿色圆点表示一级输入引脚
++ 蓝色方点表示二级输入引脚
++ 黑色三角表示非门</p>
 </div>
-<p>When do we stop trying to reduce the cost?  <br />
-Do we know when we have a minimum cost?  </p>
-<h3 id="map-manipulation"><strong>Map Manipulation</strong><a class="headerlink" href="#map-manipulation" title="Permanent link">&para;</a></h3>
-<p><strong>Karnaugh maps(K-map)</strong>   </p>
-<ul>
-<li>A <strong>K-map</strong> is a collection of squares
-Each square represents a minterm</li>
-<li>The collection of squares is a graphical representation of a Boolean function</li>
-<li><u><strong>Adjacent squares differ in the value of one variable</strong></u></li>
-<li>Alternative algebraic expressions for the same function are derived by recognizing patterns of squares</li>
-</ul>
-<p>The <strong>K-map</strong> can be viewed as</p>
-<ul>
-<li>A reorganized version of the truth table</li>
-<li>A topologically-warped Venn diagram as used to visualize sets in algebra of sets</li>
-</ul>
+<h3 id="karnaugh-maps"><strong>Karnaugh Maps(卡诺图)</strong><a class="headerlink" href="#karnaugh-maps" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>优化逻辑表达式，最好能减少门电路。考虑到逻辑运算律中有这样一条：<span class="arithmatex">\(AB+A \overline B = A\)</span>，那么只要两个最小项之间只差一个字面量的非，则可以合并。（最大项根据$ (A+ \overline B)(A+B) = A$,也有相应结论）</p>
+<p>这时就会发现“只差一个”和上一章中的格雷码的思想相同，那么似乎只要将最小项的index按照格雷码的顺序排列，似乎就可以很方便的进行合并。</p>
+</blockquote>
+<p>事实上这样排出的表格就是所谓的<strong>卡诺图</strong></p>
 <h4 id="two-variable-maps"><strong>Two-Variable Maps</strong><a class="headerlink" href="#two-variable-maps" title="Permanent link">&para;</a></h4>
-<div align=center> <img src="https://s2.loli.net/2022/10/03/RChyGE9j1mqPwAt.png" width = 65%/> </div>
-
-<div class="admonition example">
-<p class="admonition-title">Example</p>
+<div class="admonition eg">
+<p class="admonition-title">Eg</p>
 <table>
 <thead>
 <tr>
@@ -2227,108 +2216,93 @@ Each square represents a minterm</li>
 </tr>
 </tbody>
 </table>
-<p>For function F(x,y), the two adjacent cells containing 1’s can be combined using the Minimization Theorem:<br />
-<span class="arithmatex">\(F(x,y)=(x \ \overline y + x\ y ) + (x\ y + \overline x \ y) = x + y\)</span></p>
+<p>表头是变量的真值，表格中的1意即含有该项，0意即不含有该项。</p>
+<p>事实上，1的位置就是最小项的位置，而0的位置就是最大项的位置。</p>
+<p>此图中最小项可以合并为 <span class="arithmatex">\(F=x+y\)</span></p>
 </div>
 <h4 id="three-variable-maps"><strong>Three-Variable Maps</strong><a class="headerlink" href="#three-variable-maps" title="Permanent link">&para;</a></h4>
-<div align=center> <img src="https://s2.loli.net/2022/10/03/EnfTO5gNH8Qcd4b.png" width = 65%/> </div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>注意列, <u><strong>要按照Gray codes的顺序排列, 即相邻两列只相差一位.</strong></u>  因此列标号为  00 01 11 10.<br />
-相邻两个小方格都只有一个变量不同.<br />
-可以卷起来, 即最左边一列和最右边一列</p>
-</div>
-<p><strong>Alternatie Map Labeling</strong>   </p>
-<div align=center> <img src="https://s2.loli.net/2022/10/03/Ug2IQvm4Nr8beKH.png" width = 70%/> </div>
-
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/TbSH5VXt4GsWlun.png" width = 40%/> </div>  </p>
+<p>注意这里的卡诺图是按照格雷码的顺序排列的，因此并不一定按照自然数顺序排列。
+<img alt="" src="../img/12.png" /></p>
+<p><img alt="" src="../img/10.png" /></p>
+<p>那么具体如何合并？先看点例子</p>
+<details class="eg">
+<summary>Eg</summary>
+<p><img alt="" src="../img/15.png" /></p>
 <ul>
 <li>注意到 3 2 格都是 1, 因此 <span class="arithmatex">\(\bar xy\bar z + \bar x y z = \bar xy\)</span>, 没有变化的变量可以保留, 变化了的变量可以消掉. 同理 4 5 格可化为 <span class="arithmatex">\(x \bar y\)</span>   </li>
 <li>3 7 格: <span class="arithmatex">\(yz\)</span>; 6 7格: <span class="arithmatex">\(x y\)</span>; 4 6 格<span class="arithmatex">\(: x\bar z\)</span></li>
 </ul>
-</div>
-<p><strong>Combining Squares</strong></p>
-<p>可以画 <span class="arithmatex">\(2^n\)</span> 大小的方形格(即一次要包括 <span class="arithmatex">\(2^n\)</span> 个小方格)<br />
-For 3-variable <strong>K-Map</strong>:  </p>
-<ul>
-<li>One square represents a minterm with three variables  </li>
-<li>Two adjacent squares represent a product term with two variables  </li>
-<li>Four “adjacent” terms represent a product term with one variable  </li>
-<li>Eight “adjacent” terms is the function of all ones (no variables) = 1.  </li>
-</ul>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/pIQUXs6yvECDV9i.png" width = 75%/> </div>  </p>
-</div>
+</details>
+<p>具体来说：</p>
+<p>在图中寻找尽可能大的、边长是2的幂次方的矩形，且矩形所覆盖的有且仅有最小项（or 最大项，但一般都是最小项）然后合并</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ul>
-<li>格雷码!  </li>
-<li>两侧可以卷起来<br />
-<div align=center> <img src="https://s2.loli.net/2022/10/03/xg2H4KbfnVNdePm.png" width = 15%/> </div></li>
-</ul>
+<p class="admonition-title">rules</p>
+<p><img alt="" src="../img/kr1.png" />
+<img alt="" src="../img/kr2.png" /></p>
 </div>
-<p><u><strong>化简思路: 用最大的最少的圈把所有的 1 圈完.(圈与圈之间可以有交叉)</strong></u><br />
-一定是 SOP</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
+<div class="admonition eg">
+<p class="admonition-title">Eg</p>
 <p><div align=center> <img src="https://s2.loli.net/2022/10/03/BM6bUjXRgCdixQJ.png" width = 60%/> </div>  </p>
 </div>
 <h4 id="four-variable-maps"><strong>Four Variable Maps</strong><a class="headerlink" href="#four-variable-maps" title="Permanent link">&para;</a></h4>
-<div align=center> <img src="https://s2.loli.net/2022/10/03/1DsdvOBNXRCH5Uu.png" width = 75%/> </div>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>注意四个角也可以卷(0 2 8 10 -&gt; <span class="arithmatex">\(\overline X \ \overline Z\)</span>)</p>
-</div>
+<p><img alt="" src="../img/40.png" /> 
+<strong>注意后两行顺序</strong></p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/03/FSBqMjN1vdlYZX6.png" width = 60%/> </div> 
-F = XZ + X'Z'<br />
-化简结果不唯一</p>
+<p><img alt="" src="../img/401.png" /></p>
+<div class="admonition advice">
+<p class="admonition-title">Advice</p>
+<p>老师说四边都可以卷起来，我觉得似乎可以看成一个球的平面化？总之不要忽略边角上可以连成矩形的最小项</p>
 </div>
-<h4 id="dont-cares-in-k-maps"><strong>Don't Cares(无关项) in K-Maps</strong><a class="headerlink" href="#dont-cares-in-k-maps" title="Permanent link">&para;</a></h4>
-<p>By placing “don't cares” (an “x” entry) in the function table or map, the cost of the logic circuit may be lowered.<br />
-如我们把 BCD 码作为输入, 有效数字 0 - 9, 如果那么 9 以上的输入组合我们不在乎输出结果, 称为无关项, 在卡诺图上画 x.    </p>
+</div>
+<h4 id="dont-cares">Don't Cares(无关项)<a class="headerlink" href="#dont-cares" title="Permanent link">&para;</a></h4>
+<p>在需要化简的逻辑函数中未给出定义的项：
++ 输入最小项时从未出现
++ 函数输出时不会用到
+这样的项在卡诺图中用X表示，理论上在化简时怎么定义都可以，实际上为了化简方便，<strong>如果定义为1时能做出更大的矩形</strong>，那么便定义为1，否则定义为0</p>
+<p>下面是一例</p>
 <div class="admonition example">
 <p class="admonition-title">BCD 5 or More</p>
-<p><img alt="20221003112411" src="https://s2.loli.net/2022/10/03/jVG9YAaHBtXiT3o.png" /><br />
-X 可圈可不圈!  </p>
+<p>定义这样一个函数：输入的BCD码表示的数字大于等于5时返回1
+<img alt="20221003112411" src="../img/5bcd.png" /><br />
+X 可圈可不圈</p>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Find the optimum POS solution: <span class="arithmatex">\(F(A,B,C,D)=\sum\limits_m(3,9,11,12,13,14,15)+\sum d(1,4,6)\)</span><br />
-Hint: Use <span class="arithmatex">\(\overline F\)</span> and complement it to get the result.<br />
-ans:
-F' = B' D' + A' B   (求 F' 时在卡诺图中圈空格，而不是 1)
-F = (B + D)(A + B')  </p>
-</div>
-<h4 id="systematic-simplification">Systematic Simplification<a class="headerlink" href="#systematic-simplification" title="Permanent link">&para;</a></h4>
+<h4 id="implicantprime-implicant-essential-prime-implicant">implicant(蕴含项)、prime implicant(主蕴含项) essential prime implicant(基本主蕴含项)<a class="headerlink" href="#implicantprime-implicant-essential-prime-implicant" title="Permanent link">&para;</a></h4>
 <ul>
-<li>A <strong>Prime Implicant</strong>(质蕴含项) is a product term obtained by combining the maximum possible number of adjacent squares in the map into a rectangle with the number of squares a power of 2.  </li>
-<li>A prime implicant is called an <strong>Essential Prime Implicant</strong>(必要质蕴涵项) if it is the only prime implicant that covers (includes) one or more minterms.  </li>
+<li>蕴含项：你找到的任意一个矩形</li>
+<li>主蕴含项：对某个 "1" 而言包括它的最大矩形。（此时将无关项X当作1处理）</li>
+<li>基本主蕴含项：对某个 "1" 而言，如果它的主蕴涵项只有一个，那么它是基本的。</li>
 </ul>
-<p>质蕴涵项是对某个 "1" 而言包括它的最大方形。对某个 "1" 而言如果它的质蕴涵项只有一个，那么它是必要的。</p>
+<p>基本步骤是：</p>
 <ol>
-<li>Find All Prime Implicants</li>
-<li>Find Essential ones</li>
+<li>画出所有圈</li>
+<li>找到极大圈（包含1个数最多的）</li>
+<li>选出基本的（含有至少一个1是只被自己圈住的 <strike>有点病娇</strike>）</li>
 <li>处理剩下的 1 </li>
 </ol>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><div align=center> <img src="https://s2.loli.net/2022/10/12/jwUZ2OLRBdvQ7EN.png" width = 60%/> </div> <br />
-哪些 1 只被一个质蕴含圈包围，那么他一定是必要质蕴涵项 </p>
+<div class="admonition eg">
+<p class="admonition-title">Eg</p>
+<p><img alt="" src="../img/pri.png" /> <br />
+哪些 1 只被一个主蕴含圈包围，那么它一定是基本主蕴含项 </p>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
+<details class="eg">
+<summary>Eg</summary>
 <p>Find all prime implicants for:<br />
 <span class="arithmatex">\(G(A,B,C,D)=\sum\limits_m(0,2,3,4,7,12,13,14,15)\)</span><br />
 Hint: There are <em>seven</em> prime implicants!  </p>
 <p>Prime Implicants are AB, B C' D', A' C' D', A' B' D', A' B' C, A' C D, B C D. ony AB Essential.   </p>
+</details>
+<div class="admonition advice">
+<p class="admonition-title">Advice</p>
+<p>定义这些概念的意义在于：</p>
+<ul>
+<li>对于任意函数，一定存在主蕴含项</li>
+<li>同一个函数的化简结果可能不同，但一定都含有基本主蕴含项</li>
+</ul>
 </div>
+<blockquote>
+<p>下面这些内容有的是直接照搬Q的，因为我懒，过段时间补上</p>
+</blockquote>
 <h3 id="multi-level-circuit-optimization">Multi-Level Circuit Optimization<a class="headerlink" href="#multi-level-circuit-optimization" title="Permanent link">&para;</a></h3>
 <p>两级门的延迟低，但 cost 高。</p>
 <div class="admonition example">
