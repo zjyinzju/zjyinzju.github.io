@@ -1366,6 +1366,8 @@
       
         
       
+        
+      
     
     
     
@@ -1417,6 +1419,26 @@
   
   <span class="md-ellipsis">
     Chapter 1 The Foundations:Logic and Proofs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/discrete_math/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4 Number Theory and Cryptography （数论和密码学）
   </span>
   
 
@@ -2276,7 +2298,7 @@ X 可圈可不圈</p>
 <p>基本步骤是：</p>
 <ol>
 <li>画出所有圈</li>
-<li>找到极大圈（包含1个数最多的）</li>
+<li>找到极大圈（不会被更大的圈包围）</li>
 <li>选出基本的（含有至少一个1是只被自己圈住的 <strike>有点病娇</strike>）</li>
 <li>处理剩下的 1 </li>
 </ol>
@@ -2329,14 +2351,12 @@ Hint: There are <em>seven</em> prime implicants!  </p>
 一个门的输入端的上限<br />
 理想情况一个门的输入可以接无数个门的输入，但实际上因为每一个门的输入端都会花费一些电流，而门输出的电流是有限的，从集成电路本身会要求一个门的输出最多能拉多少门的输入。</li>
 <li>
-<p><strong>Fan-out 扇出系数</strong> – the number of standard loads driven by a gate output<br />
-    一个门的输出带了很多门的输入？（像火车头带了很多车厢）<br />
-    一个门的输出不能接到太多门的输入上去，一般会用 buffer 做缓冲  </p>
+<p><strong>Fan-out 扇出系数</strong> – the number of standard loads driven by a gate output</p>
+<p>逻辑设计时，我们发现总是一个门的输出带了很多门的输入，那么是否可以带任意多的输入？</p>
+<p>一个门的输出不能接到太多门的输入上去，一般会用 buffer 做缓冲  </p>
 <ul>
-<li><strong><em>e.g.</em></strong> 1 standard load equals the load contributed by the input of 1 inverter.  </li>
 <li><strong>Transition time</strong> - the time required for the gate output to change from H to L, <span class="arithmatex">\(t_{HL}\)</span>, or from L to H, <span class="arithmatex">\(t_{LH}\)</span><br />
-带的门越多，上升时间就越多。
-我们会限制过渡时间，设置 maximum fan-out <ul>
+输出端带的门输入越多，电平上升（0-1）/下降（1-0）时间就越长。我们会限制过渡时间，设置 maximum fan-out <ul>
 <li><strong>Logic Levels</strong> – the signal value ranges for 1 and 0 on the inputs and 1 and 0 on the outputs (see Figure 1-1)</li>
 <li><strong>Noise Margin</strong> – the maximum external noise voltage superimposed on a normal input value that will not cause an undesirable change in the circuit output</li>
 <li><strong>Cost for a gate</strong> - a measure of the contribution by the gate to the cost of the integrated circuit<br />
@@ -2601,7 +2621,7 @@ Numbers of inputs on first-level “gates” or directly to second-level “gate
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月20日 00:17:47</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年3月29日 14:37:12</span>
       
         <br>
         创建日期:
