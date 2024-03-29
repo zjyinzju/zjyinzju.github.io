@@ -1216,13 +1216,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#logical-equivalences_1" class="md-nav__link">
-    Logical Equivalences(逻辑等价式)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#nested-quantifiers" class="md-nav__link">
     Nested Quantifiers(嵌套量词)
   </a>
@@ -1247,18 +1240,31 @@
     Rules of Inference(推理规则)
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Rules of Inference(推理规则)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proof-methods" class="md-nav__link">
-    Proof Methods (证明方法)
+  <a href="#rules-of-inference-for-propositional-logic" class="md-nav__link">
+    Rules of Inference for Propositional Logic(命题逻辑的推理规则)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#proof-strategies" class="md-nav__link">
-    Proof Strategies(证明策略)
+  <a href="#rules-of-inference-for-quantified-statements" class="md-nav__link">
+    Rules of Inference for Quantified Statements(谓词逻辑的推理规则)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof-methods-and-strategy" class="md-nav__link">
+    Proof Methods and Strategy(证明方法)
   </a>
   
 </li>
@@ -1461,13 +1467,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#logical-equivalences_1" class="md-nav__link">
-    Logical Equivalences(逻辑等价式)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#nested-quantifiers" class="md-nav__link">
     Nested Quantifiers(嵌套量词)
   </a>
@@ -1492,18 +1491,31 @@
     Rules of Inference(推理规则)
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Rules of Inference(推理规则)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proof-methods" class="md-nav__link">
-    Proof Methods (证明方法)
+  <a href="#rules-of-inference-for-propositional-logic" class="md-nav__link">
+    Rules of Inference for Propositional Logic(命题逻辑的推理规则)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#proof-strategies" class="md-nav__link">
-    Proof Strategies(证明策略)
+  <a href="#rules-of-inference-for-quantified-statements" class="md-nav__link">
+    Rules of Inference for Quantified Statements(谓词逻辑的推理规则)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof-methods-and-strategy" class="md-nav__link">
+    Proof Methods and Strategy(证明方法)
   </a>
   
 </li>
@@ -1700,17 +1712,127 @@ that means p ∨ q ∧ r actually is p ∨ (q ∧ r)</li>
 <ul>
 <li>$\neg (p \wedge q) \vee r $ is not a normal form, but <span class="arithmatex">\((\neg p \vee \neg q) \vee r\)</span> is.</li>
 </ul>
-<p>单个命题或字句也是 CNF 或 DNF
-如 <span class="arithmatex">\(p\)</span> 是 CNF 和 DNF，<span class="arithmatex">\(p \vee q\)</span> 也是 CNF 和 DNF</p>
+<p>单个命题或字句也是 CNF 或 DNF</p>
+<p>如 <span class="arithmatex">\(p\)</span> 是 CNF 和 DNF，<span class="arithmatex">\(p \vee q\)</span> 也是 CNF 和 DNF</p>
 </div>
+<ul>
+<li>minterm and maxterm : 在计逻中有进一步学习和应用，遂不在这里记录</li>
+</ul>
 <h2 id="part-2-predicate-logic">Part 2 Predicate Logic(谓词逻辑)<a class="headerlink" href="#part-2-predicate-logic" title="Permanent link">&para;</a></h2>
 <h3 id="predicates-and-quantifiers">Predicates and Quantifiers(谓词和量词)<a class="headerlink" href="#predicates-and-quantifiers" title="Permanent link">&para;</a></h3>
-<h3 id="logical-equivalences_1">Logical Equivalences(逻辑等价式)<a class="headerlink" href="#logical-equivalences_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Predicate(谓词): A sentence that contains a finite number of variables and becomes a proposition when specific values are substituted for the variables.</li>
+</ul>
+<p>形式上，谓词是一个函数，接受一个或多个参数，返回一个命题：
+    + Variables:x,y,z...
+    + Predicates:P(x), Q(x,y)...</p>
+<ul>
+<li>
+<p>Quantifiers(量词): </p>
+<ul>
+<li>Universal quantifier ∀(for all): <span class="arithmatex">\(\forall x P(x)\)</span></li>
+<li>Existential quantifier ∃(there exists): <span class="arithmatex">\(\exists x P(x)\)</span> </li>
+<li>Unique quantifier ∃! (there exists unique): <span class="arithmatex">\(\exists! x P(x)\)</span></li>
+</ul>
+<p>给定domain,$ \forall $ 可以看作谓词逻辑函数的合取，$ \exists $ 可以看作谓词逻辑函数的析取。</p>
+<ul>
+<li>
+<p>precedence: <span class="arithmatex">\(\forall, \exists\)</span> higher than all the logical operators</p>
+<blockquote>
+<p>but we often write $ \forall x P(x) \wedge Q(x) $ as $ \forall x (P(x) \wedge Q(x)) $ </p>
+</blockquote>
+</li>
+<li>
+<p>De Morgan's Laws for quantifiers</p>
+<ul>
+<li>$ \neg \forall x P(x) \equiv \exists x \neg P(x) $</li>
+<li>$ \neg \exists x P(x) \equiv \forall x \neg P(x) $</li>
+</ul>
+</li>
+<li>free variables(自由变量) and bound variables(约束变量)<blockquote>
+<p>量词的作用是约束变量，使得命题成立，而自由变量则是命题的参数，可以取任意值</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../img/3.png" /></p>
+<ul>
+<li>valid and satisfiable
+For an assertion involving predicates and quantifiers:<ul>
+<li>it is valid if 
+    +it is true <strong>for all domains</strong><ul>
+<li>every propositional function substitued for the predicates in the assertion</li>
+</ul>
+</li>
+<li>it is satisfiable if<ul>
+<li>it is true for <strong>some domain</strong></li>
+<li>some propositional functions that can be substituted for the predicates in the assertion to make it true.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="nested-quantifiers">Nested Quantifiers(嵌套量词)<a class="headerlink" href="#nested-quantifiers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>可以看作嵌套的<code>for loop</code></li>
+<li>顺序很重要，$ \forall x \exists y P(x,y) $ 和 $ \exists y \forall x P(x,y) $ 可能不同 </li>
+<li>
+<p>否定依然满足De Morgan's Laws,逐层否定即可
+<img alt="" src="../img/4.png" /></p>
+</li>
+<li>
+<p>translate 时注意 <code>exactly one</code>的翻译
+<img alt="" src="../img/5.png" /></p>
+</li>
+</ul>
 <h2 id="part-3-methods-of-proof">Part 3 Methods of Proof(证明方法)<a class="headerlink" href="#part-3-methods-of-proof" title="Permanent link">&para;</a></h2>
 <h3 id="rules-of-inference">Rules of Inference(推理规则)<a class="headerlink" href="#rules-of-inference" title="Permanent link">&para;</a></h3>
-<h3 id="proof-methods">Proof Methods (证明方法)<a class="headerlink" href="#proof-methods" title="Permanent link">&para;</a></h3>
-<h3 id="proof-strategies">Proof Strategies(证明策略)<a class="headerlink" href="#proof-strategies" title="Permanent link">&para;</a></h3>
+<h4 id="rules-of-inference-for-propositional-logic">Rules of Inference for Propositional Logic(命题逻辑的推理规则)<a class="headerlink" href="#rules-of-inference-for-propositional-logic" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>感觉太理论化了？或者是我没有体会到其中的玄妙？</p>
+</blockquote>
+<ul>
+<li>Modus Ponens（假言推理）: <span class="arithmatex">\((p \to q) \land p \to q\)</span></li>
+<li>Modus Tollens（取拒式）: <span class="arithmatex">\((p \to q) \land \neg q \to \neg p\)</span></li>
+<li>Hypothetical Syllogism（假言三段论）: <span class="arithmatex">\((p \to q) \land (q \to r) \to (p \to r)\)</span></li>
+<li>Disjunctive Syllogism（析取三段论）: <span class="arithmatex">\((p \lor q) \land \neg p \to q\)</span></li>
+<li>Addition（附加率）: <span class="arithmatex">\(p \to (p \lor q)\)</span></li>
+<li>Simplification（化简率）: <span class="arithmatex">\((p \land q) \to q\)</span></li>
+<li>Resolution （消解率）: <span class="arithmatex">\(((\neg p \lor r) \land (p \lor q)) \to (q \lor r)\)</span></li>
+</ul>
+<h4 id="rules-of-inference-for-quantified-statements">Rules of Inference for Quantified Statements(谓词逻辑的推理规则)<a class="headerlink" href="#rules-of-inference-for-quantified-statements" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Universal instantiation（全称实例）: <span class="arithmatex">\(\forall x P(x) \to P(c)\)</span></li>
+<li>Universal generalization（全称推广）: <span class="arithmatex">\(P(c)  \to \forall x P(x)\)</span></li>
+<li>Existential instantiation（存在实例）: $\exists x P(x) \to P(c) $</li>
+<li>Existential generalization（存在推广: <span class="arithmatex">\(P(c) \to \exists x P(x)\)</span></li>
+</ul>
+<h3 id="proof-methods-and-strategy">Proof Methods and Strategy(证明方法)<a class="headerlink" href="#proof-methods-and-strategy" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>作为初学算是学了点英文，这点东西并不足以让我的证明过程更严谨流畅符合逻辑，不过似乎也不必过分要求？</p>
+<p>以及，可以看看lhjgg发的关于证明的<a href="../img/proof.pdf">文章</a>，似乎更有帮助一点</p>
+</blockquote>
+<details class="note">
+<summary>一些术语</summary>
+<p>theorem (定理)
+lemma (引理)
+corollary (推论)
+conjecture (猜想)</p>
+<p>Trivial Proof 平凡证明：we know q is true, so p → q is true</p>
+<p>Vacuous Proof 空证明：we know p is false, so p → q is true</p>
+<p>Direct Proof 直接证明 Proof by Contraposition 逆否证明 Proof by Contradiction 反证 Proof by Cases 分类讨论 </p>
+</details>
+<details class="note">
+<summary>另一些术语</summary>
+<p>without loss of generality (WLOG) 不失一般性
+Existence Proof 存在性证明
+Constructive Proof 构造性证明
+Nonconstructive Proof 非构造性证明
+Uniqueness Proof 唯一性证明
+Counterexample 反例
+Inductive Proof 归纳证明</p>
+</details>
 
   <hr>
 <div class="md-source-file">

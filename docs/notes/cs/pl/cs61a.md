@@ -28,8 +28,9 @@ None None
 
 ## week2
 > 条件控制 高阶函数 环境
+
 + 好的函数是抽象的：通用、简单、不重复
-+ Python是以缩进划分语块的
++ Python是以缩进划分语块的 (《繁星·春水》)
 + Boolean Operators:`and` `or` `not` & short-circuiting:
 ```py
 >>> -1 and 2 and 0 and 1
