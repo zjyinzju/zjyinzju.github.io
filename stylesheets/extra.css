@@ -23,7 +23,7 @@
   --md-admonition-bg-color: var(--md-default-bg-color);
   }:root {
     --md-text-font: "LXGW WenKai Screen", "LXGW WenKai Screen"; 
-    --md-code-font: "Roboto Mono", "Noto Serif SC";
+    --md-code-font: "Noto Sans Mono", "Noto Serif SC";
   }
   .md-nav__link {
     font-size: small;
