@@ -22,6 +22,7 @@ nav:
         - notes/cs/logic/index.md
         - notes/cs/logic/01.md
         - notes/cs/logic/02.md
+        - notes/cs/logic/03.md
     - math:
       - 数学分析:
         - notes/math/math_analysis/index.md
@@ -32,7 +33,7 @@ nav:
         - notes/math/discrete_math/04.md
     - other: 
       - notes/others/yu.md 
-    - 一些工具:
+    - tools&skills:
       - notes/tools cheatsheet/LaTeX.md
   - 记念: 记念.md
   - 样式记录: 样式记录.md
