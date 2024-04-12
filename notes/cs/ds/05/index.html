@@ -895,6 +895,8 @@
       
         
       
+        
+      
     
     
     
@@ -966,6 +968,26 @@
   
   <span class="md-ellipsis">
     Combinational Logic Circuits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Combinational Logic Design
   </span>
   
 
@@ -1330,7 +1352,7 @@
             
   
   <span class="md-ellipsis">
-    一些工具
+    tools&skills
   </span>
   
 
@@ -1340,7 +1362,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
-            一些工具
+            tools&skills
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1545,15 +1567,18 @@ S[root] = -1；</p>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">        </span><span class="n">S</span><span class="p">[</span><span class="n">Root2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Root1</span><span class="p">;</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div></p>
-<p>可以想见，这样的合并操作多次进行会使树的高度增加，从而影响查找操作的效率。为了降低树的高度，可以采用：
-+ 按秩合并：
-    + 按大小：将节点数较少的树合并到节点数较多的树上
-        + 将S[root]修改为-|T|，其中T是树的节点数
-        + 按大小合并所得树的高度最大为<span class="arithmatex">\(\lfloor \log_2 N \rfloor + 1\)</span>
-    + 按高度：将高度较小的树合并到高度较大的树上
-        + 将S[root]修改为-|T|，其中T是树的高度
-        + 只有等高时，高度才会增加 1 
-    <div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Union</span><span class="p">(</span><span class="w"> </span><span class="n">SetType</span><span class="w"> </span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">SetName</span><span class="w"> </span><span class="n">Root1</span><span class="p">,</span><span class="w"> </span><span class="n">SetName</span><span class="w"> </span><span class="n">Root2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>可以想见，这样的合并操作多次进行会使树的高度增加，从而影响查找操作的效率。为了降低树的高度，可以采用：</p>
+<ul>
+<li>按秩合并：<ul>
+<li>按大小：将节点数较少的树合并到节点数较多的树上<ul>
+<li>将S[root]修改为-|T|，其中T是树的节点数</li>
+<li>按大小合并所得树的高度最大为<span class="arithmatex">\(\lfloor \log_2 N \rfloor + 1\)</span></li>
+</ul>
+</li>
+<li>按高度：将高度较小的树合并到高度较大的树上<ul>
+<li>将S[root]修改为-|T|，其中T是树的高度</li>
+<li>只有等高时，高度才会增加 1 
+<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Union</span><span class="p">(</span><span class="w"> </span><span class="n">SetType</span><span class="w"> </span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">SetName</span><span class="w"> </span><span class="n">Root1</span><span class="p">,</span><span class="w"> </span><span class="n">SetName</span><span class="w"> </span><span class="n">Root2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">Root1</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">Root2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">Root1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Root2</span><span class="p">;</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">Root1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">Root2</span><span class="p">]</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">Root2</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
@@ -1561,15 +1586,20 @@ S[root] = -1；</p>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="p">}</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// 始终注意S[Root1]和S[Root2]是负值</span>
 </span></code></pre></div>
-对于N个<code>Union</code>操作和M个<code>Find</code>操作，按秩合并的时间复杂度为<span class="arithmatex">\(O(N + M \log N)\)</span>
-+ 路径压缩：在查找根节点的过程中，将沿途的所有节点的<code>Parent</code>都设置为根节点
+对于N个<code>Union</code>操作和M个<code>Find</code>操作，按秩合并的时间复杂度为<span class="arithmatex">\(O(N + M \log N)\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>路径压缩：在查找根节点的过程中，将沿途的所有节点的<code>Parent</code>都设置为根节点
     <div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">    </span><span class="n">SetName</span><span class="w"> </span><span class="nf">Find</span><span class="p">(</span><span class="w"> </span><span class="n">SetType</span><span class="w"> </span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">ElementType</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">X</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">X</span><span class="p">;</span><span class="w"> </span><span class="c1">// X is the root</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">X</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Find</span><span class="p">(</span><span class="w"> </span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">X</span><span class="p">]</span><span class="w"> </span><span class="p">);</span><span class="w"> </span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="c1">// first, find the root; then, link all the nodes in this path to the root</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
-好处是多次查找时除了第一次外，后续查找的时间复杂度为<span class="arithmatex">\(O(1)\)</span>；</p>
+好处是多次查找时除了第一次外，后续查找的时间复杂度为<span class="arithmatex">\(O(1)\)</span></li>
+</ul>
 <p>以及Find是尾递归，可以被优化为迭代。</p>
 
   <hr>
