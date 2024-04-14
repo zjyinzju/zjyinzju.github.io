@@ -30,7 +30,9 @@ nav:
       - 离散数学:
         - notes/math/discrete_math/index.md
         - notes/math/discrete_math/01.md
+        - notes/math/discrete_math/02.md
         - notes/math/discrete_math/04.md
+        - notes/math/discrete_math/05.md
     - other: 
       - notes/others/yu.md 
     - tools&skills:
