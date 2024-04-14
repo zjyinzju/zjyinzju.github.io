@@ -12,7 +12,7 @@
         <link rel="prev" href="../01/">
       
       
-        <link rel="next" href="../04/">
+        <link rel="next" href="../03/">
       
       
       <link rel="icon" href="../../../../kongmencang.png">
@@ -1104,6 +1104,8 @@
       
         
       
+        
+      
     
     
     
@@ -1312,6 +1314,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cardinality-of-sets" class="md-nav__link">
+    Cardinality of Sets(集合的基数)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#matrices" class="md-nav__link">
     Matrices(矩阵)
   </a>
@@ -1322,6 +1331,26 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithms (算法)
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1693,6 +1722,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cardinality-of-sets" class="md-nav__link">
+    Cardinality of Sets(集合的基数)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#matrices" class="md-nav__link">
     Matrices(矩阵)
   </a>
@@ -1802,18 +1838,75 @@
 <h2 id="sequences-and-sums">Sequences(序列) and Sums(求和)<a class="headerlink" href="#sequences-and-sums" title="Permanent link">&para;</a></h2>
 <p>没什么新的，不赘述</p>
 <p><img alt="" src="../img/7.png" /></p>
+<h2 id="cardinality-of-sets">Cardinality of Sets(集合的基数)<a class="headerlink" href="#cardinality-of-sets" title="Permanent link">&para;</a></h2>
+<ul>
+<li><span class="arithmatex">\(|A| = |B|\)</span> iff there exists a bijection from A to B.</li>
+<li><span class="arithmatex">\(|A| \leq |B|\)</span> iff there exists an injection from A to B but no bijection from A to B.</li>
+<li><strong>Countable/denumerable:</strong> if it is finite or its elements can be put into one-to-one correspondence with the natural numbers.</li>
+<li>When an infinite set is countable, its cardinality is <span class="arithmatex">\(\aleph_0\)</span>, called <strong>aleph-null</strong>.</li>
+<li>to show that a set is countable, we can list its elements in a sequence and construct a bijection between the set and the natural numbers.</li>
+</ul>
+<details class="eg">
+<summary>Eg</summary>
+<p><img alt="eg" src="../img/8.png" />
+<img alt="eg" src="../img/9.png" /></p>
+</details>
+<div class="admonition property">
+<p class="admonition-title">Property</p>
+<ul>
+<li>No infinite set has a smaller cardinality than a countable set.(无限集合的基数不会小于可数集合的基数，可用在证明中)</li>
+<li>The union of a countable number of countable sets is countable.(可数个可数集合的并是可数的)</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Cantor Diagonalization(康托对角线法)</p>
+<ul>
+<li>The set of real numbers between 0 and 1 is uncountable.
+<img alt="" src="../img/10.png" /></li>
+<li>The set of real numbers has the same cardinality as the interval (0, 1).(即实数集的基数与区间(0, 1)的基数相同，通过正切函数即可映射)</li>
+</ul>
+</li>
+<li>
+<p>Schroder-Bernstein Theorem(施罗德-伯恩斯坦定理)</p>
+<ul>
+<li>If there exist injections from A to B and from B to A, then there exists a bijection from A to B.</li>
+</ul>
+</li>
+</ul>
 <h2 id="matrices">Matrices(矩阵)<a class="headerlink" href="#matrices" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A square matrix A is called <strong>symmetric(对称)</strong> if <span class="arithmatex">\(A^T = A\)</span>.</li>
+<li><strong>Zero-One Matrices</strong>: each element is either 0 or 1.
+the boolean arithmetic for two zero-one matrices (say,<span class="arithmatex">\(b_1,b_2\)</span>)is defined as follows:</li>
+</ul>
+<p><span class="arithmatex">\(b_{1} \wedge b_{2}=\left\{\begin{array}{ll}
+1 &amp; \text { if } b_{1}=b_{2}=1 \\
+0 &amp; \text { otherwise }
+\end{array} \quad b_{1} \vee b_{2}=\left\{\begin{array}{ll}
+1 &amp; \text { if } b_{1}=1 \text { or } b_{2}=1 \\
+0 &amp; \text { otherwise }
+\end{array}\right.\right.\)</span></p>
+<ul>
+<li><strong>Boolean Product</strong>: denoted by <span class="arithmatex">\(A \odot B\)</span>.
+Replace the usual product of two numbers by the <span class="arithmatex">\(\land\)</span>, and the usual sum by the <span class="arithmatex">\(\lor\)</span>.</li>
+</ul>
+<details class="eg">
+<summary>Eg</summary>
+<p>for A = <span class="arithmatex">\(\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}\)</span>, B = <span class="arithmatex">\(\begin{bmatrix} 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1\end{bmatrix}\)</span></p>
+<p>then <img alt="eg" src="../img/11.png" /></p>
+</details>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月14日 15:29:37</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月14日 15:29:55</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月14日 15:29:37</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月14日 15:29:55</span>
       
     
   </small>
@@ -1862,13 +1955,13 @@
         
         
           
-          <a href="../04/" class="md-footer__link md-footer__link--next" aria-label="下一页: Chapter 4 Number Theory and Cryptography （数论和密码学）">
+          <a href="../03/" class="md-footer__link md-footer__link--next" aria-label="下一页: Algorithms (算法)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Chapter 4 Number Theory and Cryptography （数论和密码学）
+                Algorithms (算法)
               </div>
             </div>
             <div class="md-footer__button md-icon">
