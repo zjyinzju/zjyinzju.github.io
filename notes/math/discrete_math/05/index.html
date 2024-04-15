@@ -12,7 +12,7 @@
         <link rel="prev" href="../04/">
       
       
-        <link rel="next" href="../../../others/yu/">
+        <link rel="next" href="../06/">
       
       
       <link rel="icon" href="../../../../kongmencang.png">
@@ -1106,6 +1106,8 @@
       
         
       
+        
+      
     
     
     
@@ -1176,7 +1178,7 @@
         
   
   <span class="md-ellipsis">
-    Basic Structures: Sets, Functions, Sequences, Sums, and Matrices(基本结构：集合、函数、序列、求和、矩阵)
+    Chapter 2 Basic Structures: Sets, Functions, Sequences, Sums, and Matrices(基本结构：集合、函数、序列、求和、矩阵)
   </span>
   
 
@@ -1196,7 +1198,7 @@
         
   
   <span class="md-ellipsis">
-    Algorithms (算法)
+    Chapter 3 Algorithms (算法)
   </span>
   
 
@@ -1293,15 +1295,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mistaken-proof-by-induction" class="md-nav__link">
-    Mistaken Proof by Induction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#guidelines-for-proofs-by-induction" class="md-nav__link">
-    Guidelines for Proofs by Induction(数学归纳证明的指导原则)
+    Guidelines for Proofs by Induction
   </a>
   
 </li>
@@ -1332,24 +1327,30 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#recursive-algorithms" class="md-nav__link">
-    Recursive Algorithms （递归算法）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#program-correctness" class="md-nav__link">
-    Program Correctness （程序正确性）
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 Counting(计数)
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1600,15 +1601,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mistaken-proof-by-induction" class="md-nav__link">
-    Mistaken Proof by Induction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#guidelines-for-proofs-by-induction" class="md-nav__link">
-    Guidelines for Proofs by Induction(数学归纳证明的指导原则)
+    Guidelines for Proofs by Induction
   </a>
   
 </li>
@@ -1639,20 +1633,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#recursive-algorithms" class="md-nav__link">
-    Recursive Algorithms （递归算法）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#program-correctness" class="md-nav__link">
-    Program Correctness （程序正确性）
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1675,22 +1655,70 @@
 <hr />
 <h2 id="mathematical-induction">Mathematical Induction （数学归纳）<a class="headerlink" href="#mathematical-induction" title="Permanent link">&para;</a></h2>
 <h3 id="mathematical-induction-principle">Mathematical Induction Principle （数学归纳原理）<a class="headerlink" href="#mathematical-induction-principle" title="Permanent link">&para;</a></h3>
-<p>To prove that a statement P(n) is true for all positive integers n, we follow these steps:
-+ <strong>Basis Step</strong>: Verify that the statement is true for n = 1.
-+ <strong>Inductive Step</strong>: Assume that P(k) is true for an arbitrary positive integer k, called the <strong>induction hypothesis(归纳假设)</strong>. Then show that P(k + 1) is true.</p>
+<p>To prove that a statement P(n) is true for all positive integers n, we follow these steps:</p>
+<ul>
+<li><strong>Basis Step</strong>: Verify that the statement is true for n = 1.</li>
+<li><strong>Inductive Step</strong>: Assume that P(k) is true for an arbitrary positive integer k, called the <strong>induction hypothesis(归纳假设)</strong>. Then show that P(k + 1) is true.</li>
+</ul>
 <p>It can be expressed as the rule of inference:</p>
 <p><span class="arithmatex">\(P(1) \land (\forall k , P(k) \rightarrow P(k + 1)) \longrightarrow (\forall n , P(n))\)</span></p>
 <p>Proofs by mathematical induction do not always start at n = 1.</p>
-<details class="eg">
-<summary>an </summary>
-</details>
-<h3 id="mistaken-proof-by-induction">Mistaken Proof by Induction<a class="headerlink" href="#mistaken-proof-by-induction" title="Permanent link">&para;</a></h3>
-<h3 id="guidelines-for-proofs-by-induction">Guidelines for Proofs by Induction(数学归纳证明的指导原则)<a class="headerlink" href="#guidelines-for-proofs-by-induction" title="Permanent link">&para;</a></h3>
+<h3 id="guidelines-for-proofs-by-induction">Guidelines for Proofs by Induction<a class="headerlink" href="#guidelines-for-proofs-by-induction" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../img/sec5.jpg" /></p>
 <h2 id="strong-induction">Strong Induction （强归纳）<a class="headerlink" href="#strong-induction" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Strong Induction Principle: To prove that a statement P(n) is true for all positive integers n, we follow these steps:<ul>
+<li><strong>Basis Step</strong>: Verify that the statement is true for n = 1.</li>
+<li><strong>Inductive Step</strong>: Assume that P(1), P(2), ..., P(k) are true for an arbitrary positive integer k, called the <strong>induction hypothesis</strong>. Then show that P(k + 1) is true.</li>
+</ul>
+</li>
+<li>Strong Induction is sometimes called the second principle of mathematical induction or complete induction.</li>
+</ul>
+<details class="question">
+<summary>which one should I use</summary>
+<ul>
+<li>We can always use strong induction instead of mathematical induction.</li>
+<li>In fact, the two forms of induction are equivalent.</li>
+<li>Sometimes it is clear how to proceed using one of the forms of induction but not the other.</li>
+</ul>
+</details>
 <h2 id="well-ordering">Well-Ordering （良序）<a class="headerlink" href="#well-ordering" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Well-ordering property: Every nonempty set of nonnegative integers has a least element.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">note</p>
+<ul>
+<li>The validities of both mathematical induction and strong induction depend on the well-ordering property</li>
+<li>Those three principles are equivalent.</li>
+</ul>
+</div>
+<details class="eg">
+<summary>Eg</summary>
+<p><img alt="" src="../img/wellordering.png" /></p>
+</details>
 <h2 id="recursive-definitions-and-structural-induction">Recursive Definitions and Structural Induction （递归定义和结构归纳）<a class="headerlink" href="#recursive-definitions-and-structural-induction" title="Permanent link">&para;</a></h2>
-<h2 id="recursive-algorithms">Recursive Algorithms （递归算法）<a class="headerlink" href="#recursive-algorithms" title="Permanent link">&para;</a></h2>
-<h2 id="program-correctness">Program Correctness （程序正确性）<a class="headerlink" href="#program-correctness" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Lame's Theorem: Let a and b be positive integers with a ≥ b. Then the number of divisions used by the Euclidian algorithm to find gcd(a,b) is less than or equal to five times the number of decimal digits in b.</li>
+<li>Recursive Definition: consists of two parts:<ul>
+<li><strong>Basis Step</strong></li>
+<li><strong>Recursive Step</strong></li>
+</ul>
+</li>
+<li>
+<p>Structural Induction: A proof technique that is used to prove that a statement is true for all elements of a recursively defined set:</p>
+<ul>
+<li><strong>Basis Step</strong>: Prove that the statement is true for the basis elements.</li>
+<li><strong>Inductive Step</strong>:Show that if the statement is true for
+each of the elements used to construct new elements in
+the recursive step of the definition, the result holds for
+these new elements.(针对新元素产生规则，若相关元素满足命题则新元素满足命题)</li>
+</ul>
+</li>
+<li>
+<p>Generalized Induction(广义数归): prove results about sets other than the integers</p>
+</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
@@ -1750,13 +1778,13 @@
         
         
           
-          <a href="../../../others/yu/" class="md-footer__link md-footer__link--next" aria-label="下一页: Yu">
+          <a href="../06/" class="md-footer__link md-footer__link--next" aria-label="下一页: Chapter 6 Counting(计数)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Yu
+                Chapter 6 Counting(计数)
               </div>
             </div>
             <div class="md-footer__button md-icon">
