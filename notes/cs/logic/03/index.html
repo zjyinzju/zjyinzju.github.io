@@ -645,6 +645,8 @@
       
         
       
+        
+      
     
     
     
@@ -776,6 +778,26 @@
   
   <span class="md-ellipsis">
     并查集(disjoint set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ds/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图(Graph)
   </span>
   
 
@@ -2179,62 +2201,59 @@ Carry Lookahead: carry propagation and delay  </li>
 <li>若有m个输入，n个输出，则有n个布尔函数，每个函数都是m个输入的函数</li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="admonition-title">主要设计过程</p>
+<ol>
+<li><strong>Specification</strong><br />
+写出电路的功能要求，真值表，或者逻辑函数</li>
+<li><strong>Formulation</strong><br />
+用<strong>真值表</strong>或者<strong>逻辑函数</strong>描述电路的功能</li>
+<li><strong>Optimization</strong><br />
+优化逻辑函数，化简逻辑函数（比如卡诺图），进行<strong>两级优化</strong>或者<strong>多级优化</strong></li>
+<li><strong>Technology Mapping</strong><br />
+选择合适的技术映射，选择合适的门（通常是与非和或非门）（工艺映射）</li>
+</ol>
+<details class="question">
+<summary>为什么需要这步</summary>
+<p>很多时候需要用预先定义好的与非门，或者其他基本模块（如 XOR）直接套入电路中去，可以降低电路的成本和延迟。</p>
+</details>
+<ol>
+<li><strong>Verification</strong><br />
+验证电路的正确性，仿真</li>
+</ol>
+</div>
 <h3 id="hierarchical-design">Hierarchical Design（层次化设计）<a class="headerlink" href="#hierarchical-design" title="Permanent link">&para;</a></h3>
 <p>与写代码一样，设计电路也要模块化。</p>
 <ul>
 <li>将逻辑函数划分为足够小的<em>blocks</em></li>
-<li>不可再划分的称之为<em>primitive block</em></li>
+<li>不可再划分的称之为<em>primitive block</em>(如与非门、异或门等)<ul>
+<li><strong>Reusable Functions:</strong> <br />
+    把常用的操作抽象成模块，并提前定义好延迟等等特性。当需要使用时，我们把电路引脚接入即可。</li>
+</ul>
+</li>
 <li>所有包括被划分模块的集合称为<em>hierarchy</em>（层？）</li>
 </ul>
 <div class="admonition eg">
 <p class="admonition-title">Eg</p>
 <ul>
 <li>顶层（Top Level）:定义9个输入和1个输出</li>
-<li>第二层：四个3位
+<li>第二层（2nd Level）：四个3位
 <div align=center> <img src="https://s2.loli.net/2022/10/19/lkuNFwLXEMdKiqP.png" width = 60%/> </div>  </li>
 </ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">实例化模块和函数调用的区别</p>
+<p>电路上实例化模块：复制一块并嵌入到电路中。且同时实例的模块是同时在运行，如上图中四个实例化的奇函数模块。（实际上硬件里做串行是非常麻烦的，需要状态机来约束行为逻辑）</p>
 <p>但 C 语言函数体只有一份代码，只是 PC 跳到函数部分。  </p>
 </div>
-<p><strong>Reusable Functions:</strong> <br />
-把常用的操作抽象成模块，并提前定义好延迟等等特性。当需要使用时，我们把电路引脚接入即可。  </p>
-<p><strong>Top-Down versus Bottom-Up</strong></p>
+<p><strong>Top-Down（自顶向下） versus Bottom-Up（自底向上）</strong></p>
 <ul>
-<li>A top-down design proceeds from an abstract, high-level specification to a more and more detailed design by decomposition and successive refinement   </li>
-<li>A bottom-up design starts with detailed primitive blocks and combines them into larger and more complex functional blocks</li>
+<li>自顶向下划分模块、分解功能设计</li>
+<li>自底向上从基本模块开始构建复杂逻辑电路</li>
 </ul>
 <h3 id="design-procedure_1"><strong>Design Procedure</strong><a class="headerlink" href="#design-procedure_1" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Specification</strong>  <br />
-Write a specification for the circuit if one is not already available</li>
-<li>
-<p><strong>Formulation</strong>  </p>
-<ul>
-<li>Derive <u>a truth table or initial Boolean equations</u> that define the required relationships between the inputs and outputs, if not in the specification  </li>
-<li>Apply hierarchical design if appropriate</li>
-<li>
-<p><strong>Optimization</strong>  </p>
-</li>
-<li>
-<p>Apply <u>2-level and multiple-level</u> optimization</p>
-</li>
-<li>Draw a logic diagram or provide a netlist for the resulting circuit using ANDs, ORs, and inverters</li>
-</ul>
-</li>
-<li>
-<p><strong>Technology Mapping</strong><br />
-Map the logic diagram or netlist to the implementation 
-为什么需要这步？<br />
-很多时候需要用预先定义好的与非门，或者其他基本模块（如 XOR）直接套入电路中去，可以降低电路的成本和延迟。
-technology selected  </p>
-</li>
-<li><strong>Verification</strong>
-Verify the correctness of the final design manually or using simulation.(仿真)</li>
-</ol>
-<div class="admonition example">
-<p class="admonition-title">BCD to Excess-3 code converter</p>
+<details class="eg">
+<summary>BCD to Excess-3 code converter</summary>
 <ol>
 <li>
 <p><strong>Specification</strong>  </p>
@@ -2282,7 +2301,7 @@ Mapping with a library containing  inverters and 2-input NAND, 2-input NOR, and 
 <p><strong>Verification</strong></p>
 </li>
 </ol>
-</div>
+</details>
 <p>(为什么有的时候算 G, 有的时候算 GN. 因为触发器同时有原变量和反变量，所以很多时候不需要单独算 GN.）  </p>
 <h3 id="chip-design-styles"><strong>Chip Design Styles</strong><a class="headerlink" href="#chip-design-styles" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2695,7 +2714,7 @@ S0 S1 的变化可以给加法器提供不同的输入，包括 -1(二进制每�
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月13日 01:03:43</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月16日 01:44:06</span>
       
         <br>
         创建日期:
