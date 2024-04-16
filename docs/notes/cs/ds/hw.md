@@ -80,3 +80,20 @@
 ## week 5
 ??? question "决策树"
     (HW5) 简而言之就是，对于二叉搜索的决策树，左右子树的相对高度应保持一致性。即如果对根节点而言左子树更高则对于每个根节点而言左子树的左子树也应更高，反之亦然。 
+
+## week 6
+??? question "建堆"
+    (HW6) Using the linear algorithm to build a min-heap from the sequence {15, 26, 32, 8, 7, 20, 12, 13, 5, 19}, and then insert 6. Which one of the following statements is FALSE?
+
+    >A. The root is 5
+
+    >B. The path from the root to 26 is {5, 6, 8, 26}
+
+    >C. 32 is the left child of 12
+
+    >D. 7 is the parent of 19 and 15
+
+    ??? info "solution"
+        C. 
+
+        注意“linear algorithm”,即先按给出数组的顺序排成树，再从第一个非叶子节点开始，逐个调整，直至成为堆。
