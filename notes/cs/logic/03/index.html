@@ -1151,58 +1151,45 @@
       
         <li class="md-nav__item">
   <a href="#arithmetic-functions" class="md-nav__link">
-    Arithmetic Functions
+    Arithmetic Functions(算术逻辑函数)
   </a>
   
-    <nav class="md-nav" aria-label="Arithmetic Functions">
+    <nav class="md-nav" aria-label="Arithmetic Functions(算术逻辑函数)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#functional-blocks-addition" class="md-nav__link">
-    Functional Blocks: Addition
+  <a href="#_9" class="md-nav__link">
+    加法器
   </a>
   
-    <nav class="md-nav" aria-label="Functional Blocks: Addition">
+    <nav class="md-nav" aria-label="加法器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#half-adder" class="md-nav__link">
-    Half-Adder
+    半加器 Half-Adder
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#full-adder" class="md-nav__link">
-    Full Adder
+    全加器  Full Adder
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#binary-adders" class="md-nav__link">
-    Binary Adders
-  </a>
-  
-    <nav class="md-nav" aria-label="Binary Adders">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#4-bit-ripple-carry-binary-adder" class="md-nav__link">
-    4-bit Ripple-Carry Binary Adder
+  <a href="#_10" class="md-nav__link">
+    行波进位
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#carry-lookahead" class="md-nav__link">
-    Carry Lookahead
+  <a href="#_11" class="md-nav__link">
+    超前进位
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1992,58 +1979,45 @@
       
         <li class="md-nav__item">
   <a href="#arithmetic-functions" class="md-nav__link">
-    Arithmetic Functions
+    Arithmetic Functions(算术逻辑函数)
   </a>
   
-    <nav class="md-nav" aria-label="Arithmetic Functions">
+    <nav class="md-nav" aria-label="Arithmetic Functions(算术逻辑函数)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#functional-blocks-addition" class="md-nav__link">
-    Functional Blocks: Addition
+  <a href="#_9" class="md-nav__link">
+    加法器
   </a>
   
-    <nav class="md-nav" aria-label="Functional Blocks: Addition">
+    <nav class="md-nav" aria-label="加法器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#half-adder" class="md-nav__link">
-    Half-Adder
+    半加器 Half-Adder
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#full-adder" class="md-nav__link">
-    Full Adder
+    全加器  Full Adder
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#binary-adders" class="md-nav__link">
-    Binary Adders
-  </a>
-  
-    <nav class="md-nav" aria-label="Binary Adders">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#4-bit-ripple-carry-binary-adder" class="md-nav__link">
-    4-bit Ripple-Carry Binary Adder
+  <a href="#_10" class="md-nav__link">
+    行波进位
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#carry-lookahead" class="md-nav__link">
-    Carry Lookahead
+  <a href="#_11" class="md-nav__link">
+    超前进位
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2542,47 +2516,55 @@ ABC与S2\S1\S0是按照真值表高到低位顺序编排的</p>
 
 <p>一般都是将AB接在控制总线上，将C接在数据总线上
 理论上还可以放更多变量到另一边</p>
-<h2 id="arithmetic-functions">Arithmetic Functions<a class="headerlink" href="#arithmetic-functions" title="Permanent link">&para;</a></h2>
-<p>Cell - subfunction block 单元模块，处理每位</p>
-<h3 id="functional-blocks-addition">Functional Blocks: Addition<a class="headerlink" href="#functional-blocks-addition" title="Permanent link">&para;</a></h3>
-<p>Addition Development:  </p>
+<h2 id="arithmetic-functions">Arithmetic Functions(算术逻辑函数)<a class="headerlink" href="#arithmetic-functions" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>考虑到所有位的计算方法相同，可以先按位设计好单元模块（Cell）
+再将这些cell串成阵列</p>
+</blockquote>
+<h3 id="_9">加法器<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>对于二进制加法来说：
++ Input包括加数X、被加数Y以及可能会有的上一位的进位Z； 
++ Output包括当前位S和进位C</p>
 <ul>
-<li><strong>Half-Adder (HA)</strong>, a 2-input bit-wise addition functional block.(no carry input)</li>
-<li><strong>Full-Adder (FA)</strong>, a 3-input bit-wise addition functional block.  </li>
-<li><strong>Ripple Carry Adder</strong>, an iterative array to perform binary addition.  </li>
-<li><strong>Carry-Look-Ahead Adder (CLA)</strong>, a hierarchical structure to improve performance. </li>
+<li><strong>半加器（Half-Adder）</strong>, XY-CS，不考虑进位Z</li>
+<li><strong>全加器(Full-Adder)</strong>, XYZ-CS，考虑进位Z</li>
 </ul>
-<h4 id="half-adder">Half-Adder<a class="headerlink" href="#half-adder" title="Permanent link">&para;</a></h4>
+<p>上述两种只能做一位的加法，需要设计电路来计算多位，有下面两种：
+    + <strong>行波进位（Ripple Carry Adder）</strong>, an iterative array to perform binary addition.<br />
+    + <strong>超前进位（Carry-Look-Ahead Adder</strong>, a hierarchical structure to improve performance. </p>
+<h4 id="half-adder">半加器 Half-Adder<a class="headerlink" href="#half-adder" title="Permanent link">&para;</a></h4>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/B5cCmT7ZHAFrjJO.png" width = 30%/> </div>
 
 <p><span class="arithmatex">\(S=X\oplus Y, C=XY\)</span>.</p>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/PqjRSJgxiQ2olV1.png" width = 70%/> </div>
 
-<h4 id="full-adder">Full Adder<a class="headerlink" href="#full-adder" title="Permanent link">&para;</a></h4>
+<h4 id="full-adder">全加器  Full Adder<a class="headerlink" href="#full-adder" title="Permanent link">&para;</a></h4>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/6hmCDUAxjSHcz1G.png" width = 65%/> </div>
 
 <p>S 无法化简，但可以表示为奇函数（异或）</p>
-<p><span class="arithmatex">\(S=X\overline Y\overline Z+\overline X Y \overline Z + \overline X\overline YZ+XYZ=X\oplus Y\oplus Z\)</span>
-<span class="arithmatex">\(C=XY+XZ+YZ=XY+(X\oplus Y)Z\)</span>.  <br />
-The term <span class="arithmatex">\(XY\)</span> is <strong>carry generate</strong>.(<span class="arithmatex">\(XY=1\)</span> 时一定会有进位)<br />
-The term <span class="arithmatex">\(X\oplus Y\)</span> is <strong>carry propagate</strong>.(<span class="arithmatex">\(X\oplus Y=1\)</span> 时 X,Y有一个是 0, 一定会把进位传下去，即 <span class="arithmatex">\(C=Z\)</span>)</p>
+<p><span class="arithmatex">\(S=X\overline Y\overline Z+\overline X Y \overline Z + \overline X\overline YZ+XYZ=X\oplus Y\oplus Z\)</span></p>
+<p><span class="arithmatex">\(C=XY+XZ+YZ=XY+(X\oplus Y)Z\)</span>.</p>
+<p>The term <span class="arithmatex">\(XY\)</span> is <strong>进位产生函数（carry generate）</strong>.(<span class="arithmatex">\(XY=1\)</span> 时一定会有进位)<br />
+The term <span class="arithmatex">\(X\oplus Y\)</span> is <strong>进位传递函数（carry propagate）</strong>.(<span class="arithmatex">\(X\oplus Y=1\)</span> 时 X,Y有一个是 0, 一定会把进位传下去，即 <span class="arithmatex">\(C=Z\)</span>)</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>注意 C 的改写，这里改为异或不改变结果，同时因为已经有 xor 了，可以节约一个门。</p>
 </div>
-<p><strong>Implementation</strong>: </p>
+<p>电路实现：<span class="arithmatex">\(C_0 = G + P \cdot C_i\)</span> </p>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/DqZv6iuMQRxfkC1.png" width = 60%/> </div>
 
-<h4 id="binary-adders">Binary Adders<a class="headerlink" href="#binary-adders" title="Permanent link">&para;</a></h4>
-<p>实现二进制多位加法</p>
-<h5 id="4-bit-ripple-carry-binary-adder"><strong>4-bit Ripple-Carry Binary Adder</strong><a class="headerlink" href="#4-bit-ripple-carry-binary-adder" title="Permanent link">&para;</a></h5>
-<p><img alt="image.png" src="https://s2.loli.net/2022/10/26/uabqQsBUmKpY17P.png" /></p>
-<p>存在一个问题：随着加法器位数的增加，延迟会越来越大。<br />
-如下图中，最长的路径是从 A0 或 B0 到 S3.  </p>
+<h4 id="_10">行波进位<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>模拟竖式加法，从低位开始逐位计算，将进位给到下一位作为输入
+<img alt="image.png" src="https://s2.loli.net/2022/10/26/uabqQsBUmKpY17P.png" /></p>
+<p>如下图中，最长的路径是从 A0 或 B0 到 S3.  </p>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/Uz3ECOYAMgtvxTP.png" width = 65%/> </div>
-
-<h5 id="carry-lookahead"><strong>Carry Lookahead</strong><a class="headerlink" href="#carry-lookahead" title="Permanent link">&para;</a></h5>
-<p>对于状态 i, 我们称 <span class="arithmatex">\(G_i\)</span> 为 <strong>generate</strong>, <span class="arithmatex">\(P_i\)</span> 为 <strong>propagate</strong>.    </p>
+<p>存在一个问题：随着加法器位数的增加，延迟会越来越大，而主要的延迟来自进位传递，以此为切入点可以进行优化</p>
+<h4 id="_11">超前进位<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>不再逐位传递进位，而是直接由一开始的进位得到
+降低了延迟，但是电路复杂度大大提升</p>
+</blockquote>
+<p>对于状态 i, 我们称 <span class="arithmatex">\(G_i\)</span> 为 进位产生, <span class="arithmatex">\(P_i\)</span> 为 进位传递.    </p>
 <ul>
 <li><span class="arithmatex">\(G_i\)</span>, <span class="arithmatex">\(P_i\)</span>, and <span class="arithmatex">\(S_i\)</span> are local to each cell of the adder</li>
 <li><span class="arithmatex">\(C_i\)</span> is also local each cell</li>
@@ -2601,7 +2583,6 @@ The term <span class="arithmatex">\(X\oplus Y\)</span> is <strong>carry propagat
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211021005217.png" width = 75%/> </div>
 
 <p>这样的超前进位全加器，避免了因为位过多而造成延迟过大。高位的结果直接由低位的结果得到。</p>
-<p>This could be extended to more than four bits; in practice, due to limited gate fan-in, such extension is not feasible.  </p>
 <p>The concept is extended another level by considering group <strong>generate(<span class="arithmatex">\(G_{0-3}\)</span>)</strong> and <strong>group propagate(<span class="arithmatex">\(P_{0-3}\)</span>)</strong> functions:</p>
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211021013734.png" width = 75%/> </div>
 
@@ -2739,7 +2720,7 @@ S0 S1 的变化可以给加法器提供不同的输入，包括 -1(二进制每�
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月16日 13:55:18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月16日 23:07:51</span>
       
         <br>
         创建日期:
