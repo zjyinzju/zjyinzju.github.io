@@ -2522,37 +2522,60 @@ ABC与S2\S1\S0是按照真值表高到低位顺序编排的</p>
 再将这些cell串成阵列</p>
 </blockquote>
 <h3 id="_9">加法器<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>对于二进制加法来说：
-+ Input包括加数X、被加数Y以及可能会有的上一位的进位Z； 
-+ Output包括当前位S和进位C</p>
+<p>对于二进制加法来说：</p>
 <ul>
-<li><strong>半加器（Half-Adder）</strong>, XY-CS，不考虑进位Z</li>
+<li>Input包括<strong>加数X</strong>、<strong>被加数Y</strong>以及可能会有的<strong>上一位的进位Z</strong>； </li>
+<li>
+<p>Output包括<strong>当前位S</strong>和<strong>进位C</strong></p>
+</li>
+<li>
+<p><strong>半加器（Half-Adder）</strong>, XY-CS，不考虑进位Z</p>
+</li>
 <li><strong>全加器(Full-Adder)</strong>, XYZ-CS，考虑进位Z</li>
 </ul>
-<p>上述两种只能做一位的加法，需要设计电路来计算多位，有下面两种：
-    + <strong>行波进位（Ripple Carry Adder）</strong>, an iterative array to perform binary addition.<br />
-    + <strong>超前进位（Carry-Look-Ahead Adder</strong>, a hierarchical structure to improve performance. </p>
+<p>上述两种只能做一位的加法，需要设计电路来计算多位，有下面两种：</p>
+<ul>
+<li><strong>行波进位（Ripple Carry Adder）</strong>, an iterative array to perform binary addition.  </li>
+<li><strong>超前进位（Carry-Look-Ahead Adder</strong>, a hierarchical structure to improve performance. </li>
+</ul>
 <h4 id="half-adder">半加器 Half-Adder<a class="headerlink" href="#half-adder" title="Permanent link">&para;</a></h4>
-<div align=center> <img src="https://s2.loli.net/2022/10/26/B5cCmT7ZHAFrjJO.png" width = 30%/> </div>
-
-<p><span class="arithmatex">\(S=X\oplus Y, C=XY\)</span>.</p>
-<div align=center> <img src="https://s2.loli.net/2022/10/26/PqjRSJgxiQ2olV1.png" width = 70%/> </div>
-
+<p>只考虑两个输入的加法，不考虑低位对高位的进位。</p>
+<p>真值表如下：</p>
+<p><img alt="" src="../img/true.png" /></p>
+<p>S和C分别对应：<span class="arithmatex">\(S=X\oplus Y, C=XY\)</span>.</p>
+<p>还有以下几种不同的写法：</p>
+<p><img alt="" src="../img/5halfadd.png" /></p>
+<p>进行多路电路设计时，可以根据不同电路的性能和成本，选择不同的设计。</p>
+<p>最常见的是下面两种：</p>
+<p><img alt="" src="../img/half.png" /></p>
+<blockquote>
+<p>第二种下半部分的四个与非门实际上构成了一个异或结构,而C则通过对X|Y取非得到，节省成本。</p>
+</blockquote>
 <h4 id="full-adder">全加器  Full Adder<a class="headerlink" href="#full-adder" title="Permanent link">&para;</a></h4>
+<p>考虑进位，故有三个输入：X是加数，Y是被加数，Z是<strong>上一位对运算位的进位</strong>。</p>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/6hmCDUAxjSHcz1G.png" width = 65%/> </div>
 
-<p>S 无法化简，但可以表示为奇函数（异或）</p>
+<p>从卡诺图可以看出S可以表示为奇函数（异或）</p>
 <p><span class="arithmatex">\(S=X\overline Y\overline Z+\overline X Y \overline Z + \overline X\overline YZ+XYZ=X\oplus Y\oplus Z\)</span></p>
-<p><span class="arithmatex">\(C=XY+XZ+YZ=XY+(X\oplus Y)Z\)</span>.</p>
-<p>The term <span class="arithmatex">\(XY\)</span> is <strong>进位产生函数（carry generate）</strong>.(<span class="arithmatex">\(XY=1\)</span> 时一定会有进位)<br />
-The term <span class="arithmatex">\(X\oplus Y\)</span> is <strong>进位传递函数（carry propagate）</strong>.(<span class="arithmatex">\(X\oplus Y=1\)</span> 时 X,Y有一个是 0, 一定会把进位传下去，即 <span class="arithmatex">\(C=Z\)</span>)</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>注意 C 的改写，这里改为异或不改变结果，同时因为已经有 xor 了，可以节约一个门。</p>
+<p><span class="arithmatex">\(C=XY+XZ+YZ=XY+(X+Y)Z\)</span></p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p><span class="arithmatex">\(X+Y\)</span> 和 $X \oplus Y $ 仅在X=Y=1时结果不同，但因为XY的存在，对<span class="arithmatex">\(C=XY+(X+Y)Z\)</span>整体结果没有影响</p>
 </div>
-<p>电路实现：<span class="arithmatex">\(C_0 = G + P \cdot C_i\)</span> </p>
+<p>因此可以改写为：</p>
+<p><span class="arithmatex">\(C=XY+XZ+YZ=XY+(X\oplus Y)Z\)</span></p>
+<p>称 XY 为 <strong>进位产生函数（carry generate）</strong>(<span class="arithmatex">\(XY=1\)</span> 时一定会有进位)，记为G；</p>
+<p>称 <span class="arithmatex">\(X\oplus Y\)</span> 为 <strong>进位传递函数（carry propagate）</strong>(<span class="arithmatex">\(X\oplus Y=1\)</span> 时，XY=0，会把进位Z传下去，即 <span class="arithmatex">\(C=Z\)</span>)，记为P</p>
+<p>电路实现：</p>
 <div align=center> <img src="https://s2.loli.net/2022/10/26/DqZv6iuMQRxfkC1.png" width = 60%/> </div>
 
+<div class="admonition key-point">
+<p class="admonition-title">注意</p>
+<p><span class="arithmatex">\(C_0 = G + P \cdot C_i\)</span> 是进位逻辑函数</p>
+<p>直白地理解就是：</p>
+<p>要么G = 1，P = 0 产生进位赋给<span class="arithmatex">\(C_0\)</span>；</p>
+<p>要么P = 1 ，G = 0 传递进位赋给<span class="arithmatex">\(C_0\)</span></p>
+</div>
 <h4 id="_10">行波进位<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>模拟竖式加法，从低位开始逐位计算，将进位给到下一位作为输入
 <img alt="image.png" src="https://s2.loli.net/2022/10/26/uabqQsBUmKpY17P.png" /></p>
@@ -2720,7 +2743,7 @@ S0 S1 的变化可以给加法器提供不同的输入，包括 -1(二进制每�
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月16日 23:07:51</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月21日 19:47:58</span>
       
         <br>
         创建日期:
