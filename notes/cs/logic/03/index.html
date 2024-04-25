@@ -107,12 +107,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="test" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -161,6 +165,40 @@
       </div>
     </div>
     
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="test" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
       
     
     
@@ -1187,8 +1225,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    超前进位
+  <a href="#carry-lookahead" class="md-nav__link">
+    超前进位（Carry LookAhead）
   </a>
   
 </li>
@@ -2015,8 +2053,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    超前进位
+  <a href="#carry-lookahead" class="md-nav__link">
+    超前进位（Carry LookAhead）
   </a>
   
 </li>
@@ -2475,9 +2513,11 @@ V 用于判断是否有有效信号进入</p>
 Equation: <span class="arithmatex">\(Y=\overline S I_0+SI_1\)</span>
 画电路图时，要分成两块：第一部分 1-2 译码器，后一部分是 2-2 与或结构。1-2译码器控制由与门构成的使能逻辑，将数据选择并通过或门输出。（结构复杂后，其实就是将这两部分扩展）</p>
 </div>
-<p>总之，一个 <span class="arithmatex">\(2^n-to-1\)</span> 的选择器应该具备： 
-+ n-to-<span class="arithmatex">\(2^n\)</span>-line 译码器，得到最小项
-+ <span class="arithmatex">\(2^n \times 2\)</span> 的与或结构 </p>
+<p>总之，一个 <span class="arithmatex">\(2^n-to-1\)</span> 的选择器应该具备：</p>
+<ul>
+<li>n-to-<span class="arithmatex">\(2^n\)</span>-line 译码器，得到最小项</li>
+<li><span class="arithmatex">\(2^n \times 2\)</span> 的与或结构 </li>
+</ul>
 <div class="admonition eg">
 <p class="admonition-title">4-to-1</p>
 <p><div align=center> <img src="https://s2.loli.net/2022/10/26/pm9vS4xE2ayCz6I.png" width =45%/> </div>   </p>
@@ -2579,15 +2619,17 @@ ABC与S2\S1\S0是按照真值表高到低位顺序编排的</p>
 <h4 id="_10">行波进位<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>模拟竖式加法，从低位开始逐位计算，将进位给到下一位作为输入
 <img alt="image.png" src="https://s2.loli.net/2022/10/26/uabqQsBUmKpY17P.png" /></p>
-<p>如下图中，最长的路径是从 A0 或 B0 到 S3.  </p>
-<div align=center> <img src="https://s2.loli.net/2022/10/26/Uz3ECOYAMgtvxTP.png" width = 65%/> </div>
-<p>存在一个问题：随着加法器位数的增加，延迟会越来越大，而主要的延迟来自进位传递，以此为切入点可以进行优化</p>
-<h4 id="_11">超前进位<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>如下图中，最长的路径是从 A0 或 B0 到 S3:</p>
+<p>经历一个异或的进位传递、三个与或和最终一个求和的异或输出</p>
+<p><img alt="" src="../img/long.png" /></p>
+<p>但是便宜没好货：加法器位数越多，延迟越大，</p>
+<p><strong>主要的延迟来自进位传递，以此为切入点可以进行优化</strong></p>
+<h4 id="carry-lookahead">超前进位（Carry LookAhead）<a class="headerlink" href="#carry-lookahead" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>不再逐位传递进位，而是直接由一开始的进位得到
 降低了延迟，但是电路复杂度大大提升</p>
 </blockquote>
-<p>对于状态 i, 我们称 <span class="arithmatex">\(G_i\)</span> 为 进位产生, <span class="arithmatex">\(P_i\)</span> 为 进位传递.    </p>
+<p>对于状态 i, 称 <span class="arithmatex">\(G_i\)</span> 为 进位产生, <span class="arithmatex">\(P_i\)</span> 为 进位传递.    </p>
 <ul>
 <li><span class="arithmatex">\(G_i\)</span>, <span class="arithmatex">\(P_i\)</span>, and <span class="arithmatex">\(S_i\)</span> are local to each cell of the adder</li>
 <li><span class="arithmatex">\(C_i\)</span> is also local each cell</li>
@@ -2600,24 +2642,44 @@ ABC与S2\S1\S0是按照真值表高到低位顺序编排的</p>
 \end{align*}  
 \]</div>
 <p>这样 <span class="arithmatex">\(C_{i+1}\)</span> 可以从 cells 中去掉，同时我们可以推导得到一组跨越多个单元的进位方程：</p>
-<div align=center> <img src="http://cdn.hobbitqia.cc/202211021138063.png" width = 75%/> </div>
-
+<p><img alt="" src="../img/lookahead.png" /></p>
 <p>于是我们可以得到下面的 <strong>Carry Look-ahead Adder</strong>:</p>
-<div align=center> <img src="http://cdn.hobbitqia.cc/202211021005217.png" width = 75%/> </div>
-
-<p>这样的超前进位全加器，避免了因为位过多而造成延迟过大。高位的结果直接由低位的结果得到。</p>
-<p>The concept is extended another level by considering group <strong>generate(<span class="arithmatex">\(G_{0-3}\)</span>)</strong> and <strong>group propagate(<span class="arithmatex">\(P_{0-3}\)</span>)</strong> functions:</p>
+<p><img alt="" src="../img/comple.png" /></p>
+<p>基本上由两大部分组成：</p>
+<ul>
+<li>
+<p>上半部分：<span class="arithmatex">\(A_iB_i\)</span> 构成的进位产生 $ G_i$ 、<span class="arithmatex">\(A_i \oplus B_i\)</span> 构成的进位传递 <span class="arithmatex">\(P_i\)</span>、<span class="arithmatex">\(A_i \oplus B_i \oplus C_i\)</span>构成的本位输出</p>
+<blockquote>
+<p>称为Partial full adder，缺少的部分为进位输入</p>
+</blockquote>
+</li>
+<li>
+<p>下半部分：输入包括最低位进位<span class="arithmatex">\(C_0、G_i、P_i\)</span>，产生输出<span class="arithmatex">\(C_i\)</span></p>
+<blockquote>
+<p>称为CLA，</p>
+</blockquote>
+</li>
+</ul>
+<p>此方法减少了门延迟，如<span class="arithmatex">\(C_3\)</span>只需经过一个与或结构便可得到</p>
+<p>然而增加了电路成本和复杂度（尤其是更多位的加法器）</p>
+<p>可以进行如下的优化：</p>
+<p>对于16位加法：初步优化是分为四块CLA，分别负责0~3、4~7、8~11、12~15，再通过行波进位将四块连通；</p>
+<p><img alt="" src="../img/dyb.png" /></p>
+<p>进一步，既然行波可以优化为超前进位，那么分块的行波进位也可以优化为分块的超前进位。</p>
+<p><img alt="" src="../img/CLA.png" /></p>
+<p>考虑如下的改写：</p>
+<p><img alt="" src="../img/extend.png" /></p>
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211021013734.png" width = 75%/> </div>
 
+<p>红色的模块和先前的<span class="arithmatex">\(C_{i+1} = G_i + P_iC_i\)</span>类似</p>
 <p>这样我们就得到了 16-bits adder</p>
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211021013734.png" width = 60%/> </div>
 
-<p>Exactly the same structure. So CLA could be used to generate <strong>Group Carry</strong>. <br />
-类似思路可得到 64 位的加法器。</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><div align=center> <img src="http://cdn.hobbitqia.cc/202211021157271.png" width = 70%/> </div>  </p>
-</div>
+<details class="warning">
+<summary>compare</summary>
+<p><img alt="" src="../img/compare.png" /></p>
+</details>
+<p>类似思路可得到 64 位的加法器。</p>
 <h3 id="unsigned-subtraction">Unsigned Subtraction<a class="headerlink" href="#unsigned-subtraction" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Subtract the subtrahend(减数) N from the minuend(被减数) M</li>
@@ -2743,7 +2805,7 @@ S0 S1 的变化可以给加法器提供不同的输入，包括 -1(二进制每�
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月21日 19:47:58</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年4月22日 21:40:02</span>
       
         <br>
         创建日期:

@@ -107,12 +107,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="test" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -161,6 +165,40 @@
       </div>
     </div>
     
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="test" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
       
     
     
@@ -867,6 +905,33 @@
   <a href="#_4" class="md-nav__link">
     拓扑排序
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shortest-path" class="md-nav__link">
+    最短路径(Shortest Path)
+  </a>
+  
+    <nav class="md-nav" aria-label="最短路径(Shortest Path)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    单源无权图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    单源有权图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1617,6 +1682,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#shortest-path" class="md-nav__link">
+    最短路径(Shortest Path)
+  </a>
+  
+    <nav class="md-nav" aria-label="最短路径(Shortest Path)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    单源无权图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    单源有权图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1705,7 +1797,7 @@ V 个顶点从0开始编号，构成V x V的矩阵，A[i][j]表示顶点i和j之
 <h2 id="_3">遍历<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>DFS: 深度优先——无路可走时回溯
-<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FirstNeighbor</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NextNeighbor</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">w</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
@@ -1715,7 +1807,7 @@ V 个顶点从0开始编号，构成V x V的矩阵，A[i][j]表示顶点i和j之
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </span></code></pre></div></li>
 <li>BFS: 广度优先——层层外扩
-<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">BFS</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">BFS</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Enqueue</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">Q</span><span class="p">);</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsEmpty</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -1743,7 +1835,7 @@ V 个顶点从0开始编号，构成V x V的矩阵，A[i][j]表示顶点i和j之
 <li>拓扑排序算法：<ul>
 <li>从入度为0的顶点开始，每次删除一个顶点和与之关联的边</li>
 <li>若图中还有顶点，则图中有回路
-<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">TopSort</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">G</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">TopSort</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="n">G</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">G</span><span class="o">-&gt;</span><span class="n">Nv</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indegree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1764,6 +1856,91 @@ V 个顶点从0开始编号，构成V x V的矩阵，A[i][j]表示顶点i和j之
 </span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;图中有回路&quot;</span><span class="p">);</span>
 </span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="shortest-path">最短路径(Shortest Path)<a class="headerlink" href="#shortest-path" title="Permanent link">&para;</a></h2>
+<p>在网络中，从一个顶点到另一个顶点的路径中，边的权值之和最小的路径，第一个顶点称为源点(Source)，最后一个顶点称为终点(Destination)</p>
+<ul>
+<li><strong>单源最短路径问题</strong>(Single-Source Shortest Path)：求源点到其他所有顶点的最短路径<ul>
+<li>无权图：经历的顶点最少</li>
+<li>有权图：边的权值之和最小</li>
+</ul>
+</li>
+<li><strong>多源最短路径问题</strong>(All-Pairs Shortest Path)：求任意两个顶点之间的最短路径 </li>
+</ul>
+<h3 id="_5">单源无权图<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>按照递增（非递减）的顺序，找出到各顶点的最短路径</li>
+<li>用BFS实现：从源点开始，每次遍历到的点的路径长度为上一点的路径长度+1
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Unweighted</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Enqueue</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">Q</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsEmpty</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">W</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FirstNeighbor</span><span class="p">(</span><span class="n">V</span><span class="p">);</span><span class="w"> </span><span class="n">W</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">W</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NextNeighbor</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// dist[]初始化为-1, 表示未访问</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">                </span><span class="n">dist</span><span class="p">[</span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 更新路径长度为上一点的路径长度+1</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">                </span><span class="n">path</span><span class="p">[</span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">;</span><span class="w"> </span><span class="c1">// 记录路径</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">                </span><span class="n">Enqueue</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="w"> </span><span class="n">Q</span><span class="p">);</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
+</span></code></pre></div>
+用于无权图的最短路径算法，时间复杂度为O(|V|+|E|)<ul>
+<li><code>for loop</code>实际上只是遍历了所有的边，所以时间复杂度为O(|E|)</li>
+<li>每个顶点入队出队各一次，所以时间复杂度为O(|V|)</li>
+</ul>
+</li>
+</ul>
+<h3 id="_6">单源有权图<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>权重代表边的长度</li>
+<li>边权值可以为负数<ul>
+<li>负值环：环路权值之和为负数</li>
+</ul>
+</li>
+<li>
+<p><strong>Dijkstra算法</strong>：按照递增的顺序找出源点到其他所有顶点的最短路径</p>
+<ul>
+<li>不能处理负权边</li>
+<li>分为两个集合：未确定最短路的顶点集合T&amp;源点+已确定最短路径的顶点集合S</li>
+<li>初始化dist[s] = 0, 其他为无穷大</li>
+<li>
+<p>重复下面的操作：</p>
+<ol>
+<li>从T中选择一个顶点V，使得dist[V]最小, 将V加入S</li>
+<li>对刚刚加入S的节点的所有出边(v,w)执行松弛操作：</li>
+</ol>
+<p>dist[w] = min(dist[w], dist[v]+weight(v,w))</p>
+</li>
+<li>
+<p>伪代码描述
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Dijkstra</span><span class="p">(</span><span class="n">Vertex</span><span class="w"> </span><span class="n">s</span><span class="p">){</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">            </span><span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">未收录顶点中dist最小者</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">这样的V不存在</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">                </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="n">collected</span><span class="p">[</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">V的每个邻接点W</span><span class="p">){</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">collected</span><span class="p">[</span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">){</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">E_</span><span class="p">{</span><span class="o">&lt;</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">W</span><span class="p">]){</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">                        </span><span class="n">dist</span><span class="p">[</span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">E</span><span class="o">&lt;</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="o">&gt;</span><span class="p">;</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">                        </span><span class="n">path</span><span class="p">[</span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">                    </span><span class="p">}</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+时间复杂度取决于<strong>如何找到未收录顶点中dist最小者</strong></p>
+</li>
+<li>简单实现：每次遍历所有未收录顶点，时间复杂度为O(|V|^2)</li>
+<li>优化实现：使用最小堆，时间复杂度为O<span class="arithmatex">\(((|V|+|E|) \log|V|\)</span>)<ul>
+<li>每次取出堆顶元素，时间复杂度为O(log|V|)</li>
+<li>每个顶点最多入堆出堆一次，时间复杂度为O<span class="arithmatex">\((|V| \log|V|)\)</span></li>
+<li>每个边最多入堆一次，时间复杂度为O<span class="arithmatex">\((|E|\log|V|)\)</span></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
