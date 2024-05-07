@@ -935,6 +935,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#network-flow" class="md-nav__link">
+    网络流(Network Flow)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-spanning-tree" class="md-nav__link">
+    最小生成树(Minimum Spanning Tree)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1437,7 +1451,7 @@
         
   
   <span class="md-ellipsis">
-    Advanced Counting Techniques(高级计数技术)
+    Chapter 8 Advanced Counting Techniques(高级计数技术)
   </span>
   
 
@@ -1731,6 +1745,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#network-flow" class="md-nav__link">
+    网络流(Network Flow)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-spanning-tree" class="md-nav__link">
+    最小生成树(Minimum Spanning Tree)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1963,6 +1991,93 @@ V 个顶点从0开始编号，构成V x V的矩阵，A[i][j]表示顶点i和j之
 <li>每个边最多入堆一次，时间复杂度为O<span class="arithmatex">\((|E|\log|V|)\)</span></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h2 id="network-flow">网络流(Network Flow)<a class="headerlink" href="#network-flow" title="Permanent link">&para;</a></h2>
+<ul>
+<li>网络流定义在一个有向图上，每条边上有一个代表容量(Capacity)的权值，当<span class="arithmatex">\((u, v) \in E\)</span>时，<span class="arithmatex">\(c(u, v)\)</span>表示从u到v的容量; 当<span class="arithmatex">\((v, u) \notin E\)</span>时，定义<span class="arithmatex">\(c(v, u) = 0\)</span></li>
+<li>网络中存在唯一的源点s（source）和唯一的汇点t(sink)</li>
+<li>流量：从u到v的流量<span class="arithmatex">\(f(u, v)\)</span>，满足以下条件：<ul>
+<li>容量限制：<span class="arithmatex">\(0 \leq f(u, v) \leq c(u, v)\)</span></li>
+<li>流量守恒：<span class="arithmatex">\(\sum_{v \in V} f(u, v) = \sum_{v \in V} f(v, u)\)</span></li>
+</ul>
+</li>
+<li>最大流问题：在网络中从源点到汇点的流量最大化问题<ul>
+<li>建立<strong>残差图（residual graph）</strong>，设 <span class="arithmatex">\(f\)</span> 是图 <span class="arithmatex">\(G=(V,E)\)</span> 的一个流，则残差图的边权为：</li>
+</ul>
+</li>
+</ul>
+<div class="arithmatex">\[ c_f(u,v)=\begin{cases} c(u,v)-f(u,v)\;\;&amp;(u,v)\in E \cr f(v,u)&amp;(v,u)\in E \cr 0&amp;\text{else} \end{cases} \]</div>
+<ul>
+<li>
+<p>重复以下操作，直到残差图中不存在增广路径：</p>
+<ol>
+<li>在残差图中找到一条从s到t的路径</li>
+<li>计算该路径上的最小容量</li>
+<li>更新流量和残差图</li>
+</ol>
+</li>
+<li>
+<p>寻找增广路径的方法：</p>
+<ul>
+<li>BFS：时间复杂度为 <span class="arithmatex">\(\Omicron(|V||E|^2)\)</span></li>
+<li>Dinic算法：时间复杂度为 <span class="arithmatex">\(\Omicron(|V|^2|E|)\)</span></li>
+</ul>
+</li>
+</ul>
+<h2 id="minimum-spanning-tree">最小生成树(Minimum Spanning Tree)<a class="headerlink" href="#minimum-spanning-tree" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>生成树(Spanning tree)</strong>：连通无向图的一个生成子图，且满足：<ul>
+<li>生成：包含原图中所有的顶点</li>
+<li>树：无环且有V-1条边</li>
+<li>生成树中任加一条边都会形成环</li>
+</ul>
+</li>
+<li><strong>最小生成树(Minimum Spanning Tree)</strong>：生成树中边的权值之和最小：<ul>
+<li>连通图一定存在最小生成树，反之亦然；</li>
+<li>但不一定唯一（如果存在权值相等的边的话）</li>
+</ul>
+</li>
+<li>
+<p><strong>Prim算法</strong>：</p>
+<ul>
+<li>从一个顶点开始，每次找到一个与当前生成树距离最小的顶点加入生成树，且加入后仍然是树</li>
+<li>重复直到所有顶点都加入生成树</li>
+</ul>
+<div class="language-less highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="nt">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">最小权边</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">for</span><span class="w"> </span><span class="nt">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">1</span><span class="o">.</span><span class="p">.</span><span class="nc">n-2</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="nt">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">与</span><span class="w"> </span><span class="nt">T</span><span class="w"> </span><span class="nt">中的点相连且加入</span><span class="w"> </span><span class="nt">T</span><span class="w"> </span><span class="nt">后不会形成环的最小权边</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="nt">将</span><span class="w"> </span><span class="nt">e</span><span class="w"> </span><span class="nt">加入</span><span class="w"> </span><span class="nt">T</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">T</span><span class="w"> </span><span class="nt">即为最小生成树</span>
+</span></code></pre></div>
+<ul>
+<li>时间复杂度：O(<span class="arithmatex">\(|V|^2\)</span>) 或 O(<span class="arithmatex">\(|E| \log |V|\)</span>)</li>
+<li>适合稠密图</li>
+</ul>
+</li>
+<li>
+<p><strong>Kruskal算法</strong>：</p>
+<ul>
+<li>从所有边中选择权值最小的边，如果加入后不会形成环，则加入生成树</li>
+<li>重复直到所有顶点都加入生成树</li>
+</ul>
+<div class="language-less highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="nt">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">空图</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nt">for</span><span class="w"> </span><span class="nt">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">1</span><span class="o">.</span><span class="p">.</span><span class="nc">n-1</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nt">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">未加入</span><span class="w"> </span><span class="nt">T</span><span class="w"> </span><span class="nt">且权值最小的边</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nt">if</span><span class="w"> </span><span class="nt">e</span><span class="w"> </span><span class="nt">加入</span><span class="w"> </span><span class="nt">T</span><span class="w"> </span><span class="nt">后不会形成环</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">            </span><span class="nt">将</span><span class="w"> </span><span class="nt">e</span><span class="w"> </span><span class="nt">加入</span><span class="w"> </span><span class="nt">T</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">T</span><span class="w"> </span><span class="nt">即为最小生成树</span>
+</span></code></pre></div>
+<ul>
+<li>时间复杂度：O(<span class="arithmatex">\(|E| \log |E|\)</span>) 或 O(<span class="arithmatex">\(|E| \log |V|\)</span>)</li>
+<li>可以使用并查集来判断是否形成环<ul>
+<li>建立并查集</li>
+<li>将边按照权值排序</li>
+<li>依次加入边，如果边的两个顶点不在同一个集合中，则合并两个集合，否则不加入</li>
+</ul>
+</li>
+<li>适合稀疏图</li>
 </ul>
 </li>
 </ul>

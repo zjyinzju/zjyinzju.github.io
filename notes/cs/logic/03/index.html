@@ -1238,15 +1238,15 @@
         
           <li class="md-nav__item">
   <a href="#unsigned-subtraction" class="md-nav__link">
-    Unsigned Subtraction
+    无符号减法(Unsigned Subtraction)
   </a>
   
-    <nav class="md-nav" aria-label="Unsigned Subtraction">
+    <nav class="md-nav" aria-label="无符号减法(Unsigned Subtraction)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#complements" class="md-nav__link">
-    Complements
+  <a href="#2s-complement" class="md-nav__link">
+    补码（2's Complement）
   </a>
   
 </li>
@@ -1258,22 +1258,22 @@
         
           <li class="md-nav__item">
   <a href="#signed-integers" class="md-nav__link">
-    Signed Integers
+    有符号整数（Signed Integers）
   </a>
   
-    <nav class="md-nav" aria-label="Signed Integers">
+    <nav class="md-nav" aria-label="有符号整数（Signed Integers）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#signed-magnitude-arithmetic" class="md-nav__link">
-    Signed-Magnitude Arithmetic
+    有符号真值计算（Signed-Magnitude Arithmetic）
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#signed-complement-arithmetic" class="md-nav__link">
-    Signed-Complement Arithmetic
+    有符号补码计算（Signed-Complement Arithmetic）
   </a>
   
 </li>
@@ -1284,8 +1284,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#other-arithmetic-functions" class="md-nav__link">
+    其他算术函数（Other Arithmetic Functions）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#arithmetic-logic-unit-alu" class="md-nav__link">
-    Arithmetic Logic Unit (ALU)
+    算术运算单元（Arithmetic Logic Unit (ALU)）
   </a>
   
 </li>
@@ -1643,7 +1650,7 @@
         
   
   <span class="md-ellipsis">
-    Advanced Counting Techniques(高级计数技术)
+    Chapter 8 Advanced Counting Techniques(高级计数技术)
   </span>
   
 
@@ -2088,15 +2095,15 @@
         
           <li class="md-nav__item">
   <a href="#unsigned-subtraction" class="md-nav__link">
-    Unsigned Subtraction
+    无符号减法(Unsigned Subtraction)
   </a>
   
-    <nav class="md-nav" aria-label="Unsigned Subtraction">
+    <nav class="md-nav" aria-label="无符号减法(Unsigned Subtraction)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#complements" class="md-nav__link">
-    Complements
+  <a href="#2s-complement" class="md-nav__link">
+    补码（2's Complement）
   </a>
   
 </li>
@@ -2108,22 +2115,22 @@
         
           <li class="md-nav__item">
   <a href="#signed-integers" class="md-nav__link">
-    Signed Integers
+    有符号整数（Signed Integers）
   </a>
   
-    <nav class="md-nav" aria-label="Signed Integers">
+    <nav class="md-nav" aria-label="有符号整数（Signed Integers）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#signed-magnitude-arithmetic" class="md-nav__link">
-    Signed-Magnitude Arithmetic
+    有符号真值计算（Signed-Magnitude Arithmetic）
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#signed-complement-arithmetic" class="md-nav__link">
-    Signed-Complement Arithmetic
+    有符号补码计算（Signed-Complement Arithmetic）
   </a>
   
 </li>
@@ -2134,8 +2141,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#other-arithmetic-functions" class="md-nav__link">
+    其他算术函数（Other Arithmetic Functions）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#arithmetic-logic-unit-alu" class="md-nav__link">
-    Arithmetic Logic Unit (ALU)
+    算术运算单元（Arithmetic Logic Unit (ALU)）
   </a>
   
 </li>
@@ -2702,86 +2716,98 @@ ABC与S2\S1\S0是按照真值表高到低位顺序编排的</p>
 <p><img alt="" src="../img/compare.png" /></p>
 </details>
 <p>类似思路可得到 64 位的加法器。</p>
-<h3 id="unsigned-subtraction">Unsigned Subtraction<a class="headerlink" href="#unsigned-subtraction" title="Permanent link">&para;</a></h3>
+<h3 id="unsigned-subtraction">无符号减法(Unsigned Subtraction)<a class="headerlink" href="#unsigned-subtraction" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Subtract the subtrahend(减数) N from the minuend(被减数) M</li>
-<li>If no end borrow occurs, then <span class="arithmatex">\(M\geq N\)</span>, and the result is a non-negative number and correct.</li>
-<li>If <em>an end borrow occurs</em>, the <span class="arithmatex">\(N &gt; M\)</span> and the difference <span class="arithmatex">\(M - N + 2^n\)</span> is subtracted from <span class="arithmatex">\(2^n\)</span>, and a minus sign is appended to the result.</li>
+<li>若无借位，则结果即为 <span class="arithmatex">\(M - N\)</span></li>
+<li>若有借位，则结果为 <span class="arithmatex">\(2^n + M - N\)</span>，可以看作对 <span class="arithmatex">\(M - N\)</span> 的补码</li>
 </ul>
 <p>To do both unsigned addition and unsigned subtraction requires:</p>
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211021022095.png" width = 50%/> </div>
 
-<p>复杂，成本高</p>
-<h4 id="complements">Complements<a class="headerlink" href="#complements" title="Permanent link">&para;</a></h4>
+<h4 id="2s-complement">补码（2's Complement）<a class="headerlink" href="#2s-complement" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Diminished Radix Complement of N 反码  <br />
-defined as <span class="arithmatex">\(r^n-1-N\)</span>(<span class="arithmatex">\(r^n-1\)</span> 是 bits[n-1:0] 全为 1 的二进制数，用它减去 N 即可得到 N 按位取反的结果，即反码)<br />
-The 1's complement is obtained by complementing each individual bit (bitwise NOT).  </li>
-<li>2’s complement 补码 
-defined as <span class="arithmatex">\(r^n-N\)</span><ul>
+<li>
+<p>Diminished Radix Complement of N <strong>反码</strong></p>
+<p>defined as <span class="arithmatex">\(r^n-1-N\)</span> </p>
+<p>（ <span class="arithmatex">\(r^n-1\)</span> 在2进制中即为一连串的1,再减去N,可以看作对N的每一位取反，得到反码）
+The 1's complement is obtained by complementing each individual bit (bitwise NOT). </p>
+</li>
+<li>
+<p>2’s complement <strong>补码</strong> </p>
+<p>defined as <span class="arithmatex">\(r^n-N\)</span></p>
+<ul>
 <li>反码按位取反再加一</li>
-<li>也可以这样求补码：从右往左第一个 1 之前不变，此后其他位全部求反</li>
+<li>也可以这样求补码：从后向前第一个 1 及其右边不变，此后其他位全部求反</li>
 </ul>
 </li>
-</ul>
-<p>Subtraction is done by adding the complement of the subtrahend.  </p>
+<li>
+<p>用补码实现减法 <span class="arithmatex">\(M-N\)</span></p>
 <ul>
-<li>Subtraction with 2’s Complement<ul>
-<li>Add the 2's complement of the subtrahend N  to the minuend M: <span class="arithmatex">\(M + (2^n -N) = M - N + 2^n\)</span></li>
-<li>if <span class="arithmatex">\(M\geq N\)</span>, the sum produces end carry <span class="arithmatex">\(r^n\)</span> which is discarded; from above, <span class="arithmatex">\(M - N\)</span> remains.  </li>
-<li>If <span class="arithmatex">\(M &lt; N\)</span>, the sum does not produce an end carry and, from above, is equal to <span class="arithmatex">\(2^n - ( N - M )\)</span>, the 2's complement of <span class="arithmatex">\(( N - M )\)</span>.  <br />
-To obtain the result <span class="arithmatex">\((N – M)\)</span>, take the 2's complement of the sum and place a <span class="arithmatex">\(-\)</span> to its left.</li>
+<li>计算位宽为 n 位，则加上 <span class="arithmatex">\(2^n\)</span> 对计算结果无影响</li>
+<li>对于 <span class="arithmatex">\(2^n + M - N\)</span>:<ul>
+<li>若 <span class="arithmatex">\(M \ge N\)</span>，结果为 <span class="arithmatex">\(M - N\)</span></li>
+<li>若 <span class="arithmatex">\(M &lt; N\)</span>，结果为 <span class="arithmatex">\(2^n + M - N\)</span>
+通过对被减数取补码，再进行加法运算，可以方便地实现减法</li>
 </ul>
 </li>
 </ul>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>对N取补码，再加上M:</p>
+<ul>
+<li>相加后最高位无进位则说明实际上有借位，此时需要对结果再取补码</li>
+<li>相加后最高位有进位则说明实际上无借位，结果即为正确结果</li>
+</ul>
+<details class="example">
+<summary>Example</summary>
 <ul>
 <li><div align=center> <img src="http://cdn.hobbitqia.cc/202211021032548.png" width = 50%/> </div><br />
 进位是 1 表明结果为正，不需对结果修正</li>
 <li><div align=center> <img src="http://cdn.hobbitqia.cc/202211021033377.png" width = 50%/> </div><br />
 进位是 0 表明结果为负，需对结果修正</li>
 </ul>
+</details>
 </div>
-<h3 id="signed-integers">Signed Integers<a class="headerlink" href="#signed-integers" title="Permanent link">&para;</a></h3>
+<h3 id="signed-integers">有符号整数（Signed Integers）<a class="headerlink" href="#signed-integers" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Signed Integer Representations</strong>: 第 n-1 位表示正负，后面 bits[n-2:0] 表示绝对值大小</li>
-<li><strong>Signed-Complement</strong><ul>
-<li><strong>Signed 1's Complement</strong></li>
-<li><strong>Signed 2's Complement</strong></li>
-</ul>
-</li>
-</ul>
-<p>详见 ICS notes</p>
-<h4 id="signed-magnitude-arithmetic">Signed-Magnitude Arithmetic<a class="headerlink" href="#signed-magnitude-arithmetic" title="Permanent link">&para;</a></h4>
+<li>
+<p><strong>Signed Integer Representations</strong>: 第 n-1 位表示正负，后面 bits[n-2:0] 表示绝对值大小，具体而言有以下三种，其中 2's Complement 最常用，因为不涉及0和-0的表示问题</p>
 <ul>
-<li>检查三个符号位的奇偶性（两个操作数的符号位和加减法的符号位，我们一般认为加法是 0, 减法是 1）用于判断溢出<br />
-可能溢出的情况：正加正(000), 正减负(011), 负减正(101), 负加负(110)</li>
-<li>If the parity of the three signs is 0:(overflow may happen)<ul>
-<li>Add the magnitudes.</li>
-<li>Check for overflow (a carry out of the MSB) </li>
-<li>The sign of the result is the same as the sign of the first operand.</li>
+<li><strong>Sign-Magnitude Representation</strong>：最高位为符号位，其余位表示绝对值</li>
+<li><strong>1's Complement Representation</strong>：正数不变，负数取反</li>
+<li><strong>2's Complement Representation</strong>：正数不变，负数取反加一</li>
 </ul>
-</li>
-<li>If the parity of the three signs is 1:<ul>
-<li>Subtract the second magnitude from the first.</li>
-<li>If a borrow occurs:<br />
-take the two’s complement of result
-and make the result sign the complement of the sign of the first operand.</li>
-<li>Overflow will never occur.</li>
-</ul>
+<p><img alt="" src="../img/signed.png" /></p>
 </li>
 </ul>
-<h4 id="signed-complement-arithmetic">Signed-Complement Arithmetic<a class="headerlink" href="#signed-complement-arithmetic" title="Permanent link">&para;</a></h4>
+<h4 id="signed-magnitude-arithmetic">有符号真值计算（Signed-Magnitude Arithmetic）<a class="headerlink" href="#signed-magnitude-arithmetic" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Addition:  <ul>
-<li>Add the numbers including the sign bits,  discarding a carry out of the sign bits (2's Complement), or using an end-around carry (1's Complement).</li>
-<li>If the sign bits were the same for both numbers and the sign of the result is different, an overflow has occurred.</li>
-<li>The sign of the result is computed in step 1.</li>
+<li>检查三个符号位的奇偶性（两个操作数的符号位（加数/被加数 or 减数/被减数）和加减法的符号位，我们一般认为加法是 0, 减法是 1）用于判断溢出<br />
+可能溢出的情况：正加正(000)，正减负(011)，负减正(101)，负加负(110)</li>
+<li>如果三个数的符号奇偶性为0（亦即有偶数个1，可能发生溢出）：<ul>
+<li>将绝对值相加。</li>
+<li>检查是否溢出（最高位是否有进位）。</li>
+<li>结果的符号与第一个操作数的符号相同。</li>
 </ul>
 </li>
-<li>Subtraction:   <br />
-Form the complement of the number you are subtracting and follow the rules for addition.</li>
+<li>如果三个数的符号奇偶性为1：<ul>
+<li>将第二个数的绝对值从第一个数中减去。</li>
+<li>如果发生借位：<ul>
+<li>取结果的二进制补码。</li>
+<li>结果的符号为第一个操作数的符号的补码。</li>
+</ul>
+</li>
+<li>溢出永远不会发生。</li>
+</ul>
+</li>
+</ul>
+<h4 id="signed-complement-arithmetic">有符号补码计算（Signed-Complement Arithmetic）<a class="headerlink" href="#signed-complement-arithmetic" title="Permanent link">&para;</a></h4>
+<ul>
+<li>加法：直接将两个数相加，不考虑符号位，最后结果的符号位即为两个数的符号位</li>
+<li>减法：将被减数取补码，再加上减数，最后结果的符号位即为两个数的符号位</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Signed 2’s Complement Examples</p>
@@ -2792,34 +2818,104 @@ Result is  0000. The carry out of the MSB is discarded.</li>
 Complement 0011 to 1101 and add. Result is 1010. The carry out of the MSB is discarded.</li>
 </ul>
 </div>
+<p>电路设计：</p>
 <ul>
 <li>2’s Complement Adder/Subtractor  </li>
 </ul>
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211051720361.png" width = 60%/> </div>
 
-<p>利用异或门，当 S=0 时异或门相当于保持另一个信号，当 S=1 时异或门相当于对另一个信号取反。</p>
+<ul>
+<li>补码实现：<ol>
+<li>利用<strong>异或门</strong>，当 S=0 时异或门相当于保持另一个信号，当 S=1 时异或门相当于对另一个信号取反；</li>
+<li>将<span class="arithmatex">\(C_0\)</span>设置为 1，即可实现减法，实现反码加1.</li>
+</ol>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">回顾</p>
+<p>异或门可以看作一个可控的反相器，当控制信号为 1 时，输出和输入相反；当控制信号为 0 时，输出和输入相同。</p>
+</div>
 <ul>
 <li><strong>Overflow Detection</strong> <br />
-<strong>Overflow</strong> occurs if n + 1 bits are required to contain the result from an n-bit addition or subtraction  </li>
+    可能溢出的情况：正加正(000)，正减负(011)，负减正(101)，负加负(110)</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><div align=center> <img src="http://cdn.hobbitqia.cc/202211021057462.png" width = 50%/> </div>  </p>
 </div>
-<p>Simplest way to implement overflow <span class="arithmatex">\(V = C_n \oplus C_{n - 1}\)</span>
-<span class="arithmatex">\(C_n\)</span> 是溢出去的位，<span class="arithmatex">\(C_{n-1}\)</span> 是运算后的符号位。 截断</p>
-<h3 id="arithmetic-logic-unit-alu">Arithmetic Logic Unit (ALU)<a class="headerlink" href="#arithmetic-logic-unit-alu" title="Permanent link">&para;</a></h3>
-<p>Decompose the arithmetic circuit into:  </p>
+<p>溢出的判断条件是最高位和次高位的进位不同，即 <span class="arithmatex">\(V = C_n \oplus C_{n - 1}\)</span></p>
+<p>V = 1 时表示溢出，V = 0 时表示没有溢出</p>
+<h3 id="other-arithmetic-functions">其他算术函数（Other Arithmetic Functions）<a class="headerlink" href="#other-arithmetic-functions" title="Permanent link">&para;</a></h3>
 <ul>
-<li>An n-bit parallel adder</li>
-<li>A block of logic that selects four choices for the B input to the adder </li>
+<li>
+<p>对固定数进行加减法</p>
+<ul>
+<li>Incrementer（自增器）&amp; Decrementer（自减器）：
+<img alt="" src="../img/incrementer.png" /></li>
+</ul>
+<p>通过异或门的性质化简全加器电路</p>
+<p>如果需要多位的自增器，只需将中间的全加器重复串联即可
++ 乘法器
++ 乘法器的设计可以通过加法器实现，通过将乘数重复加法器的次数，然后将结果相加
++ 也可以通过移位实现，将乘数的每一位与被乘数相乘，然后将结果相加
++ 除法器
++ 除法器的设计可以通过移位实现，将被除数左移，直到大于除数，然后减去除数，重复直到被除数小于除数
++ 也可以通过加法器实现，将除数重复加法器的次数，然后将结果相加
++ 填0：
++ MSB end(最高位填0): 
+    + 对于无符号数，直接填就行
+    + 对于有符号数，需要判断符号位：如果是正数，直接填0；如果是负数，需要填1
++ LSB end(最低位填0): 直接填就行</p>
+</li>
+</ul>
+<h3 id="arithmetic-logic-unit-alu">算术运算单元（Arithmetic Logic Unit (ALU)）<a class="headerlink" href="#arithmetic-logic-unit-alu" title="Permanent link">&para;</a></h3>
+<p>ALU 用于执行算术和逻辑运算：</p>
+<ul>
+<li><strong>算术单元</strong>：执行加法、减法、乘法、除法等算术运算</li>
+<li><strong>逻辑单元</strong>：执行逻辑运算，如与、或、非、异或等</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><div align=center> <img src="http://cdn.hobbitqia.cc/202211021105336.png" width = 55%/> </div> 
 <div align=center> <img src="http://cdn.hobbitqia.cc/202211051740018.png" width = 55%/> </div> </p>
-<p>其中 <span class="arithmatex">\(Y_i=B_iS_0+\overline B_iS_1\)</span><br />
-S0 S1 的变化可以给加法器提供不同的输入，包括 -1(二进制每一位都是 1) 0 <span class="arithmatex">\(B\)</span> <span class="arithmatex">\(\overline B\)</span> </p>
+<p>其中 <span class="arithmatex">\(Y_i=B_iS_0+\overline B_iS_1\)</span> </p>
+<p>控制端 S0 S1 的变化可以给加法器提供不同的输入</p>
+<table>
+<thead>
+<tr>
+<th>S1</th>
+<th>S0</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td><span class="arithmatex">\(B\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td><span class="arithmatex">\(\overline B\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="arithmatex">\(G = A\)</span>:传输</li>
+<li><span class="arithmatex">\(G = A+1\)</span>:自增</li>
+<li>$G = A+ \overline{B} -1 $:减法</li>
+</ul>
 </div>
 
   <hr>
