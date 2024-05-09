@@ -1389,6 +1389,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#generalized-permutations-and-combinations" class="md-nav__link">
+    Generalized Permutations and Combinations(广义排列与组合)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-permutations-and-combinations" class="md-nav__link">
+    Generating Permutations and Combinations(生成排列与组合)
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating Permutations and Combinations(生成排列与组合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-permutations" class="md-nav__link">
+    Generating Permutations(生成排列)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-combinations" class="md-nav__link">
+    Generating Combinations(生成组合)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1675,6 +1709,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#generalized-permutations-and-combinations" class="md-nav__link">
+    Generalized Permutations and Combinations(广义排列与组合)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-permutations-and-combinations" class="md-nav__link">
+    Generating Permutations and Combinations(生成排列与组合)
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating Permutations and Combinations(生成排列与组合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-permutations" class="md-nav__link">
+    Generating Permutations(生成排列)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-combinations" class="md-nav__link">
+    Generating Combinations(生成组合)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1777,10 +1845,20 @@
 <p>其实就是杨辉三角。</p>
 </blockquote>
 <ul>
-<li><strong>Vandermonde's Identity(范德蒙恒等式)</strong>: <span class="arithmatex">\(C(m+n, r) = \sum_{k=0}^{r} C(m, r-k) \times C(n, k)\)</span><ul>
-<li>proof: <span class="arithmatex">\((x+y)^{m+n} = (x+y)^m \times (x+y)^n = \sum_{k=0}^{m} C(m, k) \times x^{m-k} \times y^k \times \sum_{j=0}^{n} C(n, j) \times x^{n-j} \times y^j = \sum_{r=0}^{m+n} \sum_{k=0}^{r} C(m, k) \times C(n, r-k) \times x^{m+n-r} \times y^r\)</span></li>
+<li><strong>Vandermonde's Identity(范德蒙恒等式)</strong>: <span class="arithmatex">\(C(m+n, r) = \sum_{k=0}^{r} C(m, r-k) \times C(n, k)\)</span></li>
 </ul>
-</li>
+<details class="proof">
+<summary>Proof</summary>
+<div class="arithmatex">\[
+    \begin{aligned}
+    (x+y)^{m+n} &amp;= (x+y)^m \times (x+y)^n \\
+    &amp;= \sum_{k=0}^{m} C(m, k) \times x^{m-k} \times y^k \times \sum_{j=0}^{n} C(n, j) \times x^{n-j} \times y^j \\
+    &amp;= \sum_{r=0}^{m+n} \sum_{k=0}^{r} C(m, k) \times C(n, r-k) \times x^{m+n-r} \times y^r
+    \end{aligned}
+\]</div>
+<p>也可以理解为从分别有m和n个元素的集合A和B中选r个元素.</p>
+</details>
+<ul>
 <li>Corollary(推论): <span class="arithmatex">\(C(2n, n) = \sum_{k=0}^{n} C(n, k)^2\)</span><ul>
 <li>proof: <span class="arithmatex">\(C(2n, n) = \sum_{k=0}^{n} C(n, k) \times C(n, n-k) = \sum_{k=0}^{n} C(n, k)^2\)</span></li>
 </ul>
@@ -1790,7 +1868,74 @@
 </ul>
 </li>
 </ul>
-<table><tr><td bgcolor=PowderBlue><font color=#DC143C size=6 face="黑体">开摆！</font></td></tr></table>
+<h2 id="generalized-permutations-and-combinations">Generalized Permutations and Combinations(广义排列与组合)<a class="headerlink" href="#generalized-permutations-and-combinations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Permutations with Repetition(重复排列)</p>
+<p>The number of permutations of <span class="arithmatex">\(n\)</span> objects taken <span class="arithmatex">\(r\)</span> at a time with repetition allowed is <strong><span class="arithmatex">\(n^r\)</span></strong>.</p>
+</li>
+<li>
+<p>Combinations with Repetition(重复组合)</p>
+<p>The number of combinations of <span class="arithmatex">\(n\)</span> objects taken <span class="arithmatex">\(r\)</span> at a time with repetition allowed is <strong><span class="arithmatex">\(C(n+r-1, r)\)</span></strong></p>
+<blockquote>
+<p>高中的“隔板法”：n个物体放进r个盒子，允许为空。</p>
+</blockquote>
+</li>
+<li>
+<p>Permutations with Indistinguishable Objects(相同物体的排列)</p>
+<p>The number of permutations of <span class="arithmatex">\(n\)</span> objects taken <span class="arithmatex">\(r\)</span> at a time, where there are <span class="arithmatex">\(n_1\)</span> indistinguishable objects of type 1, <span class="arithmatex">\(n_2\)</span> indistinguishable objects of type 2, ..., and <span class="arithmatex">\(n_k\)</span> indistinguishable objects of type k, is <strong><span class="arithmatex">\(C(n, n_1, n_2, \cdots, n_k) = \frac{n!}{n_1!n_2!\cdots n_k!}\)</span></strong>.</p>
+</li>
+<li>
+<p>Distributing Objects into Boxes(将物体分配到盒子中)</p>
+<blockquote>
+<p>高中“隔板法”plus</p>
+</blockquote>
+<ul>
+<li>
+<p>Distinguishable Objects and Distinguishable Boxes(可区分的物体和盒子)</p>
+<p><span class="arithmatex">\(n\)</span> objects into <span class="arithmatex">\(k\)</span> boxes: 
+<strong><span class="arithmatex">\(\frac{n!}{n_1!n_2!\cdots n_k!}\)</span></strong></p>
+</li>
+<li>
+<p>Indistinguishable Objects and Distinguishable Boxes(不可区分的物体和可区分的盒子)</p>
+<p>并没有闭公式，要分类讨论；
+但是有求和公式：</p>
+<p>n个物体放进k个盒子，每个盒子至少有一个物体的方案数为：
+<strong><span class="arithmatex">\(\sum_{j=0}^{k} S(n, j)\)</span></strong></p>
+<details class="extra">
+<summary>Stirling numbers of the second kind</summary>
+<p>将n元集合写成k个非空disjoint的方法数，详见<a href="https://www.bananaspace.org/wiki/%E7%AC%AC%E4%BA%8C%E7%B1%BB_Stirling_%E6%95%B0">这里</a></p>
+</details>
+</li>
+<li>
+<p>Indistinguishable Objects and Indistinguishable Boxes(不可区分的物体和盒子)</p>
+<p>只能枚举了貌似</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="generating-permutations-and-combinations">Generating Permutations and Combinations(生成排列与组合)<a class="headerlink" href="#generating-permutations-and-combinations" title="Permanent link">&para;</a></h2>
+<h3 id="generating-permutations"><strong>Generating Permutations(生成排列)</strong><a class="headerlink" href="#generating-permutations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Lexicographic Order(字典序)</strong>: A permutation of a set of objects is said to be in lexicographic order <strong>if for some k, <span class="arithmatex">\(a_1 = b_1, a_2 = b_2, \cdots, a_{k-1} = b_{k-1}\)</span> and <span class="arithmatex">\(a_k &lt; b_k\)</span></strong>.例如：<span class="arithmatex">\(123 &lt; 132 &lt; 213 &lt; 231 &lt; 312 &lt; 321\)</span></li>
+</ul>
+<h3 id="generating-combinations"><strong>Generating Combinations(生成组合)</strong><a class="headerlink" href="#generating-combinations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>To generate all combinations of the elements of a finite set which has <span class="arithmatex">\(n\)</span> elements:</p>
+<ul>
+<li>Use a binary bit string to represent a combination of the set.</li>
+<li>The bit string has <span class="arithmatex">\(n\)</span> bits, and the <span class="arithmatex">\(i\)</span>th bit is 1 if the <span class="arithmatex">\(i\)</span>th element is in the combination, and 0 otherwise.</li>
+</ul>
+</li>
+<li>
+<p>To generate all r-combinations of the elements of a finite set which has <span class="arithmatex">\(n\)</span> elements:</p>
+<ul>
+<li>Find the last element in the combination that cannot be increased.</li>
+<li>Replace the next element,etc.</li>
+</ul>
+</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
