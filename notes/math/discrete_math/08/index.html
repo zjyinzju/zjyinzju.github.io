@@ -1443,15 +1443,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inclusion-exclusion-" class="md-nav__link">
-    Inclusion-Exclusion(包含-排斥)
+  <a href="#inclusion-exclusion" class="md-nav__link">
+    Inclusion-Exclusion(容斥原理)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#applications-of-inclusion-exclusion-" class="md-nav__link">
-    Applications of Inclusion-Exclusion(包含-排斥的应用)
+  <a href="#applications-of-inclusion-exclusion" class="md-nav__link">
+    Applications of Inclusion-Exclusion(容斥原理的应用)
   </a>
   
 </li>
@@ -1756,15 +1756,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inclusion-exclusion-" class="md-nav__link">
-    Inclusion-Exclusion(包含-排斥)
+  <a href="#inclusion-exclusion" class="md-nav__link">
+    Inclusion-Exclusion(容斥原理)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#applications-of-inclusion-exclusion-" class="md-nav__link">
-    Applications of Inclusion-Exclusion(包含-排斥的应用)
+  <a href="#applications-of-inclusion-exclusion" class="md-nav__link">
+    Applications of Inclusion-Exclusion(容斥原理的应用)
   </a>
   
 </li>
@@ -1799,6 +1799,9 @@
 <li>
 <p>The <strong>initial conditions</strong> for a recurrence relation specify the values of the terms <span class="arithmatex">\(a_0, a_1, \cdots, a_{n_0-1}\)</span>.</p>
 </li>
+<li>
+<p>The <strong>Degree</strong> of a recurrence relation is the largest integer <span class="arithmatex">\(k\)</span> such that <span class="arithmatex">\(a_n\)</span> is defined in terms of <span class="arithmatex">\(a_{n-1}, a_{n-2}, \cdots, a_{n-k}\)</span>; e.g. <span class="arithmatex">\(a_n = a_{n-1} + a_{n-8}\)</span> has degree 8.</p>
+</li>
 </ul>
 <details class="eg">
 <summary>Eg</summary>
@@ -1816,28 +1819,34 @@
 </details>
 <details class="extra">
 <summary>Extra</summary>
-<p>Frame-Stewart algorithm: To solve the Tower of Hanoi problem with <span class="arithmatex">\(n\)</span> disks and 4 pegs. Given the number of disks <span class="arithmatex">\(n\)</span> as input, the algorithm depends on a choice of a parameter <span class="arithmatex">\(k(1 \leq k \leq n)\)</span>, which is the number of disks that are moved in each recursive call. The algorithm is as follows:
-1. If <span class="arithmatex">\(n = 0\)</span>, then do nothing.
-2. If <span class="arithmatex">\(n = 1\)</span>, then move the disk from peg 1 to peg 4.
-3. For <span class="arithmatex">\(n \geq 2\)</span>, do the following:
-    1. Apply the Frame-Stewart algorithm to move <span class="arithmatex">\(n-k\)</span> disks from peg 1 to peg 2.(四塔均用)
-    2. Move the remaining <span class="arithmatex">\(k\)</span> disks from peg 1 to peg 4.(只用除去1之外的三个塔，这里使用汉诺塔的常规算法)
-    3. Apply the Frame-Stewart algorithm to move <span class="arithmatex">\(n-k\)</span> disks from peg 2 to peg 4.(四塔均用)
-k should be chosen to minimize the total number of moves.</p>
+<p>Frame-Stewart algorithm: To solve the Tower of Hanoi problem with <span class="arithmatex">\(n\)</span> disks and 4 pegs. Given the number of disks <span class="arithmatex">\(n\)</span> as input, the algorithm depends on a choice of a parameter <span class="arithmatex">\(k(1 \leq k \leq n)\)</span>, which is the number of disks that are moved in each recursive call. The algorithm is as follows:</p>
+<ol>
+<li>If <span class="arithmatex">\(n = 0\)</span>, then do nothing.</li>
+<li>If <span class="arithmatex">\(n = 1\)</span>, then move the disk from peg 1 to peg 4.</li>
+<li>For <span class="arithmatex">\(n \geq 2\)</span>, do the following:<ol>
+<li>Apply the Frame-Stewart algorithm to move <span class="arithmatex">\(n-k\)</span> disks from peg 1 to peg 2.(四塔均用)</li>
+<li>Move the remaining <span class="arithmatex">\(k\)</span> disks from peg 1 to peg 4.(只用除去1之外的三个塔，这里使用汉诺塔的常规算法)</li>
+<li>Apply the Frame-Stewart algorithm to move <span class="arithmatex">\(n-k\)</span> disks from peg 2 to peg 4.(四塔均用)
+k should be chosen to minimize the total number of moves.</li>
+</ol>
+</li>
+</ol>
 </details>
 <h2 id="solving-linear-recurrence-relations">Solving Linear Recurrence Relations(解线性递归方程)<a class="headerlink" href="#solving-linear-recurrence-relations" title="Permanent link">&para;</a></h2>
 <h3 id="homogeneous-linear-recurrence-relations">Homogeneous Linear Recurrence Relations(齐次线性递归关系)<a class="headerlink" href="#homogeneous-linear-recurrence-relations" title="Permanent link">&para;</a></h3>
 <ul>
-<li>linear: <span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k}\)</span>, where <span class="arithmatex">\(c_1, c_2, \cdots, c_k\)</span> are constants and <span class="arithmatex">\(c_k \neq 0\)</span>.(例如<span class="arithmatex">\(a_n = a_{n-1} + a^2_{n-2}\)</span>不是线性的)</li>
-<li>homogeneous: no terms occur that are not multiples of <span class="arithmatex">\(a_i\)</span> for some <span class="arithmatex">\(i\)</span>,i.e., <span class="arithmatex">\(c_1, c_2, \cdots, c_k\)</span> are constants.(例如<span class="arithmatex">\(a_n = a_{n-1} + 1\)</span>不是齐次的)</li>
+<li><strong>linear</strong>: <span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k}\)</span>, where <span class="arithmatex">\(c_1, c_2, \cdots, c_k\)</span> are constants and <span class="arithmatex">\(c_k \neq 0\)</span>.(例如<span class="arithmatex">\(a_n = a_{n-1} + a^2_{n-2}\)</span>不是线性的)</li>
+<li><strong>homogeneous</strong>: no terms occur that are not multiples of <span class="arithmatex">\(a_i\)</span> for some <span class="arithmatex">\(i\)</span>,i.e., <span class="arithmatex">\(c_1, c_2, \cdots, c_k\)</span> are constants.(例如<span class="arithmatex">\(a_n = a_{n-1} + 1\)</span>不是齐次的)</li>
+<li><strong>coefficients</strong>: <span class="arithmatex">\(c_1, c_2, \cdots, c_k\)</span> are called the coefficients of the recurrence relation.<strong>In this definition, coefficents are constants, instead of functions of <span class="arithmatex">\(n\)</span>.</strong></li>
+<li><strong>degree</strong>: the largest integer <span class="arithmatex">\(k\)</span> such that <span class="arithmatex">\(a_n\)</span> is defined in terms of <span class="arithmatex">\(a_{n-1}, a_{n-2}, \cdots, a_{n-k}\)</span>.</li>
 </ul>
 <h4 id="characteristic-equation">Characteristic Equation(特征方程)<a class="headerlink" href="#characteristic-equation" title="Permanent link">&para;</a></h4>
 <ul>
 <li>The characteristic equation of the homogeneous linear recurrence relation <strong><span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k}\)</span></strong> is <strong><span class="arithmatex">\(x^k - c_1x^{k-1} - c_2x^{k-2} - \cdots - c_k = 0\)</span></strong></li>
 </ul>
 <p>For the Degree-2 case:</p>
-<div class="admonition abstraction">
-<p class="admonition-title">Abstraction</p>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
 <ul>
 <li>
 <p>Let <span class="arithmatex">\(c_1, c_2\)</span> be real numbers. Suppose that <strong><span class="arithmatex">\(r^2 - c_1r - c_2 = 0\)</span></strong> has <strong>two distinct roots <span class="arithmatex">\(r_1, r_2\)</span></strong>. Then the sequence <span class="arithmatex">\(\left \{  a_n \right \}\)</span> is a solution to the recurrence relation <strong><span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2}\)</span></strong> if and only if there are real numbers <span class="arithmatex">\(A, B\)</span> such that <strong><span class="arithmatex">\(a_n = A(r_1)^n + B(r_2)^n\)</span></strong> for all integers <span class="arithmatex">\(n \geq 0\)</span>.</p>
@@ -1854,8 +1863,8 @@ k should be chosen to minimize the total number of moves.</p>
 </ul>
 </details>
 </div>
-<div class="admonition abstraction">
-<p class="admonition-title">Abstraction</p>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
 <p>For the Degree-k case:
 + Let <span class="arithmatex">\(c_1, c_2, \cdots, c_k\)</span> be real numbers. Suppose that <strong><span class="arithmatex">\(x^k - c_1x^{k-1} - c_2x^{k-2} - \cdots - c_k = 0\)</span></strong> has <span class="arithmatex">\(k\)</span> distinct roots <span class="arithmatex">\(r_1, r_2, \cdots, r_k\)</span>. Then the sequence <span class="arithmatex">\(\left \{  a_n \right \}\)</span> is a solution to the recurrence relation <strong><span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k}\)</span></strong> if and only if there are real numbers <span class="arithmatex">\(A_1, A_2, \cdots, A_k\)</span> such that <strong><span class="arithmatex">\(a_n = A_1(r_1)^n + A_2(r_2)^n + \cdots + A_k(r_k)^n\)</span></strong> for all integers <span class="arithmatex">\(n \geq 0\)</span>.</p>
 <p>When the roots are <strong>not distinct</strong>:</p>
@@ -1878,14 +1887,121 @@ a_n &amp;= (A_{1,0} + A_{1,1}n + A_{1,2}n^2 + \cdots + A_{1,m_1-1}n^{m_1-1})r_1^
 <p><strong>associated homogeneous linear recurrence relation</strong>: <span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k}\)</span></p>
 </li>
 </ul>
-<div class="admonition abstraction">
-<p class="admonition-title">Abstraction</p>
-<p>If <span class="arithmatex">\(\left \{  a_n^{(p)} \right \}\)</span> is a particular solution to the nonhomogeneous linear recurrence relation <strong><span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} + f(n)\)</span></strong>, then every solution to the nonhomogeneous linear recurrence relation is of the form <span class="arithmatex">\(\left \{  a_n^{(p)} + a_n^{(h)} \right \}\)</span>, where <span class="arithmatex">\(\left \{  a_n^{(h)} \right \}\)</span> is a solution to the associated homogeneous linear recurrence relation. </p>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>If <span class="arithmatex">\(\left \{  a_n^{(p)} \right \}\)</span> is a <strong>particular solution</strong> to the nonhomogeneous linear recurrence relation <strong><span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} + f(n)\)</span></strong>, then every solution to the nonhomogeneous linear recurrence relation is of the form <span class="arithmatex">\(\left \{  a_n^{(p)} + a_n^{(h)} \right \}\)</span>, where <span class="arithmatex">\(\left \{  a_n^{(h)} \right \}\)</span> is a solution to the associated homogeneous linear recurrence relation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><img alt="" src="../img/th.png" /></p>
+</div>
 </div>
 <h2 id="divide-and-conquer-algorithms-and-recurrence-relations">Divide-and-Conquer Algorithms and Recurrence Relations(分治算法和递归关系)<a class="headerlink" href="#divide-and-conquer-algorithms-and-recurrence-relations" title="Permanent link">&para;</a></h2>
+<details class="example">
+<summary>Example</summary>
+<ol>
+<li>二分查找</li>
+<li>归并排序</li>
+<li>快速幂</li>
+</ol>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><img alt="" src="../img/dc.png" /></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><img alt="" src="../img/mt.png" />  </p>
+</div>
 <h2 id="generating-functions">Generating Functions(生成函数)<a class="headerlink" href="#generating-functions" title="Permanent link">&para;</a></h2>
-<h2 id="inclusion-exclusion-">Inclusion-Exclusion(包含-排斥)<a class="headerlink" href="#inclusion-exclusion-" title="Permanent link">&para;</a></h2>
-<h2 id="applications-of-inclusion-exclusion-">Applications of Inclusion-Exclusion(包含-排斥的应用)<a class="headerlink" href="#applications-of-inclusion-exclusion-" title="Permanent link">&para;</a></h2>
+<p><strong>The generating function for the sequence <span class="arithmatex">\(a_0, a_1, a_2, \cdots a_k, \cdots\)</span> is <span class="arithmatex">\(G(x) = \sum_{k=0}^{\infty}a_kx^k\)</span></strong></p>
+<details class="eg">
+<summary>Eg</summary>
+<p><span class="arithmatex">\(a_k = C(n, k)\)</span>, the binomial coefficient, then the generating function is <span class="arithmatex">\((1 + x)^n\)</span>.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Let <span class="arithmatex">\(f(x) = \sum_{k=0}^{\infty}a_kx^k\)</span> and <span class="arithmatex">\(g(x) = \sum_{k=0}^{\infty}b_kx^k\)</span>. Then :</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(f(x) + g(x) = \sum_{k=0}^{\infty}(a_k + b_k)x^k\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(f(x)g(x) = \sum_{k=0}^{\infty}(\sum_{i=0}^{k}a_ib_{k-i})x^k\)</span> </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\alpha f(x) = \sum_{k=0}^{\infty}\alpha a_kx^k\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(f(\alpha x) = \sum_{k=0}^{\infty}a_k(\alpha x)^k = \sum_{k=0}^{\infty}\alpha^ka_kx^k\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(f'(x) = \sum_{k=0}^{\infty}ka_kx^{k-1}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(xf(x) = \sum_{k=0}^{\infty}a_kx^{k+1} = \sum_{k=1}^{\infty}a_{k-1}x^k\)</span></p>
+</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">extended Binomial Theorem</p>
+<p>Let <span class="arithmatex">\(n\)</span> be a real number and <span class="arithmatex">\(k\)</span> be a nonnegative integer. Then <span class="arithmatex">\(C(n, k) = \frac{n(n-1)(n-2) \cdots (n-k+1)}{k!}\)</span>, when <span class="arithmatex">\(k = 0\)</span>, <span class="arithmatex">\(C(n, 0) = 1\)</span>.</p>
+<p>Let <span class="arithmatex">\(n\)</span> be a real number and <span class="arithmatex">\(k\)</span> be a nonnegative integer. Then <span class="arithmatex">\((1 + x)^n = \sum_{k=0}^{\infty}C(n, k)x^k\)</span>.</p>
+</div>
+<p>some useful generating functions:</p>
+<p><img alt="" src="../img/sec8.4-8.jpg" /></p>
+<ul>
+<li>
+<p>Using Generating Functions to Solve Recurrence Relations(使用生成函数解递归关系)</p>
+<ul>
+<li>
+<p><strong>Linear Recurrence Relations</strong>: Let <span class="arithmatex">\(G(x)\)</span> be the generating function for the sequence <span class="arithmatex">\(a_0, a_1, a_2, \cdots\)</span>. If the recurrence relation for the sequence is <span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k}\)</span>, then the generating function for the sequence is <span class="arithmatex">\(G(x) = \frac{g(x)}{1 - c_1x - c_2x^2 - \cdots - c_kx^k}\)</span>.</p>
+</li>
+<li>
+<p><strong>Nonhomogeneous Linear Recurrence Relations</strong>: Let <span class="arithmatex">\(G(x)\)</span> be the generating function for the sequence <span class="arithmatex">\(a_0, a_1, a_2, \cdots\)</span>. If the recurrence relation for the sequence is <span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} + f(n)\)</span>, then the generating function for the sequence is <span class="arithmatex">\(G(x) = \frac{g(x) + F(x)}{1 - c_1x - c_2x^2 - \cdots - c_kx^k}\)</span>, where <span class="arithmatex">\(F(x)\)</span> is the generating function for the sequence <span class="arithmatex">\(f(0), f(1), f(2), \cdots\)</span>.</p>
+</li>
+<li>
+<p><strong>Divide-and-Conquer Algorithms</strong>: Let <span class="arithmatex">\(G(x)\)</span> be the generating function for the sequence <span class="arithmatex">\(a_0, a_1, a_2, \cdots\)</span>. If the recurrence relation for the sequence is <span class="arithmatex">\(a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_ka_{n-k} + f(n)\)</span>, then the generating function for the sequence is <span class="arithmatex">\(G(x) = \frac{g(x) + F(x)}{1 - c_1x - c_2x^2 - \cdots - c_kx^k}\)</span>, where <span class="arithmatex">\(F(x)\)</span> is the generating function for the sequence <span class="arithmatex">\(f(0), f(1), f(2), \cdots\)</span>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<details class="eg">
+<summary>Eg</summary>
+<p><img alt="" src="../img/eg2.png" />
+<img alt="" src="../img/eg2-1.png" />
+<img alt="" src="../img/eg3-1.png" />
+<img alt="" src="../img/eg3-2.png" /></p>
+</details>
+<h2 id="inclusion-exclusion">Inclusion-Exclusion(容斥原理)<a class="headerlink" href="#inclusion-exclusion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Two Finite Sets: <span class="arithmatex">\(|A \cup B| = |A| + |B| - |A \cap B|\)</span></p>
+</li>
+<li>
+<p>Three Finite Sets: <span class="arithmatex">\(|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\)</span></p>
+</li>
+<li>
+<p>n Finite Sets: <span class="arithmatex">\(|A_1 \cup A_2 \cup \cdots \cup A_n| = \sum_{i=1}^{n}|A_i| - \sum_{1 \leq i &lt; j \leq n}|A_i \cap A_j| + \sum_{1 \leq i &lt; j &lt; k \leq n}|A_i \cap A_j \cap A_k| - \cdots + (-1)^{n-1}|A_1 \cap A_2 \cap \cdots \cap A_n|\)</span></p>
+</li>
+</ul>
+<h2 id="applications-of-inclusion-exclusion">Applications of Inclusion-Exclusion(容斥原理的应用)<a class="headerlink" href="#applications-of-inclusion-exclusion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>An alternative form of inclusion-exclusion: </p>
+</li>
+<li>
+<p>The sieve of Eratosthenes(埃拉托斯特尼筛法): To find all prime numbers less than or equal to a given integer <span class="arithmatex">\(n\)</span>.</p>
+</li>
+</ul>
+<p><img alt="" src="../img/sieve.png" /></p>
+<ul>
+<li>
+<p>The number of <strong>onto functions</strong> from a set with <span class="arithmatex">\(m\)</span> elements to a set with <span class="arithmatex">\(n\)</span> elements is <span class="arithmatex">\(n^m - C(n, 1)(n-1)^m + C(n, 2)(n-2)^m - \cdots + (-1)^{n-1}C(n, n-1)(n-n+1)^m\)</span>.</p>
+</li>
+<li>
+<p><strong>Derangements</strong>(错位排列/): A permutation of a set of distinct objects is called a derangement if no object appears in its original position. The number of derangements of a set of <span class="arithmatex">\(n\)</span> distinct objects is <span class="arithmatex">\(D_n = n!(1 - \frac{1}{1!} + \frac{1}{2!} - \cdots + (-1)^n\frac{1}{n!})\)</span></p>
+</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
