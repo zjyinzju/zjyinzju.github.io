@@ -1809,8 +1809,8 @@
 </span></code></pre></div>
 <ul>
 <li><strong>Inversion</strong>：对于一个序列 <span class="arithmatex">\(A\)</span>，如果 <span class="arithmatex">\(i&lt;j\)</span> 且 <span class="arithmatex">\(A[i]&gt;A[j]\)</span>，则称 <span class="arithmatex">\((i, j)\)</span> 是一个逆序对（inversion）</li>
-<li>任何以交换逆序对为手段排序的算法平均复杂度 <span class="arithmatex">\(\Omega(N^2)\)</span></li>
-<li>一趟插入排序可以消除一个逆序对</li>
+<li>任何以交换逆序对为手段排序(称为简单排序)的算法平均复杂度 <span class="arithmatex">\(\Omega(N^2)\)</span></li>
+<li>一趟插入排序可以消除一个逆序对   </li>
 <li>进行 <span class="arithmatex">\(n-1\)</span> 趟（pass）排序</li>
 <li>第 <span class="arithmatex">\(P\)</span> 趟时保证从位置 0 到 <span class="arithmatex">\(P-1\)</span> 上的元素以及排好序，然后将第 <span class="arithmatex">\(P\)</span> 个元素插入到前面的有序序列的正确位置处</li>
 <li>最坏（A 是逆序的）复杂度 <span class="arithmatex">\(O(N^2)\)</span></li>
@@ -1818,7 +1818,7 @@
 </ul>
 <h2 id="_3">希尔排序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>希尔排序（shell sort）使用一个增量序列 <span class="arithmatex">\(h_1&lt;h_2&lt;\cdots&lt;h_t\)</span>，其中 <span class="arithmatex">\(h_i\)</span> 为整数，且 <span class="arithmatex">\(h_i=1\)</span></li>
+<li>希尔排序（shell sort）使用一个增量序列 <span class="arithmatex">\(h_1&lt;h_2&lt;\cdots&lt;h_t\)</span>，其中 <span class="arithmatex">\(h_i\)</span> 为整数，且 <span class="arithmatex">\(h_1=1\)</span></li>
 <li>定义 <span class="arithmatex">\(h_k\)</span>-sort 为将原数组隔 <span class="arithmatex">\(h_k-1\)</span> 个元素分为一组，每组内进行排序</li>
 <li><span class="arithmatex">\(k = t, t-1, \cdots, 1\)</span> 依次进行 <span class="arithmatex">\(h_k\)</span>-sort，最终得到一个有序序列<ul>
 <li><span class="arithmatex">\(h_k\)</span>-sorted 的序列在 <span class="arithmatex">\(h_{k-1}\)</span>-sorted 后仍保持 <span class="arithmatex">\(h_k\)</span>-sorted 的性质</li>
@@ -1826,7 +1826,7 @@
 </li>
 <li>希尔排序的复杂度和增量序列的选取有关</li>
 <li>
-<p>希尔增量序列：<span class="arithmatex">\(h_t=\lfloor N/2\rfloor, h_k = \lfloor h_{k+1}/2\rfloor\)</span></p>
+<p>希尔增量序列（原始版）：<span class="arithmatex">\(h_t=\lfloor N/2\rfloor, h_k = \lfloor h_{k+1}/2\rfloor\)</span></p>
 <ul>
 <li>最坏复杂度 <span class="arithmatex">\(O(N^2)\)</span>（即只在 1-sort 时进行了排序）</li>
 </ul>
@@ -1863,21 +1863,22 @@
 <li>使用堆结构来进行排序</li>
 <li>算法一：将数组中的元素依次插入到堆中（可以是 <span class="arithmatex">\(O(N)\)</span> 线性建堆），然后依次从堆中取出最小元素<ul>
 <li>复杂度 <span class="arithmatex">\(O(N\log N)\)</span></li>
-<li>但是空间消耗翻倍了</li>
+<li>但是空间消耗翻倍了(需要一个额外的数组来存排好的序列)</li>
 </ul>
 </li>
 <li>算法二：<ul>
 <li>以线性时间建最大堆（PercolateDown）</li>
-<li>将堆顶元素与最后一个元素交换（相当于删除最大元素），然后进行 PercolateDown</li>
+<li>将堆顶元素与最后一个元素交换（相当于删除最大元素），然后进行 PercolateDown </li>
 <li>依此循环，N-1 次删除后得到一个从小到大的序列
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">heapSort</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">percolateDown</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">percolateDown</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">percolateDown</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="cm">/*从第i个元素开始向下调整， i 从 n/2 （最后一个非叶节点）开始*/</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">percolateDown</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
 </span></code></pre></div></li>
 <li>平均比较次数为 <span class="arithmatex">\(2N\log N - O(N\log\log N)\)</span></li>
 </ul>
@@ -1907,7 +1908,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;No space for tmp array!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="kt">void</span><span class="w"> </span><span class="nf">mergeSortHelper</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tmp</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2004,11 +2005,11 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月24日 21:22:51</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月26日 01:31:18</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月24日 21:22:51</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年6月26日 01:31:18</span>
       
     
   </small>
