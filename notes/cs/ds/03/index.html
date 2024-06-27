@@ -1984,7 +1984,7 @@
 </ul>
 <h3 id="_4">术语<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
-<li>节点的<strong>度(degree)</strong>：节点拥有的子树的个数</li>
+<li>节点的<strong>度(degree)</strong>：节点拥有的<strong>子树的个数</strong> （与图中的度不同）</li>
 <li>树的度：树所有节点中最大的度数</li>
 <li><strong>叶节点（Leaf）</strong>：度为零的节点</li>
 <li><strong>分支节点（Branch）</strong>：度不为零的节点</li>
@@ -2028,10 +2028,9 @@
 </ul>
 <h3 id="_8">术语<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>满二叉树（Perfect Binary Tree）</strong>：每个节点的度都是0或2</li>
+<li><strong>满二叉树（Full Binary Tree）</strong>：每个节点的度都是0或2</li>
 <li><strong>斜二叉树（Skewed Binary Tree）</strong>：所有节点只有左子树或右子树的二叉树</li>
-<li><strong>完全二叉树（Complete Binary Tree）</strong>：对一棵具有n个节点的二叉树按层序编号，如果编号为i（1&lt;=i&lt;=n）的节点与同样深度的满二叉树中编号为i的节点在二叉树中位置完全相同。
-（亦即，完全二叉树是满二叉树或者满二叉树按序去掉最后的一些节点）</li>
+<li><strong>完全二叉树（Complete Binary Tree）</strong>：最后一层有空缺，其余层都是满的。</li>
 </ul>
 <h3 id="_9">性质<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2186,16 +2185,18 @@
 </ul>
 <h3 id="_15">操作<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <ul>
-<li>查找：<ol>
+<li>
+<p>查找：</p>
+<ol>
 <li>任意元素</li>
 </ol>
 <details class="eg">
 <summary>递归实现</summary>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Position</span><span class="w"> </span><span class="nf">Find</span><span class="p">(</span><span class="w"> </span><span class="n">ElementType</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">BinTree</span><span class="w"> </span><span class="n">BST</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Position</span><span class="w"> </span><span class="nf">Find</span><span class="w"> </span><span class="p">(</span><span class="n">ElementType</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">BinTree</span><span class="w"> </span><span class="n">BST</span><span class="p">){</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">BST</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">BST</span><span class="o">-&gt;</span><span class="n">Data</span><span class="w"> </span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">BST</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="p">)</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Find</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">BST</span><span class="o">-&gt;</span><span class="n">Right</span><span class="w"> </span><span class="p">);</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BST</span><span class="o">-&gt;</span><span class="n">Data</span><span class="w"> </span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BST</span><span class="o">-&gt;</span><span class="n">Data</span><span class="w"> </span><span class="p">)</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Find</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">BST</span><span class="o">-&gt;</span><span class="n">Left</span><span class="w"> </span><span class="p">);</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BST</span><span class="p">;</span>
@@ -2218,8 +2219,10 @@
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-<p>注意到查找效率和树的高度有关，最坏情况下为O(n)，平均情况下为O(logn)，因此需要保证树的<strong>平衡</strong>
-2. 最小元素：最左下节点</p>
+<p>注意到查找效率和树的高度有关，最坏情况下为O(n)，平均情况下为O(logn)，因此需要保证树的<strong>平衡</strong></p>
+<ol>
+<li>最小元素：最左下节点</li>
+</ol>
 <details class="eg">
 <summary>递归实现</summary>
 <div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Position</span><span class="w"> </span><span class="nf">FindMin</span><span class="p">(</span><span class="w"> </span><span class="n">BinTree</span><span class="w"> </span><span class="n">BST</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2242,8 +2245,10 @@
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
-</li>
+<ul>
 <li>插入：递归查找插入位置，插入新节点</li>
+</ul>
+</li>
 </ul>
 <details class="eg">
 <summary>递归实现</summary>
