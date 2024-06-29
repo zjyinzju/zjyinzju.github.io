@@ -18,6 +18,8 @@ nav:
           - notes/cs/ds/04.md
           - notes/cs/ds/05.md
           - notes/cs/ds/06.md
+          - notes/cs/ds/07.md
+          - notes/cs/ds/08.md
           - notes/cs/ds/hw.md
       - 计算机逻辑设计基础:
         - notes/cs/logic/index.md
@@ -46,7 +48,7 @@ nav:
 theme:
   name: material
   language: zh
-  favicon: kongmencang.png
+  favicon: luoqixi.jpg
   palette: 
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
