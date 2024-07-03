@@ -30,6 +30,71 @@
     font-weight: 500;
 }
 
+[data-md-color-scheme="test_dark"] {
+  --md-hue: 225;
+  --md-saturation: 40%;
+  --md-lightness: 10%;
+  --md-default-fg-color: hsla(var(--md-hue), 75%, 95%, 1);
+  --md-default-fg-color--light: hsla(var(--md-hue), 75%, 90%, 0.62);
+  --md-default-fg-color--lighter: hsla(var(--md-hue), 75%, 90%, 0.32);
+  --md-default-fg-color--lightest: hsla(var(--md-hue), 75%, 90%, 0.12);
+  --md-default-bg-color: hsla(var(--md-hue), var(--md-saturation), var(--md-lightness), 1);
+  --md-default-bg-color--light: hsla(var(--md-hue), var(--md-saturation), var(--md-lightness), 0.54);
+  --md-default-bg-color--lighter: hsla(var(--md-hue), var(--md-saturation), var(--md-lightness), 0.26);
+  --md-default-bg-color--lightest: hsla(var(--md-hue), var(--md-saturation), var(--md-lightness), 0.07);
+  --md-code-fg-color: hsla(var(--md-hue), 18%, 86%, 1);
+  --md-code-bg-color: hsla(var(--md-hue), 39%, 17%, 1);
+  --md-code-hl-color: #4287ff26;
+  --md-code-hl-number-color: #e6695b;
+  --md-code-hl-special-color: #f06090;
+  --md-code-hl-function-color: #c973d9;
+  --md-code-hl-constant-color: #9383e2;
+  --md-code-hl-keyword-color: #6791e0;
+  --md-code-hl-string-color: #2fb170;
+  --md-code-hl-name-color: var(--md-code-fg-color);
+  --md-code-hl-operator-color: var(--md-default-fg-color--light);
+  --md-code-hl-punctuation-color: var(--md-default-fg-color--light);
+  --md-code-hl-comment-color: var(--md-default-fg-color--light);
+  --md-code-hl-generic-color: var(--md-default-fg-color--light);
+  --md-code-hl-variable-color: var(--md-default-fg-color--light);
+  --md-typeset-color: var(--md-default-fg-color);
+  /* --md-typeset-a-color: var(--md-primary-fg-color); */
+  --md-typeset-mark-color: #ffb7424d;
+  --md-typeset-kbd-color: hsla(var(--md-hue), 15%, 94%, 0.12);
+  --md-typeset-kbd-accent-color: hsla(var(--md-hue), 15%, 94%, 0.2);
+  --md-typeset-kbd-border-color: hsla(var(--md-hue), 15%, 14%, 1);
+  --md-typeset-table-color: hsla(var(--md-hue), 75%, 95%, 0.12);
+  --md-typeset-table-color--light: hsla(var(--md-hue), 75%, 95%, 0.035);
+  --md-admonition-fg-color: var(--md-default-fg-color);
+  --md-admonition-bg-color: var(--md-default-bg-color);
+  --md-footer-bg-color: hsla(var(--md-hue), 15%, 12%, 0.87);
+  --md-footer-bg-color--dark: hsla(var(--md-hue), 15%, 10%, 1);
+  --md-shadow-z1: 0 0.2rem 0.5rem #0003, 0 0 0.05rem #0000001a;
+  --md-shadow-z2: 0 0.2rem 0.5rem #0000004d, 0 0 0.05rem #00000040;
+  --md-shadow-z3: 0 0.2rem 0.5rem #0006, 0 0 0.05rem #00000059;
+  color-scheme: dark;
+
+  --md-primary-fg-color: hsl(304, 19%, 53%);
+  --md-primary-fg-color--light: #c4c1d7;
+  --md-primary-fg-color--dark: #4e496f;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #ffffffb3;
+
+  --md-typeset-a-color: hsl(56, 66%, 57%);
+
+  --md-accent-fg-color: hsl(209, 98%, 80%);
+  --md-accent-fg-color--transparent: #f500561a;
+  --md-accent-bg-color: #fff;
+  --md-accent-bg-color--light: #ffffffb3;
+  }:root {
+    --md-text-font: "LXGW WenKai Screen", "LXGW WenKai Screen"; 
+    --md-code-font: "Noto Sans Mono", "Noto Serif SC";
+  }
+  .md-nav__link {
+    font-size: small;
+    font-weight: 500;
+}
+
 /* Customized admonitions: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#customization */
 
 .md-typeset .admonition,
@@ -50,17 +115,17 @@
 
 .md-typeset .admonition.definition,
 .md-typeset details.definition {
-  border-color: #d2b300;
+  border-color: rgba(210, 179, 0, 0.5);
 }
 
 .md-typeset .definition>.admonition-title,
 .md-typeset .definition>summary {
-  background-color: #fbffde;
+  background-color: rgba(251,255,222,0.5);
 }
   
 .md-typeset .definition>.admonition-title::before,
 .md-typeset .definition>summary::before {
-  background-color: #d2b300;
+  background-color: rgba(210, 179, 0, 0.5);
   -webkit-mask-image: var(--md-admonition-icon--definition);
   mask-image: var(--md-admonition-icon--definition);
 }
@@ -73,17 +138,17 @@
 
 .md-typeset .admonition.proof,
 .md-typeset details.proof {
-  border-color: #d8d0aa;
+  border-color: #80d8d0aa;
 }
 
 .md-typeset .proof>.admonition-title,
 .md-typeset .proof>summary {
-  background-color: #fdfdec;
+  background-color: #80fdfdec;
 }
 
 .md-typeset .proof>.admonition-title::before,
 .md-typeset .proof>summary::before {
-  background-color: #d8d0aa;
+  background-color: #80d8d0aa;
   -webkit-mask-image: var(--md-admonition-icon--proof);
   mask-image: var(--md-admonition-icon--proof);
 }
@@ -97,17 +162,17 @@
 
 .md-typeset .admonition.property,
 .md-typeset details.property {
-  border-color: #aaccd8;
+  border-color: #80aaccd8;
 }
 
 .md-typeset .property>.admonition-title,
 .md-typeset .property>summary {
-  background-color: #ecf8fd;
+  background-color:  rgba(236, 248, 253,0.5);
 }
 
 .md-typeset .property>.admonition-title::before,
 .md-typeset .property>summary::before {
-  background-color: #aaccd8;
+  background-color: #80aaccd8;
   -webkit-mask-image: var(--md-admonition-icon--property);
   mask-image: var(--md-admonition-icon--property);
 }
@@ -120,12 +185,12 @@
 
 .md-typeset .admonition.extra,
 .md-typeset details.extra {
-  border-color: #D09CFA;
+  border-color: rgba(208, 156, 250, 0.5);
 }
 
 .md-typeset .extra>.admonition-title,
 .md-typeset .extra>summary {
-  background-color: #F7DDFF;
+  background-color: rgba(247, 221, 255,0.5);
 }
 
 .md-typeset .extra>.admonition-title::before,
@@ -149,7 +214,7 @@
 
 .md-typeset .section>.admonition-title,
 .md-typeset .section>summary {
-  background-color: #e1e8ff;
+  background-color: rgba(225, 232, 255,0.8);
 }
 
 .md-typeset .section>.admonition-title::before,
@@ -173,7 +238,7 @@
 
 .md-typeset .key-point>.admonition-title,
 .md-typeset .key-point>summary {
-  background-color: #fff0c7;
+  background-color: rgba(255, 240, 199,0.5);
 }
 
 .md-typeset .key-point>.admonition-title::before,
@@ -196,7 +261,7 @@
 
 .md-typeset .advice>.admonition-title,
 .md-typeset .advice>summary {
-  background-color: #ddf7d7;
+  background-color: rgba(221, 247, 215,0.5);
 }
 
 .md-typeset .advice>.admonition-title::before,
@@ -220,7 +285,7 @@
 
 .md-typeset .not-advice>.admonition-title,
 .md-typeset .not-advice>summary {
-  background-color: #ffe2d1;
+  background-color: rgba(255, 226, 209,0.5);
 }
 
 .md-typeset .not-advice>.admonition-title::before,
@@ -244,7 +309,7 @@
 
 .md-typeset .eg>.admonition-title,
 .md-typeset .eg>summary {
-  background-color: #FDF6EC;
+  background-color: rgba(253, 246, 236,0.5);
 }
 
 .md-typeset .eg>.admonition-title::before,
