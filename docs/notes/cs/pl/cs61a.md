@@ -1,4 +1,4 @@
-# CS61A Fall 2023
+# Python
 
 ## week1
 > 基本语法与函数

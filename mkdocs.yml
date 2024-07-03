@@ -7,8 +7,8 @@ nav:
     - cs:
       - 编程语言:
         - notes/cs/pl/index.md
-        - Python:
-          - notes/cs/pl/cs61a.md
+        - notes/cs/pl/cs61a.md
+        - notes/cs/pl/c.md
       - 数据结构与算法:
         - fds:
           - notes/cs/ds/index.md
@@ -43,6 +43,7 @@ nav:
       - notes/others/yu.md 
     - tools&skills:
       - notes/tools cheatsheet/LaTeX.md
+      - notes/tools cheatsheet/shell.md
   - 记念: 记念.md
   - 样式记录: 样式记录.md
 theme:
