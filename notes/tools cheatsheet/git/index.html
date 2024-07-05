@@ -123,6 +123,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#git" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1547,6 +1552,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1557,6 +1575,39 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基础配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基础用法
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1633,6 +1684,30 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基础配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基础用法
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1650,20 +1725,128 @@
   
 
 
-  <h1>Git</h1>
-
-
+<h1 id="git">Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>分布式版本控制系统</p>
+<p>官网：<a href="https://git-scm.com/">https://git-scm.com/</a></p>
+</blockquote>
+<p>Git包含本地（ local ）仓库和远程（ remote ）仓库。</p>
+<p>本地仓库分为工作目录（ working directory ）和 git reposity。工作目录实际上就是项目文件等（ 由<code>ls</code>命令可以直接查询到 ）；而git仓库则是由<code>git init</code>命令创建的（ 亦即 <em>.git</em> 文件夹 ），其中包含了暂存区（ stage ）和一个版本库（ commit history ）等（ 由<code>ls -a</code>命令可以查询到 ）；</p>
+<p>Git 的基本工作流程如下：</p>
+<ol>
+<li>在工作目录中修改文件；</li>
+<li>将修改的文件添加到暂存区（通过 <code>add</code> ）；</li>
+<li>将暂存区的文件提交到版本库（通过 <code>commit</code> ）；</li>
+<li>将版本库的文件推送到远程仓库（通过 <code>push</code> ）。</li>
+<li>对方可以拉取远程仓库的文件到自己的本地仓库（通过 <code>pull</code> ）。</li>
+</ol>
+<h2 id="_1">基础配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>创建本地git版本库：<ul>
+<li><code>git init</code>：将当前路径下的文件夹变成git版本库（在当前文件夹内创建一个 <em>.git</em> 文件夹，<code>ls -a</code>可以看到）</li>
+<li><code>git init [project-name]</code>：创建一个新文件夹，将其初始化为git版本库</li>
+</ul>
+</li>
+<li>配置用户信息：<ul>
+<li><code>git config --global user.name "Your Name"</code>：设置用户名</li>
+<li><code>git config --global user.email "email"</code>：设置邮箱<blockquote>
+<p><code>--global</code>参数表示所有的git仓库都会使用这个配置，如果想要针对某个仓库使用不同的用户名和邮箱，可以去掉<code>--global</code>参数，然后在该仓库下执行相同的命令</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>查看配置信息：<ul>
+<li><code>git config --list</code>：查看所有配置信息</li>
+<li><code>git config user.name</code>：查看用户名</li>
+<li><code>git config user.email</code>：查看邮箱</li>
+</ul>
+</li>
+</ul>
+<h2 id="_2">基础用法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>将工作目录中的文件加入暂存区：<ul>
+<li><code>git add [file]</code>：将指定文件加入暂存区</li>
+<li><code>git add .</code>：将所有文件加入暂存区<blockquote>
+<p>只会添加修改过的文件</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>删除文件：<ul>
+<li><code>rm</code>只是将文件从工作目录中删除，但是不会从版本库中删除</li>
+<li><code>git rm [file]</code>会将文件从版本库和工作目录中删除</li>
+<li><code>git rm --cached [file]</code>会将文件从版本库中删除，但是保留在工作目录中（即：将一个已经暂存的新文件取消暂存</li>
+</ul>
+</li>
+<li>重命名文件：<ul>
+<li><code>git mv [old-file] [new-file]</code>：重命名文件（等价于 <code>mv</code> + <code>git rm</code> + <code>git add</code>）</li>
+</ul>
+</li>
+<li>查看文件状态：<code>git status</code><ul>
+<li><em>Untracked files</em>：工作目录中新建或修改过但是没有加入暂存区的文件</li>
+<li><em>Tracked files</em>：已经加入暂存区的最新文件</li>
+<li><em>Ignored files</em>：本地有但是不会加入版本库的文件</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>.gitignore</summary>
+<p>存放在工作目录中的<code>.gitignore</code>文件可以指定不需要加入版本库的文件。</p>
+<p>语法规则不详述，可以参考<a href="https://git-scm.com/docs/gitignore">官方文档</a>以及<a href="https://github.com/github/gitignore">github/gitignore</a></p>
+<p>通过<code>git check-ignore -v [file]</code>可以查看文件是否被<code>.gitignore</code>忽略。</p>
+</details>
+<ul>
+<li>提交文件到本地版本库：<ul>
+<li><code>git commit</code> : 进入默认编辑器（如vim）编辑提交信息</li>
+<li><code>git commit -m "message"</code>：不开启编辑器，直接提交</li>
+<li><code>git commit -a -m "message"</code>：跳过暂存区，直接提交</li>
+</ul>
+</li>
+<li>查看提交历史：<ul>
+<li><code>git log</code>：查看提交历史</li>
+<li><code>git log --oneline</code>：分行</li>
+<li><code>git log --graph</code>：查看提交历史的分支图</li>
+<li><code>git log --pretty=oneline</code>：查看提交历史的详细信息</li>
+<li><code>git log --stat</code>：查看提交历史的简略信息</li>
+<li><code>git log -p</code>：显示详细的修改内容<blockquote>
+<p>每个提交都有一个唯一的SHA-1哈希值（40位 16进制数），可以通过<code>git show [SHA-1]</code>查看提交的详细信息，如果不重复的话，可以只写前几位</p>
+</blockquote>
+</li>
+<li><code>git checkout [SHA-1]</code>：切换到指定的提交</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>commit message</summary>
+<p>提交信息的意义在于记录更改原因和内容，方便定位和回溯（尤在合作项目中）</p>
+<p>有如下的 <em>Angular</em> 规范 (源自于<a href="https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md">angular/angular:CONTRIBUTING.md</a>)：</p>
+<p><div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">type</span><span class="p">&gt;</span>([scope]): <span class="p">&lt;</span><span class="nt">summary</span><span class="p">&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>[body]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[footer]
+</span></code></pre></div>
+其中：</p>
+<ul>
+<li><code>type</code>：表示更改的类型，如<code>feat</code>（新功能）、<code>fix</code>（修复bug）、<code>docs</code>（文档）、<code>style</code>（格式）、<code>refactor</code>（重构）、<code>test</code>（测试）、<code>chore</code>（构建工具、库或辅助工具的变动）、<code>perf</code>（性能优化）、<code>ci</code>（CI配置）等<ul>
+<li>重大更改可以写<code>BREAKING CHANGE</code>或<code>DEPRECATED</code></li>
+</ul>
+</li>
+<li><code>scope</code>：表示更改的范围，如<code>core</code>、<code>compiler</code>、<code>common</code>、<code>forms</code>、<code>http</code>、<code>router</code>、<code>upgrade</code>等</li>
+<li><code>summary</code>：简要描述更改的内容，英文一般现在时，首字母小写，结尾不加句号</li>
+<li><code>body</code>：详细描述更改的内容</li>
+<li><code>footer</code>：解决了哪个issue，或者是一些关于更改的链接等</li>
+</ul>
+</details>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年7月4日 01:17:23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年7月4日 01:18:09</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年7月4日 01:17:23</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年7月4日 01:18:09</span>
       
     
   </small>
