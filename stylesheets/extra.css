@@ -163,6 +163,7 @@
 .md-typeset .admonition.property,
 .md-typeset details.property {
   border-color: #80aaccd8;
+  
 }
 
 .md-typeset .property>.admonition-title,
@@ -319,6 +320,7 @@
   mask-image: var(--md-admonition-icon--eg);
 }
 
+/* title setting */
 .md-ellipsis,
 h1,
 .headerlink {
