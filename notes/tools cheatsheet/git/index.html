@@ -1603,6 +1603,33 @@
     基础用法
   </a>
   
+    <nav class="md-nav" aria-label="基础用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    提交到本地
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    版本控制：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    分支
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1705,6 +1732,33 @@
     基础用法
   </a>
   
+    <nav class="md-nav" aria-label="基础用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    提交到本地
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    版本控制：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    分支
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1795,6 +1849,7 @@
 <p>语法规则不详述，可以参考<a href="https://git-scm.com/docs/gitignore">官方文档</a>以及<a href="https://github.com/github/gitignore">github/gitignore</a></p>
 <p>通过<code>git check-ignore -v [file]</code>可以查看文件是否被<code>.gitignore</code>忽略。</p>
 </details>
+<h3 id="_3">提交到本地<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>提交文件到本地版本库：<ul>
 <li><code>git commit</code> : 进入默认编辑器（如vim）编辑提交信息</li>
@@ -1836,6 +1891,87 @@
 <li><code>footer</code>：解决了哪个issue，或者是一些关于更改的链接等</li>
 </ul>
 </details>
+<h3 id="_4">版本控制：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>创建标签：<ul>
+<li><code>git tag [tag-name]</code>：创建一个轻量标签（tag-name默认为HEAD）</li>
+<li><code>git tag -a [tag-name] -m "message"</code>：创建一个带注释的标签</li>
+</ul>
+</li>
+<li>查看标签：<ul>
+<li><code>git tag</code>：查看所有标签</li>
+<li><code>git show [tag-name]</code>：查看标签信息</li>
+</ul>
+</li>
+</ul>
+<details class="note">
+<summary>版本号</summary>
+<p>版本号命名的一般规范：<a href = "https://semver.org/" target = "_blank">Semantic Versioning 2.0.0</a> 简单来说：</p>
+<ul>
+<li>v1.2.3[-prelease]:<ul>
+<li><code>1</code>：主版本号（Major）：<strong>不兼容</strong>的API变动<ul>
+<li>主版本号为0即处于开发阶段，不稳定</li>
+</ul>
+</li>
+<li><code>2</code>：次版本号（Minor）：<strong>兼容</strong>且功能性新增</li>
+<li><code>3</code>：修订号（Patch）：兼容修正，修正一些bug</li>
+<li><code>-prelease</code>：预发布版本号（Pre-release）：alpha/beta/rc.1/rc.2等</li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="_5">分支<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<details class="question">
+<summary>detached HEAD</summary>
+<ul>
+<li>HEAD: 当前工作区在提交历史中的位置指针</li>
+<li>detached HEAD: 表示HEAD指向的不是分支而是某一次的历史提交</li>
+<li>
+<p>何时会出现detached HEAD？</p>
+<ul>
+<li><code>git checkout [SHA-1]</code>：切换到某一次的提交</li>
+<li><code>git checkout [tag-name]</code>：切换到某一次的标签</li>
+<li><code>git checkout [branch-name]</code>：切换到某一分支的某一次提交<br>
+上述操作之后的修改和提交不会出现在任何分支上，当你切换回master之后会出现一条不属于任何分支的提交（此时HEAD指向的是这个游离的提交）</li>
+</ul>
+</li>
+<li>
+<p>如何解决detached HEAD？</p>
+<ul>
+<li><code>git checkout -b [new-branch-name]</code>：创建一个新分支，将HEAD指向这个分支</li>
+<li><code>git checkout [branch-name]</code>：切换回分支，将HEAD指向这个分支</li>
+</ul>
+</li>
+</ul>
+</details>
+<ul>
+<li>创建分支：<ul>
+<li><code>git branch [branch-name]</code>：创建一个新分支</li>
+<li><code>git branch [branch-name] id</code>：基于id提交</li>
+</ul>
+</li>
+<li>查看分支：<ul>
+<li><code>git branch</code> (带 <code>- a</code> 显示远程分支)</li>
+<li><code>git show-branch</code>更详细</li>
+</ul>
+</li>
+<li>切换分支：<ul>
+<li><code>git checkout name</code> </li>
+<li><code>git checkout -b name</code>：创建并切换</li>
+</ul>
+</li>
+<li>内容比较：<ul>
+<li><code>git diff branch1 branch2</code>：比较两个分支的内容</li>
+<li><code>git diff branch1</code>：比较当前分支和branch1的内容</li>
+<li><code>git diff</code>：比较工作目录和暂存区的内容</li>
+</ul>
+</li>
+<li>合并分支：<ul>
+<li><code>git merge branch-name</code>：将branch-name分支合并到当前分支</li>
+<li><code>git rebase branch-name</code>：将branch-name分支合并到当前分支（变基）</li>
+</ul>
+</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
