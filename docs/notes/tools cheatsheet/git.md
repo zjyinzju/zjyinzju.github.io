@@ -51,6 +51,8 @@ Git 的基本工作流程如下：
 
     通过`git check-ignore -v [file]`可以查看文件是否被`.gitignore`忽略。
 
+### 提交到本地
+
 + 提交文件到本地版本库：
     + `git commit` : 进入默认编辑器（如vim）编辑提交信息
     + `git commit -m "message"`：不开启编辑器，直接提交
@@ -64,6 +66,7 @@ Git 的基本工作流程如下：
     + `git log -p`：显示详细的修改内容
     > 每个提交都有一个唯一的SHA-1哈希值（40位 16进制数），可以通过`git show [SHA-1]`查看提交的详细信息，如果不重复的话，可以只写前几位
     + `git checkout [SHA-1]`：切换到指定的提交
+
 ??? note "commit message"
     提交信息的意义在于记录更改原因和内容，方便定位和回溯（尤在合作项目中）
 
@@ -83,3 +86,53 @@ Git 的基本工作流程如下：
     + `body`：详细描述更改的内容
     + `footer`：解决了哪个issue，或者是一些关于更改的链接等
 
+### 版本控制：
+
++ 创建标签：
+    + `git tag [tag-name]`：创建一个轻量标签（tag-name默认为HEAD）
+    + `git tag -a [tag-name] -m "message"`：创建一个带注释的标签
++ 查看标签：
+    + `git tag`：查看所有标签
+    + `git show [tag-name]`：查看标签信息
+    
+??? note "版本号"
+    版本号命名的一般规范：<a href = "https://semver.org/" target = "_blank">Semantic Versioning 2.0.0</a> 简单来说：
+
+    + v1.2.3[-prelease]:
+        + `1`：主版本号（Major）：**不兼容**的API变动
+            - 主版本号为0即处于开发阶段，不稳定
+        + `2`：次版本号（Minor）：**兼容**且功能性新增
+        + `3`：修订号（Patch）：兼容修正，修正一些bug
+        + `-prelease`：预发布版本号（Pre-release）：alpha/beta/rc.1/rc.2等
+
+### 分支
+
+??? question "detached HEAD"
+    + HEAD: 当前工作区在提交历史中的位置指针
+    + detached HEAD: 表示HEAD指向的不是分支而是某一次的历史提交
+    + 何时会出现detached HEAD？
+        + `git checkout [SHA-1]`：切换到某一次的提交
+        + `git checkout [tag-name]`：切换到某一次的标签
+        + `git checkout [branch-name]`：切换到某一分支的某一次提交<br>
+    上述操作之后的修改和提交不会出现在任何分支上，当你切换回master之后会出现一条不属于任何分支的提交（此时HEAD指向的是这个游离的提交）
+
+    + 如何解决detached HEAD？
+        + `git checkout -b [new-branch-name]`：创建一个新分支，将HEAD指向这个分支
+        + `git checkout [branch-name]`：切换回分支，将HEAD指向这个分支
+
++ 创建分支：
+    + `git branch [branch-name]`：创建一个新分支
+    + `git branch [branch-name] id`：基于id提交
++ 查看分支：
+    + `git branch` (带 `- a` 显示远程分支)
+    + `git show-branch`更详细
++ 切换分支：
+    + `git checkout name` 
+    + `git checkout -b name`：创建并切换
++ 内容比较：
+    + `git diff branch1 branch2`：比较两个分支的内容
+    + `git diff branch1`：比较当前分支和branch1的内容
+    + `git diff`：比较工作目录和暂存区的内容
++ 合并分支：
+    + `git merge branch-name`：将branch-name分支合并到当前分支
+    + `git rebase branch-name`：将branch-name分支合并到当前分支（变基）
