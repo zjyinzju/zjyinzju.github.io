@@ -1,4 +1,8 @@
 # Git
+!!! abstract ""
+    辅学时的笔记，似乎是把ppt的内容照搬了过来；未来可能会进一步完善说是
+
+
 > 分布式版本控制系统
 
 > 官网：[https://git-scm.com/](https://git-scm.com/)
@@ -133,6 +137,18 @@ Git 的基本工作流程如下：
     + `git diff branch1 branch2`：比较两个分支的内容
     + `git diff branch1`：比较当前分支和branch1的内容
     + `git diff`：比较工作目录和暂存区的内容
+
+??? question "如何更方便地定位提交"
+    + 实际上无论是`master`还是`branch`都和`HEAD`一样，是指向某一次提交的指针，称之为ref 
+    + 可以基于ref，使用`^`和`~`来定位提交
+        + `^`：第一个父提交，`^2`：第二个父提交
+        + `~`：第一个父提交，`~2`：第一个父提交的第一个父提交
+    + 一个提交可能会有多个父提交（如合并分支) 
+
 + 合并分支：
-    + `git merge branch-name`：将branch-name分支合并到当前分支
-    + `git rebase branch-name`：将branch-name分支合并到当前分支（变基）
+    + 将多个分支合并到当前分支：`git merge branch1 branch2 ...`
+    可能出现的几种情况：
+        + already up-to-date：当前分支已经包含了要合并的分支
+        + Fast-forward：当前分支是要合并的分支的直接父分支
+        
+
