@@ -2,6 +2,9 @@
 !!! abstract ""
     辅学时的笔记，似乎是把ppt的内容照搬了过来；未来可能会进一步完善说是
 
+!!! Extra ""
+    [practice git branching!](https://learngitbranching.js.org/?locale=zh_CN)
+    
 
 > 分布式版本控制系统
 
@@ -127,6 +130,8 @@ Git 的基本工作流程如下：
 + 创建分支：
     + `git branch [branch-name]`：创建一个新分支
     + `git branch [branch-name] id`：基于id提交
++ 删除分支：
+    + `git branch -d [branch-name]`：删除一个分支
 + 查看分支：
     + `git branch` (带 `- a` 显示远程分支)
     + `git show-branch`更详细
@@ -148,7 +153,86 @@ Git 的基本工作流程如下：
 + 合并分支：
     + 将多个分支合并到当前分支：`git merge branch1 branch2 ...`
     可能出现的几种情况：
-        + already up-to-date：当前分支已经包含了要合并的分支
-        + Fast-forward：当前分支是要合并的分支的直接父分支
+        + already up-to-date：当前分支已是最新，已经包含了要合并的分支
+        + Fast-forward：被合并的分支只比当前分支多了一些提交，直接将当前分支指向被合并的分支
+        + merge commit：两个分支都有新的提交，此时若有冲突则需要手动解决————编辑文件，`git add`，`git commit`
         
+## (相对)进阶用法
+### 修改提交历史
+> **若项目已经公开且有其他人协作则不应修改任何提交历史**
 
++ 几种修改方式：
+    + `git revert id`：只是生成一条新的提交从而将目标提交的更改撤销，而历史的所有提交都不会改变
+    + `git commit --amend`：只修改最新提交的提交信息，本质上修改了提交的历史记录，协作时不建议使用
+    + `git reset id`：将HEAD指向目标提交，从而回到历史的某一次提交的状态：
+        1. `--soft`：不改变工作目录和暂存区，只是将HEAD指向目标提交
+        2. `--mixed`：不改变工作目录，修改暂存区和HEAD（默认）
+        3. `--hard`：工作目录、暂存区和HEAD都会改变（完全回退）
+    + `git rebase`
+
+!!! note "rebase"
+    在合并分支中的`rebase merge`是在**不同分支之间变基**的情况，
+    `rebase`也可用在**同一分支，从而修改提交历史**
+
+    `git rebase -i` 可以交互式地修改提交历史
+    + `pick`：保留该提交
+    + `edit`：保留该提交，但进入编辑模式
+    + `squash`：将该提交合并到前一个提交
+    + `drop`：删除该提交
+
+### 远程版本库
+>远程版本库实际上也是一个普通的git版本库
+
++ `git clone [url]`：将远程版本库克隆到本地
+    + 会自动建立remote关联，可以通过`git remote`管理
++ `git push [remote] [branch]`：将本地分支推送到远程版本库
+    + `git push origin master`：将本地master分支推送到远程版本库
+    + 无法直接push到远程版本库检出的分支中，因此远程一般使用**裸版本库**（`--bare`）
++ `git pull [remote] [branch]`：将远程分支拉取到本地
+    + 包含了`git fetch`和`git merge`两个操作
+
+### submodule 子模块
+> 一个版本库中包含另一个版本库时需要用到子模块
+
++ 添加子模块：
+    + `git submodule add [url] [path]`：添加子模块
+    + 信息存在于`.gitmodules`文件中
++ 子模块更新后直接通过`git add`和`git commit`提交即可
++ `git submodule update`：更新子模块到规定版本
++ `git submodule status`：查看子模块的状态
++ `git submodule init`：更新 `.git/config` 文件中的子模块信息
+
+### Git 结构初探
++ .git/hooks：钩子脚本，在特定操作时自动执行
++ info logs 存放信息、日志等
++ .git/objects：储存的东西都在这里
+    + 文件名是相关对象的SHA-1哈希值的前两个字符，且头一个字节作为一层目录从而加速文件系统
+    + 通过`git cat-file -p [SHA-1]`查看对象内容（-t查看对象类型）
+    + 三种对象类型：commit、tree、blob
++ .git/HEAD：HEAD指针，内容是当前最新提交的SHA-1值
++ .git/ref：引用，指向提交对象的指针
+    + .git/refs/heads：本地分支指针
+    + .git/refs/tags：标签指针
+    + .git/refs/remotes：远程分支指针
++ master、origin/master等实际上是缩写：
+    + master：`refs/heads/master`
+    + origin/master：`refs/remotes/origin/master`
+    + 缩写匹配顺序：ref -> refs/ref -> refs/tags/ref -> refs/heads/ref -> refs/remotes/ref
+
+## GitHub相关
+### 项目协作
++ Fork：将别人的项目复制到自己的账户下，从而获得全部权限
++ Pull Request：将自己的修改请求合并到原项目中
+
+大致流程是：Fork repo 到自己的GitHub账户 -> Clone 到本地 -> 修改 -> Commit -> Push到自己的远端 -> 向原项目提交 Pull Request -> 原项目管理员审核 -> 合并
+
++ 对于自己有权限修改的项目，也可以使用PR进行修改，此时不用fork，直接在原项目中创建分支，修改后提交PR即可
++ merge: 若要求线性则使用`rebase`或者`squash`
+
+### GitHub Pages
+> GitHub Pages 会为每个用户/组织分配一个二级域名，用于展示静态网页
+
+### GitHub Actions
++ GitHub 提供的CI/CD服务，可以在每次提交时自动运行测试、构建等
+    + CI：持续集成（Continuous Integration）
+    + CD：持续部署（Continuous Deployment）
