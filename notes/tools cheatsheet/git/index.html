@@ -1632,6 +1632,81 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    (相对)进阶用法
+  </a>
+  
+    <nav class="md-nav" aria-label="(相对)进阶用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    修改提交历史
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    远程版本库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submodule" class="md-nav__link">
+    submodule 子模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    Git 结构初探
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub相关
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    项目协作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-pages" class="md-nav__link">
+    GitHub Pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    GitHub Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1761,6 +1836,81 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    (相对)进阶用法
+  </a>
+  
+    <nav class="md-nav" aria-label="(相对)进阶用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    修改提交历史
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    远程版本库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submodule" class="md-nav__link">
+    submodule 子模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    Git 结构初探
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub相关
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    项目协作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-pages" class="md-nav__link">
+    GitHub Pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    GitHub Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1780,6 +1930,12 @@
 
 
 <h1 id="git">Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p>辅学时的笔记，似乎是把ppt的内容照搬了过来；未来可能会进一步完善说是</p>
+</div>
+<div class="admonition extra">
+<p><a href="https://learngitbranching.js.org/?locale=zh_CN">practice git branching!</a></p>
+</div>
 <blockquote>
 <p>分布式版本控制系统</p>
 <p>官网：<a href="https://git-scm.com/">https://git-scm.com/</a></p>
@@ -1950,6 +2106,10 @@
 <li><code>git branch [branch-name] id</code>：基于id提交</li>
 </ul>
 </li>
+<li>删除分支：<ul>
+<li><code>git branch -d [branch-name]</code>：删除一个分支</li>
+</ul>
+</li>
 <li>查看分支：<ul>
 <li><code>git branch</code> (带 <code>- a</code> 显示远程分支)</li>
 <li><code>git show-branch</code>更详细</li>
@@ -1966,9 +2126,138 @@
 <li><code>git diff</code>：比较工作目录和暂存区的内容</li>
 </ul>
 </li>
+</ul>
+<details class="question">
+<summary>如何更方便地定位提交</summary>
+<ul>
+<li>实际上无论是<code>master</code>还是<code>branch</code>都和<code>HEAD</code>一样，是指向某一次提交的指针，称之为ref </li>
+<li>可以基于ref，使用<code>^</code>和<code>~</code>来定位提交<ul>
+<li><code>^</code>：第一个父提交，<code>^2</code>：第二个父提交</li>
+<li><code>~</code>：第一个父提交，<code>~2</code>：第一个父提交的第一个父提交</li>
+</ul>
+</li>
+<li>一个提交可能会有多个父提交（如合并分支) </li>
+</ul>
+</details>
+<ul>
 <li>合并分支：<ul>
-<li><code>git merge branch-name</code>：将branch-name分支合并到当前分支</li>
-<li><code>git rebase branch-name</code>：将branch-name分支合并到当前分支（变基）</li>
+<li>将多个分支合并到当前分支：<code>git merge branch1 branch2 ...</code>
+可能出现的几种情况：<ul>
+<li>already up-to-date：当前分支已是最新，已经包含了要合并的分支</li>
+<li>Fast-forward：被合并的分支只比当前分支多了一些提交，直接将当前分支指向被合并的分支</li>
+<li>merge commit：两个分支都有新的提交，此时若有冲突则需要手动解决————编辑文件，<code>git add</code>，<code>git commit</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_6">(相对)进阶用法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">修改提交历史<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>若项目已经公开且有其他人协作则不应修改任何提交历史</strong></p>
+</blockquote>
+<ul>
+<li>几种修改方式：<ul>
+<li><code>git revert id</code>：只是生成一条新的提交从而将目标提交的更改撤销，而历史的所有提交都不会改变</li>
+<li><code>git commit --amend</code>：只修改最新提交的提交信息，本质上修改了提交的历史记录，协作时不建议使用</li>
+<li><code>git reset id</code>：将HEAD指向目标提交，从而回到历史的某一次提交的状态：<ol>
+<li><code>--soft</code>：不改变工作目录和暂存区，只是将HEAD指向目标提交</li>
+<li><code>--mixed</code>：不改变工作目录，修改暂存区和HEAD（默认）</li>
+<li><code>--hard</code>：工作目录、暂存区和HEAD都会改变（完全回退）</li>
+</ol>
+</li>
+<li><code>git rebase</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">rebase</p>
+<p>在合并分支中的<code>rebase merge</code>是在<strong>不同分支之间变基</strong>的情况，
+<code>rebase</code>也可用在<strong>同一分支，从而修改提交历史</strong></p>
+<p><code>git rebase -i</code> 可以交互式地修改提交历史
++ <code>pick</code>：保留该提交
++ <code>edit</code>：保留该提交，但进入编辑模式
++ <code>squash</code>：将该提交合并到前一个提交
++ <code>drop</code>：删除该提交</p>
+</div>
+<h3 id="_8">远程版本库<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>远程版本库实际上也是一个普通的git版本库</p>
+</blockquote>
+<ul>
+<li><code>git clone [url]</code>：将远程版本库克隆到本地<ul>
+<li>会自动建立remote关联，可以通过<code>git remote</code>管理</li>
+</ul>
+</li>
+<li><code>git push [remote] [branch]</code>：将本地分支推送到远程版本库<ul>
+<li><code>git push origin master</code>：将本地master分支推送到远程版本库</li>
+<li>无法直接push到远程版本库检出的分支中，因此远程一般使用<strong>裸版本库</strong>（<code>--bare</code>）</li>
+</ul>
+</li>
+<li><code>git pull [remote] [branch]</code>：将远程分支拉取到本地<ul>
+<li>包含了<code>git fetch</code>和<code>git merge</code>两个操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="submodule">submodule 子模块<a class="headerlink" href="#submodule" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>一个版本库中包含另一个版本库时需要用到子模块</p>
+</blockquote>
+<ul>
+<li>添加子模块：<ul>
+<li><code>git submodule add [url] [path]</code>：添加子模块</li>
+<li>信息存在于<code>.gitmodules</code>文件中</li>
+</ul>
+</li>
+<li>子模块更新后直接通过<code>git add</code>和<code>git commit</code>提交即可</li>
+<li><code>git submodule update</code>：更新子模块到规定版本</li>
+<li><code>git submodule status</code>：查看子模块的状态</li>
+<li><code>git submodule init</code>：更新 <code>.git/config</code> 文件中的子模块信息</li>
+</ul>
+<h3 id="git_1">Git 结构初探<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>.git/hooks：钩子脚本，在特定操作时自动执行</li>
+<li>info logs 存放信息、日志等</li>
+<li>.git/objects：储存的东西都在这里<ul>
+<li>文件名是相关对象的SHA-1哈希值的前两个字符，且头一个字节作为一层目录从而加速文件系统</li>
+<li>通过<code>git cat-file -p [SHA-1]</code>查看对象内容（-t查看对象类型）</li>
+<li>三种对象类型：commit、tree、blob</li>
+</ul>
+</li>
+<li>.git/HEAD：HEAD指针，内容是当前最新提交的SHA-1值</li>
+<li>.git/ref：引用，指向提交对象的指针<ul>
+<li>.git/refs/heads：本地分支指针</li>
+<li>.git/refs/tags：标签指针</li>
+<li>.git/refs/remotes：远程分支指针</li>
+</ul>
+</li>
+<li>master、origin/master等实际上是缩写：<ul>
+<li>master：<code>refs/heads/master</code></li>
+<li>origin/master：<code>refs/remotes/origin/master</code></li>
+<li>缩写匹配顺序：ref -&gt; refs/ref -&gt; refs/tags/ref -&gt; refs/heads/ref -&gt; refs/remotes/ref</li>
+</ul>
+</li>
+</ul>
+<h2 id="github">GitHub相关<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
+<h3 id="_9">项目协作<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fork：将别人的项目复制到自己的账户下，从而获得全部权限</li>
+<li>Pull Request：将自己的修改请求合并到原项目中</li>
+</ul>
+<p>大致流程是：Fork repo 到自己的GitHub账户 -&gt; Clone 到本地 -&gt; 修改 -&gt; Commit -&gt; Push到自己的远端 -&gt; 向原项目提交 Pull Request -&gt; 原项目管理员审核 -&gt; 合并</p>
+<ul>
+<li>对于自己有权限修改的项目，也可以使用PR进行修改，此时不用fork，直接在原项目中创建分支，修改后提交PR即可</li>
+<li>merge: 若要求线性则使用<code>rebase</code>或者<code>squash</code></li>
+</ul>
+<h3 id="github-pages">GitHub Pages<a class="headerlink" href="#github-pages" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>GitHub Pages 会为每个用户/组织分配一个二级域名，用于展示静态网页</p>
+</blockquote>
+<h3 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>GitHub 提供的CI/CD服务，可以在每次提交时自动运行测试、构建等<ul>
+<li>CI：持续集成（Continuous Integration）</li>
+<li>CD：持续部署（Continuous Deployment）</li>
 </ul>
 </li>
 </ul>
@@ -1978,7 +2267,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年7月5日 23:11:35</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年7月9日 02:00:23</span>
       
         <br>
         创建日期:
