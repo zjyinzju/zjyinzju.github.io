@@ -27,9 +27,6 @@ nav:
         - notes/cs/logic/02.md
         - notes/cs/logic/03.md
     - math:
-      - 数学分析:
-        - notes/math/math_analysis/index.md
-        - notes/math/math_analysis/famulas.md
       - 离散数学:
         - notes/math/discrete_math/index.md
         - notes/math/discrete_math/01.md
@@ -39,6 +36,8 @@ nav:
         - notes/math/discrete_math/05.md
         - notes/math/discrete_math/06.md
         - notes/math/discrete_math/08.md
+      - 概率论:
+        - notes/math/probability/index.md
     - other: 
       - notes/others/yu.md 
     - tools&skills:
