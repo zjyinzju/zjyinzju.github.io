@@ -11,16 +11,18 @@ nav:
         - notes/cs/pl/c.md
       - 数据结构与算法:
         - fds:
-          - notes/cs/ds/index.md
-          - notes/cs/ds/01.md
-          - notes/cs/ds/02.md
-          - notes/cs/ds/03.md
-          - notes/cs/ds/04.md
-          - notes/cs/ds/05.md
-          - notes/cs/ds/06.md
-          - notes/cs/ds/07.md
-          - notes/cs/ds/08.md
-          - notes/cs/ds/hw.md
+          - notes/cs/ds/fds/index.md
+          - notes/cs/ds/fds/01.md
+          - notes/cs/ds/fds/02.md
+          - notes/cs/ds/fds/03.md
+          - notes/cs/ds/fds/04.md
+          - notes/cs/ds/fds/05.md
+          - notes/cs/ds/fds/06.md
+          - notes/cs/ds/fds/07.md
+          - notes/cs/ds/fds/08.md
+          - notes/cs/ds/fds/hw.md
+        - ads:
+          - notes/cs/ds/ads/index.md
       - 计算机逻辑设计基础:
         - notes/cs/logic/index.md
         - notes/cs/logic/01.md
