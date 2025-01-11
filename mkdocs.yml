@@ -50,6 +50,7 @@ theme:
   name: material
   language: zh
   favicon: luoqixi.jpg
+  # 页面整体样式，我分了三种
   palette: 
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -135,8 +136,5 @@ extra_javascript:
 
 extra_css:
   - stylesheets/extra.css
-  # - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
-  # - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
   - https://unpkg.com/katex@0/dist/katex.min.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
