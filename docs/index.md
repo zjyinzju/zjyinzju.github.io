@@ -8,3 +8,12 @@
     
 <strike>事实上有很多开坑未填的烂尾工程</strike>
 
+
+??? abstract "to do list"
+
+    - [ ] 笔记填坑
+        * [ ]  ADS
+        * [ ]  概率论
+        * [ ]  CS61A
+    - [ ] 了解 Makefile
+    - [ ] 日语学习

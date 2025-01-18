@@ -3,10 +3,8 @@ repo_url: https://github.com/zjyinzju/zjyinzju.github.io/
 repo_name: zjyinzju/zjyinzju.github.io
 nav:
   - Home: index.md
-  - note: 
-    - cs:
-      - 编程语言:
-        - notes/cs/pl/cs61a.md
+  - note:
+    - 课程笔记:
       - 数据结构与算法:
         - fds:
           - notes/cs/ds/fds/index.md
@@ -21,31 +19,40 @@ nav:
           - notes/cs/ds/fds/hw.md
         - ads:
           - notes/cs/ds/ads/index.md
+          - notes/cs/ds/ads/avl_skew.md
       - 计算机逻辑设计基础:
         - notes/cs/logic/index.md
         - notes/cs/logic/01.md
         - notes/cs/logic/02.md
         - notes/cs/logic/03.md
-    - math:
-      - 离散数学:
-        - notes/math/discrete_math/index.md
-        - notes/math/discrete_math/01.md
-        - notes/math/discrete_math/02.md
-        - notes/math/discrete_math/03.md
-        - notes/math/discrete_math/04.md
-        - notes/math/discrete_math/05.md
-        - notes/math/discrete_math/06.md
-        - notes/math/discrete_math/08.md
-      - 概率论:
-        - notes/math/probability/index.md
-    - other: 
-      - notes/others/yu.md 
-    - tools&skills:
-      - notes/tools cheatsheet/LaTeX.md
-      - notes/tools cheatsheet/shell.md
-      - notes/tools cheatsheet/git.md
-  - 记念: 记念.md
-  - 样式记录: 样式记录.md
+      - 数学:
+        - 离散数学:
+          - notes/math/discrete_math/index.md
+          - notes/math/discrete_math/01.md
+          - notes/math/discrete_math/02.md
+          - notes/math/discrete_math/03.md
+          - notes/math/discrete_math/04.md
+          - notes/math/discrete_math/05.md
+          - notes/math/discrete_math/06.md
+          - notes/math/discrete_math/08.md
+      - 其他: 
+        - notes/others/yu.md 
+    - CS:
+      - 编程语言:
+        - Python: 
+          - notes/cs/pl/Python/index.md
+          - notes/cs/pl/Python/CS61A.md
+        - C++:
+          - notes/cs/pl/C++/index.md
+          - notes/cs/pl/C++/1.md
+      - tools&skills:
+        - notes/tools cheatsheet/LaTeX.md
+        - notes/tools cheatsheet/shell.md
+        - notes/tools cheatsheet/git.md
+        - notes/tools cheatsheet/makefile.md
+  - other:
+    - 记念: other/记念.md
+    - 样式记录: other/样式记录.md
 theme:
   name: material
   language: zh
@@ -71,18 +78,19 @@ theme:
         name: Switch to system preference
   icon:
     admonition:
-      info: fontawesome/solid/anchor
+      info: fontawesome/solid/circle-info
       note: fontawesome/solid/pen-nib
       abstract: fontawesome/solid/list
-      tip: fontawesome/solid/lightbulb
+      tip: fontawesome/solid/key
       success: fontawesome/solid/check
-      question: fontawesome/solid/circle-question
+      question: fontawesome/solid/question
       warning: fontawesome/solid/triangle-exclamation
-      failure: material/alien
+      failure: fontawesome/solid/xmark
       danger: fontawesome/solid/virus
-      bug: fontawesome/solid/robot
-      example: fontawesome/solid/flask
-      quote: fontawesome/solid/link
+      bug: fontawesome/solid/bug
+      example: fontawesome/solid/bars
+      quote: fontawesome/solid/quote-right
+
       
   features:
     - navigation.tracking
@@ -126,6 +134,9 @@ markdown_extensions:
   - tables
   - pymdownx.arithmatex:
       generic: true
+  # an extension for to do list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra_javascript:
   - javascripts/katex.js

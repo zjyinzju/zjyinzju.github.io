@@ -2,8 +2,7 @@
 !!! warning
     只是依据个人使用习惯整理的，以及我只是初学者。如果有错误或者不妥的地方，欢迎指正。
     ??? advice
-        我只能说Chatgpt伟大，无需多言
-        以及我还没有尝试过typst.
+        我还没有尝试过typst.
 
 ## 基本结构
 1. **文档类声明**：指定文档的类型，例如article（文章）、report（报告）、book（书籍）等。使用`\documentclass{ }`命令来声明文档类。
@@ -117,4 +116,3 @@ markdown里无序列表用惯了，感觉LaTeX多少有些不便。
 ``` latex
 \section{This is a very long title that needs to be \\ split into two lines}
 ```
-不知道为什么我用`\par`不行

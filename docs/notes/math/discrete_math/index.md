@@ -5,13 +5,6 @@
 
     教材：离散数学及其应用（第八版）
 
-!!! warning "尚未完工"
-    内容好多又和其他课程有重复(尤其培养方案改之后)，我相似
-
-!!! failure "测"
-    
-    感觉这样子效率好像有点低，我想我还是先做纸质笔记吧
-
 ??? key-point "key words"
     
     ??? abstract "Chapter 1"
@@ -132,12 +125,8 @@
     ??? abstract "Chapter 5"
         + geometric progression: 等比数列
         + arithmetic progression: 等差数列
-        + the principle of mathematical induction: 数学归纳法
         + the well-ordering principle: 良序原理
         + the principle of strong induction: 强归纳法
-        + basis step: 基础步骤
-        + inductive step: 归纳步骤
-        + recursive definition: 递归定义
         + structural induction: 结构归纳法
         + initial assertion: 初始断言
         + inductive hypothesis: 归纳假设
