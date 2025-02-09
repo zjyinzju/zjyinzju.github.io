@@ -1,10 +1,11 @@
 site_name: 打工戰士の笔记本
 repo_url: https://github.com/zjyinzju/zjyinzju.github.io/
-repo_name: zjyinzju/zjyinzju.github.io
+repo_name: zjyinzju
 nav:
   - Home: index.md
-  - note:
+  - Note:
     - 课程笔记:
+      - notes/index.md
       - 数据结构与算法:
         - fds:
           - notes/cs/ds/fds/index.md

@@ -35,9 +35,10 @@ target ... : prerequisites ...
     ...
     ...
 ```
+
 + target: 目标文件（可执行文件、中间目标文件等）
-+ prerequisites: 生成该target所需要的文件和（或）target
-+ recipe: 该target 要执行的命令
++ prerequisites: 生成该 target 所需要的文件和（或） target
++ recipe: 该 target 要执行的命令
 
 简言之，`target` 这里的一或多个目标文件依赖于 `prerequisites` 中的文件，其生成规则定义在 `recipe` 中。
 
@@ -114,19 +115,32 @@ clean :
     6. 根据依赖关系，决定哪些目标要重新生成
     7. 执行生成命令
 
+## 规则书写
+> 规则包括两部分：目标和依赖关系
 
+> Makefile 中应该只有一个最终目标，第一条规则中的第一个目标将被作为默认的最终目标。
 
+!!! note "格式"
+    
+    === "1"
+        ```makefile
+        target: prerequisites
+            command # 一个Tab的缩进
+        ```
 
+    === "2"
+        ```makefile
+        target: prerequisites ; command # 分号分隔
+        ```
 
+### 通配符
+make 支持三种通配符：
++ `*` 匹配任意长度的字符串
++ `?` 匹配单个字符
++ `[...]` 匹配括号中的任意一个字符
 
-
-
-
-
-
-
-
-
-
-
-
+```makefile
+# 匹配所有以.c结尾的文件
+%.o : %.c
+    cc -c $< -o $@
+```
