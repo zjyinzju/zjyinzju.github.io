@@ -21,6 +21,7 @@ nav:
         - ads:
           - notes/cs/ds/ads/index.md
           - notes/cs/ds/ads/avl_skew.md
+          - notes/cs/ds/ads/rbt.md
       - 计算机逻辑设计基础:
         - notes/cs/logic/index.md
         - notes/cs/logic/01.md
