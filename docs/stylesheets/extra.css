@@ -334,11 +334,14 @@ h1,
     font-family: 'LXGW WenKai Screen', 'ZCOOL XiaoWei', serif;
 }
 
-.md-typeset h1, .md-typeset h2 {
-  font-weight: 600;
+.md-typeset h1 {
+  font-weight: 700;
+}
+.md-typeset h2 {
+  font-weight: 650;
 }
 .md-typeset h3 {
-  font-weight: 500;
+  font-weight: 600;
 }
 h1 {
   counter-reset: h2;
