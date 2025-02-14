@@ -12,7 +12,7 @@
 ??? abstract "to do list"
 
     - [ ] 笔记填坑
-        * [ ]  ADS
+        * [x]  ADS
         * [ ]  概率论
         * [ ]  CS61A
     - [ ] 了解 Makefile

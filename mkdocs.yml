@@ -38,6 +38,9 @@ nav:
           - notes/math/discrete_math/05.md
           - notes/math/discrete_math/06.md
           - notes/math/discrete_math/08.md
+        - 概率论:
+          - notes/math/probability/index.md
+          - notes/math/probability/C1.md
       - 其他: 
         - notes/others/yu.md 
     - CS:
