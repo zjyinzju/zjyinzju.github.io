@@ -28,6 +28,9 @@ nav:
         - notes/cs/logic/01.md
         - notes/cs/logic/02.md
         - notes/cs/logic/03.md
+      - 数据库系统:
+        - notes/cs/db/index.md
+        - notes/cs/db/01.md
       - 数学:
         - 离散数学:
           - notes/math/discrete_math/index.md
@@ -41,6 +44,7 @@ nav:
         - 概率论:
           - notes/math/probability/index.md
           - notes/math/probability/C1.md
+          - notes/math/probability/C2.md
       - 其他: 
         - notes/others/yu.md 
     - CS:
