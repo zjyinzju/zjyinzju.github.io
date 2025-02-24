@@ -31,6 +31,7 @@ nav:
       - 数据库系统:
         - notes/cs/db/index.md
         - notes/cs/db/01.md
+        - notes/cs/db/02.md
       - 数学:
         - 离散数学:
           - notes/math/discrete_math/index.md
