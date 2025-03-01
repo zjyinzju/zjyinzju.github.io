@@ -1232,6 +1232,46 @@
     The Relational Algebra
   </a>
   
+    <nav class="md-nav" aria-label="The Relational Algebra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-operations" class="md-nav__link">
+    Additional Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-relational-algebra-operations" class="md-nav__link">
+    Extended Relational Algebra Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Extended Relational Algebra Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalized-projection" class="md-nav__link">
+    Generalized Projection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-functions-and-operations" class="md-nav__link">
+    Aggregation Functions and Operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2288,6 +2328,46 @@
     The Relational Algebra
   </a>
   
+    <nav class="md-nav" aria-label="The Relational Algebra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-operations" class="md-nav__link">
+    Additional Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-relational-algebra-operations" class="md-nav__link">
+    Extended Relational Algebra Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Extended Relational Algebra Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalized-projection" class="md-nav__link">
+    Generalized Projection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-functions-and-operations" class="md-nav__link">
+    Aggregation Functions and Operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2391,13 +2471,258 @@
 </li>
 </ul>
 <h2 id="the-relational-algebra">The Relational Algebra<a class="headerlink" href="#the-relational-algebra" title="Permanent link">&para;</a></h2>
+<p>有六种基本操作：</p>
+<ul>
+<li>
+<p>Selection <strong><span class="arithmatex">\(\sigma\)</span></strong> : 选择满足某一条件的<strong>tuple</strong></p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_5.png" />
+</center>
+执行 <span class="arithmatex">\(\sigma_{A=B \land D &gt; 5}(r)\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_6.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Projection <strong><span class="arithmatex">\(\pi\)</span></strong> : 选择某些<strong>attributes</strong></p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_7.png" />
+</center>
+执行 <span class="arithmatex">\(\pi_{A, C}(r)\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_8.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Union <strong><span class="arithmatex">\(\cup\)</span></strong> : 两个关系的并集，要求两个关系的 attribute 数量相同，且 attribute 的 domain 应当是兼容的（例如数据类型等应当相同）</p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_9.png" />
+</center>
+执行 <span class="arithmatex">\(r \cup s\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_10.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Set Difference <strong><span class="arithmatex">\(-\)</span></strong> : 两个关系的差集，要求与 Union 相同</p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_11.png" />
+</center>
+执行 <span class="arithmatex">\(r - s\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_12.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Cartesian Product <strong><span class="arithmatex">\(\times\)</span></strong> : 两个关系的笛卡尔积，即两个关系的所有可能组合</p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_13.png" />
+</center>
+执行 <span class="arithmatex">\(r \times s\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_14.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Rename <strong><span class="arithmatex">\(\rho\)</span></strong> : 重命名关系或属性</p>
+<ul>
+<li>重命名关系：<span class="arithmatex">\(\rho_{r_1}(r)\)</span></li>
+<li>重命名属性：<span class="arithmatex">\(\rho_x(A_1, A_2, \cdots, A_n)(r)\)</span></li>
+</ul>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Find the largest salary in university</p>
+<ul>
+<li>需要比较不同教师的salary，因此需要重命名一次后用笛卡尔积将所有可能的组合找出：
+<center>
+<span class="arithmatex">\(Instructor \times \rho_d (Instructor)\)</span>
+</center></li>
+<li>进行反选，找出所有不是最大salary的组合：
+<center>
+<span class="arithmatex">\(\sigma_{Instructor.salary &lt; d.salary}(Instructor \times \rho_d(Instructor)\)</span>
+</center></li>
+<li>选择salary属性，原表减去上一步的结果即可：
+<center>
+<span class="arithmatex">\(\pi_{salary}(Instructor) - \pi_{Instructor.salary}(\sigma_{Instructor.salary &lt; d.salary}(Instructor \times \rho_d(Instructor))\)</span>
+</center></li>
+</ul>
+</div>
+<h3 id="additional-operations">Additional Operations<a class="headerlink" href="#additional-operations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Intersection <strong><span class="arithmatex">\(\cap\)</span></strong> : 两个关系的交集，
+可表达为 <span class="arithmatex">\(r \cap s = r - (r - s)\)</span></p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_15.png" />
+</center>
+执行 <span class="arithmatex">\(r \cap s\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_16.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Natural Join <strong><span class="arithmatex">\(\bowtie\)</span></strong> : 两个关系的自然连接，将两个关系相乘，然后选择两个关系中相同属性的值相等的元组</p>
+<details class="eg">
+<summary>Eg</summary>
+<p><span class="arithmatex">\(R = (A, B, C, D)\)</span>, <span class="arithmatex">\(S = (B, D, E)\)</span>
++ <span class="arithmatex">\(r \bowtie s = \pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B \land r.D = s.D}(r \times s))\)</span></p>
+</details>
+<details class="extra">
+<summary>natural join and Theta join</summary>
+<ul>
+<li>natural join: 满足交换律和结合律</li>
+<li>theta join: <span class="arithmatex">\(r \bowtie_{\theta} s = \sigma_{\theta}(r \times s)\)</span></li>
+</ul>
+</details>
+</li>
+<li>
+<p>Outer Join <strong><span class="arithmatex">\(\ltimes\)</span></strong>, <strong><span class="arithmatex">\(\rtimes\)</span></strong> <strong><span class="arithmatex">\(⟗\)</span></strong>:  避免了连接过程中信息的丢失。先进行自然连接然后将没有匹配的元组补全，缺失的属性用 NULL 填充</p>
+<div class="admonition eg">
+<p class="admonition-title">Eg</p>
+<p><center>
+<img alt="" src="../fig/c2_17.png" />
+</center></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">natural join</label><label for="__tabbed_1_2">left outer join</label><label for="__tabbed_1_3">right outer join</label><label for="__tabbed_1_4">full outer join</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><span class="arithmatex">\(Instructor \bowtie teaches\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_18.png" />
+</center></p>
+</div>
+<div class="tabbed-block">
+<p><span class="arithmatex">\(Instructor \ltimes teaches\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_19.png" />
+</center></p>
+</div>
+<div class="tabbed-block">
+<p><span class="arithmatex">\(Instructor \rtimes teaches\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_20.png" />
+</center></p>
+</div>
+<div class="tabbed-block">
+<p><span class="arithmatex">\(Instructor ⟗ teaches\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_21.png" />
+</center></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Outer Join using Joins</p>
+<ul>
+<li>左外连接：左外连接返回关系𝑟中的所有行，以及与𝑠匹配的行。如果没有匹配的行，结果会为𝑠中的列填充空值：
+<center>
+<span class="arithmatex">\(r \ltimes s = (r \bowtie s) \cup (r - \pi_{R} (r \bowtie s) \times \left\{ NULL, NULL, \cdots \right\})\)</span> 
+</center></li>
+<li>右外连接：右外连接返回关系𝑠中的所有行，以及与𝑟匹配的行。如果没有匹配的行，结果会为𝑟中的列填充空值：
+<center>
+<span class="arithmatex">\(r \rtimes s = (r \bowtie s) \cup \left\{ NULL, NULL, \cdots \right\} \times (s - \pi_{S} (r \bowtie s))\)</span>
+</center></li>
+<li>全外连接：全外连接返回两个关系的所有行，如果没有匹配的行，结果会为对应的列填充空值：
+<center>
+<span class="arithmatex">\(r ⟗ s = (r \bowtie s) \cup (r - \pi_{R} (r \bowtie s) \times \left\{ NULL, NULL, \cdots \right\}) \cup \left\{ NULL, NULL, \cdots \right\} \times (s - \pi_{S} (r \bowtie s))\)</span>
+</center></li>
+</ul>
+</div>
+</li>
+<li>
+<p>Semijoin <strong><span class="arithmatex">\(\ltimes_{\theta}\)</span></strong> :  <span class="arithmatex">\(r \ltimes_{\theta} s = \pi_{R}(r \bowtie_{\theta} s)\)</span>，后续查询优化中常用</p>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_23.png" />
+</center></p>
+</details>
+</li>
+<li>
+<p>Assignment <strong><span class="arithmatex">\(\leftarrow\)</span></strong> </p>
+</li>
+<li>
+<p>Division <strong><span class="arithmatex">\(\div\)</span></strong> : 给定关系 <span class="arithmatex">\(r(R)\)</span> 和 <span class="arithmatex">\(s(S)\)</span>，满足<span class="arithmatex">\(S \in R\)</span>, <span class="arithmatex">\(R \div S\)</span> 是使得 <span class="arithmatex">\(t \times s \in r\)</span> 的最大关系 <span class="arithmatex">\(t(R-S)\)</span></p>
+<ul>
+<li><span class="arithmatex">\(s\)</span> 的属性集合必须是 <span class="arithmatex">\(r\)</span> 的属性集合的子集</li>
+<li><span class="arithmatex">\(r \div s\)</span> 的结果是一个关系，其属性集合是 <span class="arithmatex">\(r\)</span> 的属性集合减去 <span class="arithmatex">\(s\)</span> 的属性集合</li>
+<li><span class="arithmatex">\(r \div s\)</span> 的结果是 <span class="arithmatex">\(r\)</span> 中的元组，且这些元组和 <span class="arithmatex">\(s\)</span> 的笛卡尔积的结果中的每一个元组都能在 <span class="arithmatex">\(r\)</span> 中找到一个匹配的元组</li>
+</ul>
+<details class="eg">
+<summary>Eg</summary>
+<p><center>
+<img alt="" src="../fig/c2_24.png" />
+</center>
+执行 <span class="arithmatex">\(r \div s\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_25.png" />
+</center></p>
+</details>
+</li>
+</ul>
+<p><span class="arithmatex">\(r \div s\)</span> 可以写成：</p>
+<div class="arithmatex">\[
+\begin{align*}
+    temp1 &amp; \leftarrow \Pi_{R-S}(r)\\
+    temp2 &amp; \leftarrow \Pi_{R-S}((temp1 \times s)- \Pi_{R-S,S}(r))\\
+    result &amp; = temp1 - temp2
+\end{align*}
+\]</div>
+<p><fontsize = 500px>上述 additional operations 都没有增加查询能力，只是为了方便查询。</fontsize></p>
+<h3 id="extended-relational-algebra-operations">Extended Relational Algebra Operations<a class="headerlink" href="#extended-relational-algebra-operations" title="Permanent link">&para;</a></h3>
+<h4 id="generalized-projection">Generalized Projection<a class="headerlink" href="#generalized-projection" title="Permanent link">&para;</a></h4>
+<p>在投影的条件中允许使用算术表达式，例如：
+<span class="arithmatex">\(\Pi_{ID, Salary, Salary/12}(Instructor)\)</span>
+知道年薪可以查询月薪</p>
+<h4 id="aggregation-functions-and-operations">Aggregation Functions and Operations<a class="headerlink" href="#aggregation-functions-and-operations" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Aggregation Functions: </p>
+<ol>
+<li>AVG: 平均值</li>
+<li>SUM: 求和</li>
+<li>COUNT: 计数(非空)</li>
+<li>MAX: 最大值</li>
+<li>MIN: 最小值</li>
+</ol>
+</li>
+<li>
+<p>Aggregation Operations in relational algebra
+<center>
+<span class="arithmatex">\(_{G_1, G_2, \cdots, G_n}\mathcal{G}_{F_1(A_1), F_2(A_2), \cdots, F_n(A_n)}(E)\)</span>
+</center></p>
+<p>其中：
++ <span class="arithmatex">\(G_1, G_2, \cdots, G_n\)</span> 是分组属性
++ <span class="arithmatex">\(F_1(A_1), F_2(A_2), \cdots, F_n(A_n)\)</span> 是上述五种聚合函数，<span class="arithmatex">\(A_i\)</span> 是属性
++ <span class="arithmatex">\(E\)</span> 是任何一个关系代数表达式</p>
+</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年2月24日 23:42:50</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月1日 11:47:45</span>
       
         <br>
         创建日期:
