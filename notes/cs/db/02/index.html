@@ -2583,8 +2583,10 @@
 <p>Natural Join <strong><span class="arithmatex">\(\bowtie\)</span></strong> : 两个关系的自然连接，将两个关系相乘，然后选择两个关系中相同属性的值相等的元组</p>
 <details class="eg">
 <summary>Eg</summary>
-<p><span class="arithmatex">\(R = (A, B, C, D)\)</span>, <span class="arithmatex">\(S = (B, D, E)\)</span>
-+ <span class="arithmatex">\(r \bowtie s = \pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B \land r.D = s.D}(r \times s))\)</span></p>
+<p><span class="arithmatex">\(R = (A, B, C, D)\)</span>, <span class="arithmatex">\(S = (B, D, E)\)</span></p>
+<ul>
+<li><span class="arithmatex">\(r \bowtie s = \Pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B \land r.D = s.D}(r \times s))\)</span></li>
+</ul>
 </details>
 <details class="extra">
 <summary>natural join and Theta join</summary>
@@ -2722,7 +2724,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月1日 11:47:45</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月1日 15:28:58</span>
       
         <br>
         创建日期:
