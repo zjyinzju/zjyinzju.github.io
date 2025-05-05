@@ -12,8 +12,5 @@
 ??? abstract "to do list"
 
     - [ ] 笔记填坑
-        * [x]  ADS
-        * [ ]  概率论
-        * [ ]  CS61A
-    - [ ] 了解 Makefile
-    - [ ] 日语学习
+        * [ ] 数据库
+        * [ ] Makefile
