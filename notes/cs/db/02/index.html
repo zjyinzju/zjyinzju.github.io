@@ -2834,12 +2834,6 @@
 <div class="tabbed-block">
 <p><span class="arithmatex">\(Instructor \bowtie teaches\)</span> 得到：
 <center>
-<img alt="" src="../fig/c2_18.png" />
-</center></p>
-</div>
-<div class="tabbed-block">
-<p><span class="arithmatex">\(Instructor \ltimes teaches\)</span> 得到：
-<center>
 <img alt="" src="../fig/c2_19.png" />
 </center></p>
 </div>
@@ -2850,9 +2844,15 @@
 </center></p>
 </div>
 <div class="tabbed-block">
-<p><span class="arithmatex">\(Instructor ⟗ teaches\)</span> 得到：
+<p><span class="arithmatex">\(Instructor \ltimes teaches\)</span> 得到：
 <center>
 <img alt="" src="../fig/c2_21.png" />
+</center></p>
+</div>
+<div class="tabbed-block">
+<p><span class="arithmatex">\(Instructor ⟗ teaches\)</span> 得到：
+<center>
+<img alt="" src="../fig/c2_18.png" />
 </center></p>
 </div>
 </div>
@@ -2863,15 +2863,15 @@
 <ul>
 <li>左外连接：左外连接返回关系𝑟中的所有行，以及与𝑠匹配的行。如果没有匹配的行，结果会为𝑠中的列填充空值：
 <center>
-<span class="arithmatex">\(r \ltimes s = (r \bowtie s) \cup (r - \pi_{R} (r \bowtie s) \times \left\{ NULL, NULL, \cdots \right\})\)</span> 
+<span class="arithmatex">\(r \rtimes s = (r \bowtie s) \cup (r - \pi_{R} (r \bowtie s)) \times \left\{ NULL, NULL, \cdots \right\}\)</span> 
 </center></li>
 <li>右外连接：右外连接返回关系𝑠中的所有行，以及与𝑟匹配的行。如果没有匹配的行，结果会为𝑟中的列填充空值：
 <center>
-<span class="arithmatex">\(r \rtimes s = (r \bowtie s) \cup \left\{ NULL, NULL, \cdots \right\} \times (s - \pi_{S} (r \bowtie s))\)</span>
+<span class="arithmatex">\(r \ltimes s = (r \bowtie s) \cup \left\{ NULL, NULL, \cdots \right\} \times (s - \pi_{S} (r \bowtie s))\)</span>
 </center></li>
 <li>全外连接：全外连接返回两个关系的所有行，如果没有匹配的行，结果会为对应的列填充空值：
 <center>
-<span class="arithmatex">\(r ⟗ s = (r \bowtie s) \cup (r - \pi_{R} (r \bowtie s) \times \left\{ NULL, NULL, \cdots \right\}) \cup \left\{ NULL, NULL, \cdots \right\} \times (s - \pi_{S} (r \bowtie s))\)</span>
+<span class="arithmatex">\(r ⟗ s = (r \bowtie s) \cup ((r - \pi_{R} (r \bowtie s)) \times \left\{ NULL, NULL, \cdots \right\}) \cup (\left\{ NULL, NULL, \cdots \right\} \times (s - \pi_{S} (r \bowtie s)))\)</span>
 </center></li>
 </ul>
 </div>
@@ -2889,11 +2889,11 @@
 <p>Assignment <strong><span class="arithmatex">\(\leftarrow\)</span></strong> </p>
 </li>
 <li>
-<p>Division <strong><span class="arithmatex">\(\div\)</span></strong> : 给定关系 <span class="arithmatex">\(r(R)\)</span> 和 <span class="arithmatex">\(s(S)\)</span>，满足<span class="arithmatex">\(S \in R\)</span>, <span class="arithmatex">\(R \div S\)</span> 是使得 <span class="arithmatex">\(t \times s \in r\)</span> 的最大关系 <span class="arithmatex">\(t(R-S)\)</span></p>
+<p>Division <strong><span class="arithmatex">\(\div\)</span></strong> : 给定关系 <span class="arithmatex">\(r(R)\)</span> 和 <span class="arithmatex">\(s(S)\)</span>，满足<span class="arithmatex">\(S \subset R\)</span>, <span class="arithmatex">\(R \div S\)</span> 是使得 <span class="arithmatex">\(t \times s \subsetneq r\)</span> 的最大关系 <span class="arithmatex">\(t(R-S)\)</span></p>
 <ul>
 <li><span class="arithmatex">\(s\)</span> 的属性集合必须是 <span class="arithmatex">\(r\)</span> 的属性集合的子集</li>
 <li><span class="arithmatex">\(r \div s\)</span> 的结果是一个关系，其属性集合是 <span class="arithmatex">\(r\)</span> 的属性集合减去 <span class="arithmatex">\(s\)</span> 的属性集合</li>
-<li><span class="arithmatex">\(r \div s\)</span> 的结果是 <span class="arithmatex">\(r\)</span> 中的元组，且这些元组和 <span class="arithmatex">\(s\)</span> 的笛卡尔积的结果中的每一个元组都能在 <span class="arithmatex">\(r\)</span> 中找到一个匹配的元组</li>
+<li><span class="arithmatex">\(r \div s\)</span> 的结果是 <span class="arithmatex">\(R\)</span> - <span class="arithmatex">\(S\)</span> 中的元组，且这些元组和 <span class="arithmatex">\(s\)</span> 的笛卡尔积的结果中的每一个元组都能在 <span class="arithmatex">\(r\)</span> 中找到一个匹配的元组</li>
 </ul>
 <details class="eg">
 <summary>Eg</summary>
@@ -3011,7 +3011,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月2日 21:36:38</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月12日 15:08:01</span>
       
         <br>
         创建日期:
