@@ -1376,6 +1376,19 @@
     Triggers
   </a>
   
+    <nav class="md-nav" aria-label="Triggers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statement-level-triggers" class="md-nav__link">
+    Statement-Level Triggers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2618,6 +2631,19 @@
     Triggers
   </a>
   
+    <nav class="md-nav" aria-label="Triggers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statement-level-triggers" class="md-nav__link">
+    Statement-Level Triggers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2640,10 +2666,8 @@
 
 <h1 id="chapter-5-advanced-sql">Chapter 5 Advanced SQL<a class="headerlink" href="#chapter-5-advanced-sql" title="Permanent link">&para;</a></h1>
 <h2 id="accessing-sql-from-a-programming-language">Accessing SQL from a Programming Language<a class="headerlink" href="#accessing-sql-from-a-programming-language" title="Permanent link">&para;</a></h2>
-<ul>
-<li>并非所有查询都可以用SQL来表示，因为</li>
-<li>人机交互时使用图形界面、发送语音图像等，无法只通过SQL来实现</li>
-</ul>
+<p>并非所有查询都可以用SQL来表示，因为
+人机交互时使用图形界面、发送语音图像等，无法只通过SQL来实现</p>
 <p>从通用编程语言中调用SQL主要有两种方式：
 1. API（类似于库函数）
 2. Embedded SQL
@@ -2657,10 +2681,12 @@
 <li>ODBC(Open Database Connectivity): with C, C++, C#</li>
 <li>JDBC(Java Database Connectivity): with Java</li>
 </ul>
-<p>应用程序通过调用：
-+ 和 Database server 连接
-+ 将SQL指令发送给database server
-+ 将结果元组one by one返回给应用程序</p>
+<p>应用程序通过调用：</p>
+<ul>
+<li>和 Database server 连接</li>
+<li>将SQL指令发送给database server</li>
+<li>将结果元组one by one返回给应用程序</li>
+</ul>
 <h4 id="jdbc">JDBC<a class="headerlink" href="#jdbc" title="Permanent link">&para;</a></h4>
 <ul>
 <li>JDBC支持元数据检索，可以获取数据库的schema相关信息</li>
@@ -3130,33 +3156,33 @@
 </ul>
 <details class="eg">
 <summary>trigger</summary>
-<p>```sql</p>
-<h1 id="record-the-transaction-in-account_log-if-the-balance-changes-by-more-than-1000">record the transaction in account_log if the balance changes by more than 1000<a class="headerlink" href="#record-the-transaction-in-account_log-if-the-balance-changes-by-more-than-1000" title="Permanent link">&para;</a></h1>
-<p>create trigger account_trigger 
-after update of account on balance
-referencing new row as nrow
-referencing old row as orow
-for each row
-when nrow.balance - orow.balance &gt; 1000 or 
-     orow.balance - nrow.balance &gt; 1000
-begin
-    insert into account_log values (nrow.account_no, nrow.balance - orow.balance, current_time());
-end;</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">record</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">transaction</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">account_log</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">more</span><span class="w"> </span><span class="k">than</span><span class="w"> </span><span class="mi">1000</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">create</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">account_trigger</span><span class="w"> </span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">after</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">balance</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="k">referencing</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nrow</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="k">referencing</span><span class="w"> </span><span class="k">old</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">orow</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">row</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="k">when</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">orow</span><span class="p">.</span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k">or</span><span class="w"> </span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">     </span><span class="n">orow</span><span class="p">.</span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">balance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="k">begin</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">    </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">account_log</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="n">nrow</span><span class="p">.</span><span class="n">account_no</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">orow</span><span class="p">.</span><span class="n">balance</span><span class="p">,</span><span class="w"> </span><span class="k">current_time</span><span class="p">());</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="k">end</span><span class="p">;</span>
+</span></code></pre></div>
 </details>
-<p>trigger 也可以用来检验数据的完整性，例如：
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">create</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">timeslot_check</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">section</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">referencing</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nrow</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">row</span>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="k">when</span><span class="p">(</span>
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">    </span><span class="n">nrom</span><span class="p">.</span><span class="n">time_slot_id</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="p">(</span>
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="n">time_slot_id</span><span class="w"> </span>
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="n">time_slot</span>
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="p">)</span>
-</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="p">)</span><span class="w"> </span>
-</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="k">begin</span><span class="w"> </span>
-</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">    </span><span class="k">rollback</span><span class="p">;</span>
-</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="k">end</span><span class="p">;</span>
-</span></code></pre></div></p>
+<p>trigger 也可以用来检验数据的完整性，例如：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">create</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">timeslot_check</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="k">insert</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">section</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">referencing</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nrow</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">row</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">when</span><span class="p">(</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">    </span><span class="n">nrom</span><span class="p">.</span><span class="n">time_slot_id</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="p">(</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="n">time_slot_id</span><span class="w"> </span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="n">time_slot</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="k">begin</span><span class="w"> </span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">    </span><span class="k">rollback</span><span class="p">;</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="k">end</span><span class="p">;</span>
+</span></code></pre></div>
 <ul>
 <li><code>referencing</code> - 引用新旧行<ul>
 <li><code>referencing new row as nrow</code>: for delete, update</li>
@@ -3177,7 +3203,7 @@ end;</p>
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月20日 12:30:55</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月12日 17:20:49</span>
       
         <br>
         创建日期:
