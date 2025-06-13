@@ -3059,13 +3059,13 @@
 <li>total runs: <span class="arithmatex">\(\lceil \frac{b_r}{M} \rceil\)</span></li>
 <li>total merge passes: <span class="arithmatex">\(\lceil \log_{M-1} \frac{b_r}{M} \rceil\)</span></li>
 <li>生成归并段时的block transfer: <span class="arithmatex">\(2b_r\)</span>；每一轮merge的block transfer也是<span class="arithmatex">\(2b_r\)</span>（忽略最后一轮，最后一轮可能不会写到disk中）</li>
-<li><strong>总的block transfer</strong>: <span class="arithmatex">\(2b_r + 2b_r (\lceil \log_{M-1} \frac{b_r}{M} \rceil - 1)  = b_r (2\lceil \log_{M-1} \frac{b_r}{M} \rceil + 1)\)</span></li>
+<li><strong>总的block transfer</strong>: <span class="arithmatex">\(2b_r + 2b_r (\lceil \log_{M-1} \frac{b_r}{M} \rceil - 1) + b_r = b_r (2\lceil \log_{M-1} \frac{b_r}{M} \rceil + 1)\)</span></li>
 </ul>
 </li>
 <li>seek: <ul>
 <li>生成归并段时：每一段需要一次读和一次写，总计<span class="arithmatex">\(2\lceil \frac{b_r}{M} \rceil\)</span>次seek</li>
 <li>merge时：每一轮需要<span class="arithmatex">\(2b_r\)</span>次seek(一次读一次写，最后一次认为不需要写)</li>
-<li><strong>总的seek</strong>: <span class="arithmatex">\(2\lceil \frac{b_r}{M} \rceil + 2b_r (\lceil \log_{M-1} \frac{b_r}{M} \rceil - 1) + b_r = 2\lceil \frac{b_r}{M} \rceil + b_r (2\lceil \log_{M-1} \frac{b_r}{M} \rceil + 1)\)</span></li>
+<li><strong>总的seek</strong>: <span class="arithmatex">\(2\lceil \frac{b_r}{M} \rceil + 2b_r (\lceil \log_{M-1} \frac{b_r}{M} \rceil - 1) + b_r = 2\lceil \frac{b_r}{M} \rceil + b_r (2\lceil \log_{M-1} \frac{b_r}{M} \rceil - 1)\)</span></li>
 </ul>
 </li>
 </ol>
@@ -3073,9 +3073,9 @@
 <li>
 <p>cost(advanced): 每个段分配<span class="arithmatex">\(b_b\)</span>个block作为buffer input</p>
 <ul>
-<li>相应的，每一轮merge的段数为<span class="arithmatex">\(\lfloor \frac{N}{b_b} \rfloor - 1\)</span>，</li>
+<li>相应的，每一轮merge的段数为<span class="arithmatex">\(\lfloor \frac{M}{b_b} \rfloor - 1\)</span>，</li>
 <li>block transfer: 换个底数<ul>
-<li><span class="arithmatex">\(2b_r + 2b_r (\lceil \log_{\lfloor \frac{M}{b_b} \rfloor - 1} \frac{b_r}{M} \rceil - 1) = b_r (2\lceil \log_{\lfloor \frac{M}{b_b} \rfloor - 1} \frac{b_r}{M} \rceil + 1)\)</span></li>
+<li><span class="arithmatex">\(2b_r + 2b_r (\lceil \log_{\lfloor \frac{M}{b_b} \rfloor - 1} \frac{b_r}{M} \rceil - 1) + b_r = b_r (2\lceil \log_{\lfloor \frac{M}{b_b} \rfloor - 1} \frac{b_r}{M} \rceil + 1)\)</span></li>
 </ul>
 </li>
 <li>seek:<ul>
@@ -3093,14 +3093,20 @@
 <h2 id="join-operation">Join Operation<a class="headerlink" href="#join-operation" title="Permanent link">&para;</a></h2>
 <p><span class="arithmatex">\(r \bowtie_{\theta} s\)</span></p>
 <h3 id="nested-loop-join">Nested Loop Join<a class="headerlink" href="#nested-loop-join" title="Permanent link">&para;</a></h3>
-<p>元组层级的两层for循环，泛用但是效率低下：
-+ block transfer: <span class="arithmatex">\(n_r * b_s + b_r\)</span>, 外层每个元组都要将内层的关系读入内存
-+ seek: <span class="arithmatex">\(n_r + b_r\)</span> </p>
+<p>元组层级的两层for循环，泛用但是效率低下：</p>
+<ul>
+<li>block transfer: <span class="arithmatex">\(n_r * b_s + b_r\)</span>, 外层每个元组都要将内层的关系读入内存</li>
+<li>seek: <span class="arithmatex">\(n_r + b_r\)</span> </li>
+</ul>
 <h3 id="block-nested-loop-join">Block Nested Loop Join<a class="headerlink" href="#block-nested-loop-join" title="Permanent link">&para;</a></h3>
-<p>block层级的两层for循环，然后块内元组层级的两层for循环：
-+ worst case: 
-    + block transfer: <span class="arithmatex">\(b_r * b_s + b_r\)</span> 
-    + seek: <span class="arithmatex">\(2b_r\)</span></p>
+<p>block层级的两层for循环，然后块内元组层级的两层for循环：</p>
+<ul>
+<li>worst case: <ul>
+<li>block transfer: <span class="arithmatex">\(b_r * b_s + b_r\)</span> </li>
+<li>seek: <span class="arithmatex">\(2b_r\)</span></li>
+</ul>
+</li>
+</ul>
 <p>假设内存中有<span class="arithmatex">\(M\)</span>个block：其中一块要作为output buffer
 + 给外关系r分配<span class="arithmatex">\(M-2\)</span>个block作为input buffer；内关系s分配1个block作为input buffer；则：
     + block transfer: <span class="arithmatex">\(\lceil \frac{b_r}{M-2} \rceil * b_s + b_r\)</span>
@@ -3153,14 +3159,22 @@
 <li>外关系r称为probe input，加载内关系的分组后，外关系各元组在内存中进行hash index查找</li>
 </ul>
 <h4 id="recursive-partitioning">Recursive partitioning<a class="headerlink" href="#recursive-partitioning" title="Permanent link">&para;</a></h4>
-<p>如果直接按 <span class="arithmatex">\(n\)</span> 分区，但 <span class="arithmatex">\( n &gt; M \)</span>，则buffer 不够用，需要递归分区，流程大致如下：
-1. <strong>第一次分区</strong>：
-   - 对关系 <span class="arithmatex">\( s \)</span> 和 <span class="arithmatex">\( r \)</span> 用哈希函数 <span class="arithmatex">\( h_1 \)</span> 划分为 <span class="arithmatex">\( M-1 \)</span> 个分区（<span class="arithmatex">\( s_0, s_1, \ldots, s_{M-2} \)</span> 和 <span class="arithmatex">\( r_0, r_1, \ldots, r_{M-2} \)</span>）。
-2. <strong>递归检查</strong>：
-   - 如果某个 <span class="arithmatex">\( s_i \)</span> 仍然大于内存 <span class="arithmatex">\( M \)</span>，则对其 <strong>再用另一个哈希函数 <span class="arithmatex">\( h_2 \)</span></strong> 划分为 <span class="arithmatex">\( M-1 \)</span> 个子分区。
-   - 重复此过程，直到所有 <span class="arithmatex">\( s_i \)</span> 能完全装入内存。
-3. <strong>探测阶段</strong>：
-   - 对最终的分区对 <span class="arithmatex">\( (r_i, s_i) \)</span> 执行常规 Hash Join（将 <span class="arithmatex">\( s_i \)</span> 装入内存，扫描 <span class="arithmatex">\( r_i \)</span> 匹配元组）。</p>
+<p>如果直接按 <span class="arithmatex">\(n\)</span> 分区，但 <span class="arithmatex">\( n &gt; M \)</span>，则buffer 不够用，需要递归分区，流程大致如下：</p>
+<ol>
+<li><strong>第一次分区</strong>：<ul>
+<li>对关系 <span class="arithmatex">\( s \)</span> 和 <span class="arithmatex">\( r \)</span> 用哈希函数 <span class="arithmatex">\( h_1 \)</span> 划分为 <span class="arithmatex">\( M-1 \)</span> 个分区（<span class="arithmatex">\( s_0, s_1, \ldots, s_{M-2} \)</span> 和 <span class="arithmatex">\( r_0, r_1, \ldots, r_{M-2} \)</span>）。</li>
+</ul>
+</li>
+<li><strong>递归检查</strong>：<ul>
+<li>如果某个 <span class="arithmatex">\( s_i \)</span> 仍然大于内存 <span class="arithmatex">\( M \)</span>，则对其 <strong>再用另一个哈希函数 <span class="arithmatex">\( h_2 \)</span></strong> 划分为 <span class="arithmatex">\( M-1 \)</span> 个子分区。</li>
+<li>重复此过程，直到所有 <span class="arithmatex">\( s_i \)</span> 能完全装入内存。</li>
+</ul>
+</li>
+<li><strong>探测阶段</strong>：<ul>
+<li>对最终的分区对 <span class="arithmatex">\( (r_i, s_i) \)</span> 执行常规 Hash Join（将 <span class="arithmatex">\( s_i \)</span> 装入内存，扫描 <span class="arithmatex">\( r_i \)</span> 匹配元组）。</li>
+</ul>
+</li>
+</ol>
 <p>如果满足以下条件，则 <strong>无需递归分区</strong>：</p>
 <ul>
 <li><span class="arithmatex">\(M \geq \lceil \frac{b_s}{M} \rceil + 1\)</span> =&gt; $M \geq \sqrt{b_s} </li>
@@ -3206,7 +3220,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 20:19:51</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 20:54:02</span>
       
         <br>
         创建日期:
