@@ -2754,7 +2754,7 @@
 <p>组合条件：中选率（selectivity):</p>
 <ul>
 <li>记<span class="arithmatex">\(s_i\)</span>为r中满足选择条件<span class="arithmatex">\(\theta_i\)</span>的元组数目；
-则<span class="arithmatex">\(\theta_i\)</span>的中选率为：$s_i / n</li>
+则<span class="arithmatex">\(\theta_i\)</span>的中选率为：<span class="arithmatex">\(s_i / n_r\)</span></li>
 </ul>
 </li>
 </ul>
@@ -2785,7 +2785,7 @@
 <li>若r和s没有公共属性，则 <span class="arithmatex">\(r \bowtie s\)</span>和笛卡尔积相同</li>
 <li>若r和s有公共属性，则<span class="arithmatex">\(r \bowtie s\)</span>元组数量不超过<span class="arithmatex">\(n_r\)</span><ul>
 <li>公共属性是s中引用r的外键，则<span class="arithmatex">\(r \bowtie s\)</span>的元组数目等于<span class="arithmatex">\(n_s\)</span></li>
-<li>如果不是键，则可以这样估算：R中的每一个元组平均下来可以和S中<span class="arithmatex">\(\frac{n_s}{V(A, s)}\)</span>个元组匹配，因此<span class="arithmatex">\(r \bowtie s\)</span>的元组数目可以估算为：
+<li>如果不是键，则可以这样估算: 记<span class="arithmatex">\(A = R \cap S\)</span>,<span class="arithmatex">\(R\)</span>中的每一个元组平均下来可以和<span class="arithmatex">\(S\)</span>中<span class="arithmatex">\(\frac{n_s}{V(A, s)}\)</span>个元组匹配，因此<span class="arithmatex">\(r \bowtie s\)</span>的元组数目可以估算为：
     <center>
     <span class="arithmatex">\(\frac{n_r \cdot n_s}{V(A, s)}\)</span>, or 
     <span class="arithmatex">\(\frac{n_r \cdot n_s}{V(A, r)}\)</span>
@@ -2863,7 +2863,7 @@
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">              </span><span class="k">from</span><span class="w"> </span><span class="n">teaches</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">              </span><span class="k">where</span><span class="w"> </span><span class="n">teaches</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2022</span><span class="p">);</span>
 </span></code></pre></div></p>
-<p>一般而言，如下的SQL查询可以这样转换：
+<p>一般而言，如下的SQL查询：
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">select</span><span class="w"> </span><span class="n">A</span><span class="w"> </span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">from</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">rn</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">where</span><span class="w"> </span><span class="n">P1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="p">(</span>
@@ -2871,12 +2871,16 @@
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">sm</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">P2</span><span class="o">^</span><span class="mi">1</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">P2</span><span class="o">^</span><span class="mi">2</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">)</span>
-</span></code></pre></div>
-可以转换为<span class="arithmatex">\(\Pi_A(r_1 \times r_2 \times \cdots \times r_n ) \bowtie_{P_2^2}\sigma_{P_2^1}(s_1 \times s_2 \times \cdots \times s_m)\)</span>
-+ <span class="arithmatex">\(P_2^1\)</span>不包含任何correlation variable
-+ <span class="arithmatex">\(P_2^2\)</span>包含correlation variable</p>
+</span></code></pre></div></p>
+<p>可以转换为<span class="arithmatex">\(\Pi_A(r_1 \times r_2 \times \cdots \times r_n ) \bowtie_{P_2^2}\sigma_{P_2^1}(s_1 \times s_2 \times \cdots \times s_m)\)</span></p>
 <ul>
-<li>将嵌套查询转换为带有join/semijoin查询的过程称为<strong>decorrelation</strong> </li>
+<li><span class="arithmatex">\(P_2^1\)</span>不包含任何correlation variable</li>
+<li>
+<p><span class="arithmatex">\(P_2^2\)</span>包含correlation variable</p>
+</li>
+<li>
+<p>将嵌套查询转换为带有join/semijoin查询的过程称为<strong>decorrelation</strong> </p>
+</li>
 </ul>
 <h4 id="decorrelation">Decorrelation<a class="headerlink" href="#decorrelation" title="Permanent link">&para;</a></h4>
 <p>去除相关对于标量、聚合子查询的一些情况会更复杂：</p>
@@ -2899,14 +2903,17 @@
 <li>incremental view maintenance增量维护：不需要重新计算所有数据，只对更新的部分进行局部修改</li>
 </ul>
 <h5 id="join-select">Join &amp; select<a class="headerlink" href="#join-select" title="Permanent link">&para;</a></h5>
-<p><img :=":" align="left" alt="" src="../fig/c16_5.png" width="200" /> <img :=":" align="center" alt="" src="../fig/c16_6.png" width="200" /></p>
+<p><img alt="" src="../fig/c16_5.png" width="200" /> </p>
+<p><img alt="" src="../fig/c16_6.png" width="200" /></p>
 <h5 id="projection">Projection<a class="headerlink" href="#projection" title="Permanent link">&para;</a></h5>
-<p>对于<span class="arithmatex">\(\Pi_A(r)\)</span>，需要额外记录原始表中A出现的count：
-+ insert：increment count
-+ delete: decrement count / if 0 then delete the result of <span class="arithmatex">\(\Pi_A(r)\)</span></p>
+<p>对于<span class="arithmatex">\(\Pi_A(r)\)</span>，需要额外记录原始表中A出现的count：</p>
+<ul>
+<li>insert：increment count</li>
+<li>delete: decrement count / if 0 then delete the result of <span class="arithmatex">\(\Pi_A(r)\)</span></li>
+</ul>
 <h5 id="aggregation-operations">Aggregation Operations<a class="headerlink" href="#aggregation-operations" title="Permanent link">&para;</a></h5>
 <ol>
-<li>count ：$v = <em count_B_="count(B)">{A}\mathcal{G}</em>(r) $ </li>
+<li>count ：<span class="arithmatex">\(v = _{A}\mathcal{G}_{count(B)}(r)\)</span> </li>
 <li>Insert：  <ul>
 <li>对于每个新插入的元组 <code>r</code>，检查其分组键 <code>A</code> 是否已存在于结果集 <code>v</code> 中：  </li>
 <li>若存在，则将该组的计数 <code>count</code> 加 1  </li>
@@ -2954,7 +2961,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月7日 00:10:23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 23:11:22</span>
       
         <br>
         创建日期:
