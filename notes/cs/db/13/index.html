@@ -2741,7 +2741,7 @@
 </ul>
 </li>
 </ul>
-<p><img align="left" alt="" src="../fig/c18_5.png" width="270" /></p>
+<p><img alt="" src="../fig/c18_5.png" /></p>
 <ul>
 <li>
 <p>记录授予的锁、锁的类型、等待的请求和请求锁的类型
@@ -2804,17 +2804,27 @@
 <p>两种机制下，回滚事务都会按其原始的timestamp重启，因此older transaction始终先于younger transaction执行，从而避免了starvation的发生</p>
 <h3 id="deadlock-detection">Deadlock Detection<a class="headerlink" href="#deadlock-detection" title="Permanent link">&para;</a></h3>
 <p>不进行事先预防，而是允许死锁发生，然后检测并解决。</p>
-<p>维护一个wait-for graph G = (V, E)，其中：
-+ V 是事务顶点集合
-+ E 是有向边集合：
-    + 如果<span class="arithmatex">\(T_i \to T_j\)</span>，则表示<span class="arithmatex">\(T_i\)</span>等待<span class="arithmatex">\(T_j\)</span>释放锁</p>
-<p>当事务<span class="arithmatex">\(T_i\)</span>请求某个数据项的锁时：
-+ 如果<span class="arithmatex">\(T_j\)</span>当前持有该数据项的锁，则添加边<span class="arithmatex">\(T_i \to T_j\)</span>
-+ 当<span class="arithmatex">\(T_j\)</span>释放锁时，删除边<span class="arithmatex">\(T_i \to T_j\)</span></p>
-<p>deadlock state &lt;=&gt; 有向图中存在环
-+ 可以使用深度优先搜索（DFS）检测图中的环
-+ 一旦检测到死锁，可以选择回滚某个事务来打破环
-    + 也可能发生starvation</p>
+<p>维护一个wait-for graph G = (V, E)，其中：</p>
+<ul>
+<li>V 是事务顶点集合</li>
+<li>E 是有向边集合：<ul>
+<li>如果<span class="arithmatex">\(T_i \to T_j\)</span>，则表示<span class="arithmatex">\(T_i\)</span>等待<span class="arithmatex">\(T_j\)</span>释放锁</li>
+</ul>
+</li>
+</ul>
+<p>当事务<span class="arithmatex">\(T_i\)</span>请求某个数据项的锁时：</p>
+<ul>
+<li>如果<span class="arithmatex">\(T_j\)</span>当前持有该数据项的锁，则添加边<span class="arithmatex">\(T_i \to T_j\)</span></li>
+<li>当<span class="arithmatex">\(T_j\)</span>释放锁时，删除边<span class="arithmatex">\(T_i \to T_j\)</span></li>
+</ul>
+<p>deadlock state &lt;=&gt; 有向图中存在环</p>
+<ul>
+<li>可以使用深度优先搜索（DFS）检测图中的环</li>
+<li>一旦检测到死锁，可以选择回滚某个事务来打破环<ul>
+<li>也可能发生starvation</li>
+</ul>
+</li>
+</ul>
 <h2 id="graph-based-protocols">Graph-Based Protocols<a class="headerlink" href="#graph-based-protocols" title="Permanent link">&para;</a></h2>
 <p>2PL疑似有些太严格了，图协议允许更灵活的锁定和释放策略。</p>
 <ul>
@@ -2844,10 +2854,13 @@
 </ul>
 <p>最大的限制是需要先验地知道数据项的偏序关系，否则无法构建树结构；但对于某些偏序关系是自然存在的场景来说比较方便</p>
 <h2 id="multiple-granularity">Multiple Granularity（多粒度锁协议）<a class="headerlink" href="#multiple-granularity" title="Permanent link">&para;</a></h2>
-<p>加锁的数据项粒度不同，可以用树结构来表示：
-+ fine granularity(细粒度)：高并发、锁开销大（可能会有很多锁）
-+ coarse granularity(粗粒度)：低并发、锁开销小<center>
-<img alt="" src="../fig/c18_7.png" width="400" />
+<p>加锁的数据项粒度不同，可以用树结构来表示：</p>
+<ul>
+<li>fine granularity(细粒度)：高并发、锁开销大（可能会有很多锁）</li>
+<li>coarse granularity(粗粒度)：低并发、锁开销小
+<center></li>
+</ul>
+<p><img alt="" src="../fig/c18_7.png" width="400" />
 </center></p>
 <ul>
 <li>database -&gt; area -&gt; file(table) -&gt; record </li>
@@ -2883,10 +2896,12 @@
 <p><img alt="" src="../fig/c18_9.png" width="400" />
 </center></p>
 <h3 id="insert-and-delete-operations">Insert and Delete Operations<a class="headerlink" href="#insert-and-delete-operations" title="Permanent link">&para;</a></h3>
-<p>在应用2PL锁后，插入和删除可能导致phantom phenomenon，即一个事务在扫描关系读取元组信息时，另一个事务可能同时插入或删除元组。
-+ 一个解决思路是给整个表加X锁，但这样会导致并发度降低
-+ 更细的粒度是对相关数据项相关的谓词上加锁（例如<code>age=18</code>），但这需要对谓词进行解析和分析，复杂度较高
-+ 另一种思路是<strong>Index locking</strong>，即对需要特定的B+树索引桶加锁，并发性相对高</p>
+<p>在应用2PL锁后，插入和删除可能导致phantom phenomenon，即一个事务在扫描关系读取元组信息时，另一个事务可能同时插入或删除元组。</p>
+<ul>
+<li>一个解决思路是给整个表加X锁，但这样会导致并发度降低</li>
+<li>更细的粒度是对相关数据项相关的谓词上加锁（例如<code>age=18</code>），但这需要对谓词进行解析和分析，复杂度较高</li>
+<li>另一种思路是<strong>Index locking</strong>，即对需要特定的B+树索引桶加锁，并发性相对高</li>
+</ul>
 <h4 id="index-locking-protocol">Index Locking Protocol<a class="headerlink" href="#index-locking-protocol" title="Permanent link">&para;</a></h4>
 <ul>
 <li>索引锁定协议：</li>
@@ -2903,9 +2918,11 @@
 </li>
 <li>必须遵守两阶段锁定协议的规则</li>
 </ul>
-<p>这保证了幻影现象不会发生，因为：
-+ 查询时锁定了所有可能包含查询结果的索引范围（包括当前为空的区域）
-+ 插入时必须获取对应索引位置的排他锁，这会与查询的共享锁冲突，因此新插入的记录无法出现在已查询的范围内</p>
+<p>这保证了幻影现象不会发生，因为：</p>
+<ul>
+<li>查询时锁定了所有可能包含查询结果的索引范围（包括当前为空的区域）</li>
+<li>插入时必须获取对应索引位置的排他锁，这会与查询的共享锁冲突，因此新插入的记录无法出现在已查询的范围内</li>
+</ul>
 <h2 id="multiversion-schemes">Multiversion Schemes<a class="headerlink" href="#multiversion-schemes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>每次成功的写操作都会创建一个新的版本</li>
@@ -2919,7 +2936,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月7日 21:41:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 23:48:58</span>
       
         <br>
         创建日期:
