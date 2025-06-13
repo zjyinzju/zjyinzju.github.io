@@ -2630,8 +2630,8 @@
 </ul>
 </details>
 <blockquote>
-<p>主索引和数据文件顺序一致，点查和范围查都很快
-Secondary Index 可能出现一个search-key对应多个record的情况</p>
+<p>主索引和数据文件顺序一致，点查和范围查都很快</p>
+<p>Secondary Index 可能出现一个search-key对应多个record的情况</p>
 </blockquote>
 <ul>
 <li>Dense Index(稠密索引): 索引文件中包含所有的search-key值</li>
@@ -2691,13 +2691,19 @@ Secondary Index 可能出现一个search-key对应多个record的情况</p>
 </ul>
 <h3 id="height-and-size-estimation">height and size estimation<a class="headerlink" href="#height-and-size-estimation" title="Permanent link">&para;</a></h3>
 <ul>
-<li>fan-out: $ n = \lceil \frac{block_ size - pointer_ size}{Search_ key_ size + pointer_ size} \rceil + 1$</li>
+<li>fan-out: $ n = \lceil \frac{block_{size} - pointer_{size}}{SearchKey_{size} + pointer_ size} \rceil + 1$</li>
 </ul>
 <h3 id="b-tree-file-organization">B+ Tree File Organization<a class="headerlink" href="#b-tree-file-organization" title="Permanent link">&para;</a></h3>
-<p>叶节点不存pointers而存records
-+ record通常比pointer大，因此提高空间利用率比较重要
-    + 一种优化是在插入、删除时放宽分裂和合并的条件，从而减少分裂或合并的次数：允许两个以上的兄弟节点共同承担
-        + 例如重新分配时涉及2个兄弟节点（共3个节点参与），可使每个节点至少包含⌊2n/3⌋个entries</p>
+<p>叶节点不存pointers而存records</p>
+<ul>
+<li>record通常比pointer大，因此提高空间利用率比较重要<ul>
+<li>一种优化是在插入、删除时放宽分裂和合并的条件，从而减少分裂或合并的次数：允许两个以上的兄弟节点共同承担<ul>
+<li>例如重新分配时涉及2个兄弟节点（共3个节点参与），可使每个节点至少包含⌊2n/3⌋个entries</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="other-issues">Other issues<a class="headerlink" href="#other-issues" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -2745,40 +2751,50 @@ merge时只需要拿第一个树的叶所在的block参与到整个排序中，�
 这时需要引入新的结构：LSM tree（Log-Structured Merge Tree）</p>
 <h3 id="indexing-in-main-memory">Indexing in Main Memory<a class="headerlink" href="#indexing-in-main-memory" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>内存随机访问的成本</strong>：</li>
-<li>虽然比磁盘/闪存访问便宜得多，但相比缓存读取仍然昂贵</li>
 <li>
-<p>在大B+树节点中进行二分查找会导致很多缓存未命中(cache misses)</p>
+<p><strong>内存随机访问的成本</strong>：</p>
+<ul>
+<li>虽然比磁盘/闪存访问便宜得多，但相比缓存读取仍然昂贵</li>
+<li>在大B+树节点中进行二分查找会导致很多缓存未命中(cache misses)</li>
+</ul>
 </li>
 <li>
 <p><strong>cache conscious设计</strong>：</p>
-</li>
+<ul>
 <li>优先选择能最好利用缓存的数据结构</li>
-<li>
-<p>使用能放入缓存行(cache line)的小节点B+树可以减少缓存未命中</p>
+<li>使用能放入缓存行(cache line)的小节点B+树可以减少缓存未命中</li>
+</ul>
 </li>
 <li>
 <p><strong>核心思想</strong>：</p>
-</li>
+<ul>
 <li>使用大节点优化磁盘访问(减少I/O)</li>
 <li>但在节点内部使用小节点构成的树结构(而非searchKey-Pointer构成的数组)来优化缓存访问</li>
+</ul>
+<details class="eg">
+<summary>Eg</summary>
+<p><center> <img alt="" src="../fig/c14_6.png" /> </center></p>
+</details>
+</li>
 </ol>
-<p>??? eg 
-       <center> <img alt="" src="../fig/c14_6.png" /> </center></p>
 <h3 id="indexing-in-flash">Indexing in Flash<a class="headerlink" href="#indexing-in-flash" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Flash 中：</li>
-<li>随机读写成本显著低于传统磁盘(20-100微秒)</li>
 <li>
-<p>写入不是原地更新(in-place)，最终需要擦除(erase)操作</p>
+<p>Flash 中：</p>
+<ul>
+<li>随机读写成本显著低于传统磁盘(20-100微秒)</li>
+<li>写入不是原地更新(in-place)，最终需要擦除(erase)操作</li>
+</ul>
 </li>
 <li>
 <p>Page size optimize：</p>
-</li>
+<ul>
 <li>最佳page size比传统磁盘小得多，因为erase操作的代价高</li>
 <li>bulk-loading仍然有用，因为它能最小化页面擦除次数</li>
 <li>采用写优化树结构(如LSM-tree, Buffer Tree)来最小化flash的写入次数</li>
 <li>这些结构已被适配用于创建闪存优化的搜索树</li>
+</ul>
+</li>
 </ol>
 <h4 id="log-structured-merge-tree-lsm-tree">Log Structured Merge Tree (LSM Tree)<a class="headerlink" href="#log-structured-merge-tree-lsm-tree" title="Permanent link">&para;</a></h4>
 <ul>
@@ -2814,20 +2830,30 @@ merge时只需要拿第一个树的叶所在的block参与到整个排序中，�
 </ul>
 <h5 id="stepped-merge-index">Stepped Merge Index<a class="headerlink" href="#stepped-merge-index" title="Permanent link">&para;</a></h5>
 <p>Disk 中的各层都有k个<span class="arithmatex">\(L_i\)</span> Tree:
-<center> <img alt="" src="../fig/c14_7.png" /> </center>
-+ 当前层的k个树都满了，才会merge到下一层
-+ write cost 进一步减少，但query cost 进一步增加</p>
-<p>对点查询的优化：
-+ 为每一个树维护一个<strong>Bloom filter</strong>(存放在内存中)
-    + 查询时先查Bloom filter，判断是否在该树中
-    + 如果在，才去查该树，否则直接跳过</p>
+<center> <img alt="" src="../fig/c14_7.png" /> </center></p>
+<ul>
+<li>
+<p>当前层的k个树都满了，才会merge到下一层</p>
+</li>
+<li>
+<p>write cost 进一步减少，但query cost 进一步增加</p>
+</li>
+</ul>
+<p>对点查询的优化：</p>
+<ul>
+<li>为每一个树维护一个<strong>Bloom filter</strong>(存放在内存中)<ul>
+<li>查询时先查Bloom filter，判断是否在该树中</li>
+<li>如果在，才去查该树，否则直接跳过</li>
+</ul>
+</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年5月5日 20:57:26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 19:31:29</span>
       
         <br>
         创建日期:
