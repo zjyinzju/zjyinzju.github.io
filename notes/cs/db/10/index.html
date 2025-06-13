@@ -1482,6 +1482,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cost-analysis" class="md-nav__link">
+    Cost analysis
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2799,6 +2806,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cost-analysis" class="md-nav__link">
+    Cost analysis
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3103,16 +3117,22 @@
 <ul>
 <li>worst case: <ul>
 <li>block transfer: <span class="arithmatex">\(b_r * b_s + b_r\)</span> </li>
-<li>seek: <span class="arithmatex">\(2b_r\)</span></li>
+<li>seek: <span class="arithmatex">\(2b_r\)</span>（一次定位到外关系的第一个block，之后内外反复定位）</li>
 </ul>
 </li>
 </ul>
-<p>假设内存中有<span class="arithmatex">\(M\)</span>个block：其中一块要作为output buffer
-+ 给外关系r分配<span class="arithmatex">\(M-2\)</span>个block作为input buffer；内关系s分配1个block作为input buffer；则：
-    + block transfer: <span class="arithmatex">\(\lceil \frac{b_r}{M-2} \rceil * b_s + b_r\)</span>
-    + seek: <span class="arithmatex">\(2\lceil \frac{b_r}{M-2} \rceil\)</span></p>
+<p>假设内存中有<span class="arithmatex">\(M\)</span>个block：其中一块要作为output buffer</p>
 <ul>
-<li>best case: 内存足够大/表足够小 =&gt; 一次性读入<ul>
+<li>
+<p>给外关系r分配<span class="arithmatex">\(M-2\)</span>个block作为input buffer；内关系s分配1个block作为input buffer；则：</p>
+<ul>
+<li>block transfer: <span class="arithmatex">\(\lceil \frac{b_r}{M-2} \rceil * b_s + b_r\)</span></li>
+<li>seek: <span class="arithmatex">\(2\lceil \frac{b_r}{M-2} \rceil\)</span></li>
+</ul>
+</li>
+<li>
+<p>best case: 内存足够大/表足够小 =&gt; 一次性读入</p>
+<ul>
 <li>block transfer: <span class="arithmatex">\(b_r + b_s\)</span></li>
 <li>seek: <span class="arithmatex">\(2\)</span> </li>
 </ul>
@@ -3155,11 +3175,14 @@
 <p>分组后只要在相同哈希值的内外组上进行join即可</p>
 <ul>
 <li>对每一个Partition，都要有对应的buffer block</li>
-<li>内关系s称为build input，先将其读入内存并建立hash index</li>
+<li>内关系s称为build input，先将其读入内存并建立hash index<ul>
+<li>构建hash index时用的哈希函数和此前分片时用的哈希函数不同。但<strong>二者都只作用在能够进行连接的属性上</strong>。</li>
+</ul>
+</li>
 <li>外关系r称为probe input，加载内关系的分组后，外关系各元组在内存中进行hash index查找</li>
 </ul>
 <h4 id="recursive-partitioning">Recursive partitioning<a class="headerlink" href="#recursive-partitioning" title="Permanent link">&para;</a></h4>
-<p>如果直接按 <span class="arithmatex">\(n\)</span> 分区，但 <span class="arithmatex">\( n &gt; M \)</span>，则buffer 不够用，需要递归分区，流程大致如下：</p>
+<p>如果直接按 <span class="arithmatex">\(n\)</span> 分区，但<span class="arithmatex">\(n \geq M\)</span>，则buffer 不够用，需要递归分区，流程大致如下：</p>
 <ol>
 <li><strong>第一次分区</strong>：<ul>
 <li>对关系 <span class="arithmatex">\( s \)</span> 和 <span class="arithmatex">\( r \)</span> 用哈希函数 <span class="arithmatex">\( h_1 \)</span> 划分为 <span class="arithmatex">\( M-1 \)</span> 个分区（<span class="arithmatex">\( s_0, s_1, \ldots, s_{M-2} \)</span> 和 <span class="arithmatex">\( r_0, r_1, \ldots, r_{M-2} \)</span>）。</li>
@@ -3170,15 +3193,56 @@
 <li>重复此过程，直到所有 <span class="arithmatex">\( s_i \)</span> 能完全装入内存。</li>
 </ul>
 </li>
-<li><strong>探测阶段</strong>：<ul>
+<li>
+<p><strong>探测阶段</strong>：</p>
+<ul>
 <li>对最终的分区对 <span class="arithmatex">\( (r_i, s_i) \)</span> 执行常规 Hash Join（将 <span class="arithmatex">\( s_i \)</span> 装入内存，扫描 <span class="arithmatex">\( r_i \)</span> 匹配元组）。</li>
 </ul>
 </li>
+<li>
+<p>当<span class="arithmatex">\(M &gt; n + 1\)</span>，即<span class="arithmatex">\(M \geq \lceil \frac{b_s}{M} \rceil + 1\)</span> =&gt; <span class="arithmatex">\(M \geq \sqrt{b_s}\)</span>时，<strong>无需递归分区</strong></p>
+</li>
 </ol>
-<p>如果满足以下条件，则 <strong>无需递归分区</strong>：</p>
-<ul>
-<li><span class="arithmatex">\(M \geq \lceil \frac{b_s}{M} \rceil + 1\)</span> =&gt; $M \geq \sqrt{b_s} </li>
+<h4 id="cost-analysis">Cost analysis<a class="headerlink" href="#cost-analysis" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">cost analysis</p>
+<details class="note">
+<summary>不需要递归分区的情况</summary>
+<ol>
+<li>block transfer: <span class="arithmatex">\(3(b_s + b_r) + 4n\)</span><ol>
+<li>分区阶段要往内存读入内关系和外关系然后写回磁盘：2<span class="arithmatex">\(b_s + 2b_r\)</span></li>
+<li>构建和探测阶段要再次读取每个分区：<span class="arithmatex">\(b_s + b_r\)</span></li>
+<li>每个关系的n个分区可能都有一个没填满的block，需要在分区的时候写入，在探测的时候读取，因此需要额外的 <span class="arithmatex">\(2n \times 2\)</span> block transfer</li>
+</ol>
+</li>
+<li>seek: <span class="arithmatex">\(2(\lceil \frac{b_r}{b_b} \rceil + \lceil \frac{b_s}{b_b} \rceil) + 2n\)</span><ol>
+<li>这是基于假设输入缓冲区和每个输出缓冲区分配了<span class="arithmatex">\(b_b\)</span>个块</li>
+<li>分区阶段需要<span class="arithmatex">\(2(\lceil \frac{b_r}{b_b} \rceil + \lceil \frac{b_s}{b_b} \rceil)\)</span>次seek</li>
+<li>构建和探测阶段，对每个关系的n个分区各自寻道一次</li>
+</ol>
+</li>
+</ol>
+</details>
+<details class="note">
+<summary>需要递归分区的情况</summary>
+<ol>
+<li>block transfer: <span class="arithmatex">\(2(b_r + b_s) \lceil \log_{\lfloor \frac{M}{b_b} - 1 \rfloor}\dfrac{b_s}{M} \rceil + b_r + b_s\)</span><ul>
+<li>划分一次，数量减少到原来的 <span class="arithmatex">\(\lceil \dfrac{M}{b_b} - 1 \rceil\)</span>，因此趟数为 <span class="arithmatex">\(\lceil \log_{\lfloor \frac{M}{b_b} - 1 \rfloor}\dfrac{b_s}{M} \rceil\)</span></li>
+<li>每一趟中，<span class="arithmatex">\(s\)</span> 中的每个块都要被读和写一次，因此在划分 <span class="arithmatex">\(s\)</span> 时的块传输次数为 <span class="arithmatex">\(2b_s \lceil \log_{\lfloor \frac{M}{b_b} - 1 \rfloor}\dfrac{b_s}{M} \rceil\)</span>。</li>
 </ul>
+</li>
+<li>seek: <span class="arithmatex">\(2(\lceil \dfrac{b_r}{b_b} \rceil + \lceil \dfrac{b_s}{b_b} \rceil) \lceil \log_{\lfloor \frac{M}{b_b} - 1 \rfloor}\dfrac{b_s}{M} \rceil\)</span><ul>
+<li>每一趟划分需要对每个关系的每个分区进行一次seek</li>
+</ul>
+</li>
+</ol>
+</details>
+<details class="note">
+<summary>理想情况</summary>
+<p>memory足够大，无需分区。
+只需要<span class="arithmatex">\(b_r + b_s\)</span>次block transfer和<span class="arithmatex">\(2\)</span>次seek。</p>
+</details>
+</div>
 <h2 id="other-operations">Other Operations<a class="headerlink" href="#other-operations" title="Permanent link">&para;</a></h2>
 <h4 id="duplication-elimination">Duplication Elimination<a class="headerlink" href="#duplication-elimination" title="Permanent link">&para;</a></h4>
 <ul>
@@ -3202,9 +3266,11 @@
 </li>
 </ul>
 <h2 id="evaluation-of-expressions">Evaluation of Expressions<a class="headerlink" href="#evaluation-of-expressions" title="Permanent link">&para;</a></h2>
-<p>对于整个expression tree:
-+ Materialization: 操作中间结果生成一张表
-<center></p>
+<p>对于整个expression tree:</p>
+<ul>
+<li>Materialization: 操作中间结果生成一张表
+<center></li>
+</ul>
 <p><img alt="" src="../fig/c15_6.png" width="300" /></p>
 <p></center></p>
 <ul>
@@ -3220,7 +3286,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 20:54:02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 22:16:44</span>
       
         <br>
         创建日期:
