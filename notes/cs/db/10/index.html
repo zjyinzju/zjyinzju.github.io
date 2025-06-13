@@ -2875,7 +2875,7 @@
 </center></p>
 <ul>
 <li>
-<p>Parsing and translation: 查询语句翻译、检查语法并转换为关系代数表达式</p>
+<p>Parsing and translation: 翻译、检查语法并转换为关系代数表达式</p>
 </li>
 <li>
 <p>Optimization: 选择最优的查询执行计划</p>
@@ -2917,25 +2917,34 @@
 <h3 id="selection-operation">Selection Operation<a class="headerlink" href="#selection-operation" title="Permanent link">&para;</a></h3>
 <h4 id="file-scan">File scan<a class="headerlink" href="#file-scan" title="Permanent link">&para;</a></h4>
 <p>A1: linear search</p>
-<p>记<span class="arithmatex">\(b_r\)</span>为包含关系r的记录的block数量，则：
-+ worst case: <span class="arithmatex">\(b_r * t_T + t_S\)</span> 一次定位，读取所有block
-+ average case: 如果是基于 key attribute 的selection，找到就可以停止 <span class="arithmatex">\(b_r/2 * t_T + t_S\)</span></p>
+<p>记<span class="arithmatex">\(b_r\)</span>为包含关系r的记录的block数量，则：</p>
+<ul>
+<li>
+<p>worst case: <span class="arithmatex">\(b_r * t_T + t_S\)</span> 一次定位，读取所有block</p>
+</li>
+<li>
+<p>average case: 如果是基于 key attribute 的selection，找到就可以停止 <span class="arithmatex">\(b_r/2 * t_T + t_S\)</span></p>
+</li>
+</ul>
 <h3 id="index-scan">Index scan<a class="headerlink" href="#index-scan" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>selection condition must be on search-key of index</p>
 </blockquote>
 <h4 id="a2">A2<a class="headerlink" href="#a2" title="Permanent link">&para;</a></h4>
 <p>primary B+ tree index / clustering B+ tree index, equality on key </p>
-<p>记树高为<span class="arithmatex">\(h_i\)</span>，则：
-+ cost = <span class="arithmatex">\((h_i+1) * (t_S + t_T)\)</span> 
-从根向下二分查找，每层seek一次，搬一个block，加1是要将选出的record所在的block读入内存并seek到具体位置</p>
+<p>使用primary index，查找条件是基于search-key的等值查询。</p>
+<p>记树高为<span class="arithmatex">\(h_i\)</span>，则：</p>
+<ul>
+<li>cost = <span class="arithmatex">\((h_i+1) * (t_S + t_T)\)</span> </li>
+</ul>
+<p>从根向下二分查找，每层seek一次，搬一个block，加1是要将选出的record所在的block读入内存并seek到具体位置</p>
 <h4 id="a3">A3<a class="headerlink" href="#a3" title="Permanent link">&para;</a></h4>
 <p>primary B+ tree index / clustering B+ tree index, equality on non-key </p>
-<p>不按search-key索引查找，查找结果可能不唯一（但文件中连续存储）</p>
+<p>使用primary index，但查找条件是基于非key（即非candidate key/ superkey）的等值查询，这样可能会有多个符合条件的记录，另外的要求是这些记录在文件中是按search key顺序存储的。</p>
 <p>记树高为<span class="arithmatex">\(h_i\)</span>，符合条件的records所在的block数量为<span class="arithmatex">\(b_r\)</span>，则：</p>
 <ul>
 <li>cost = <span class="arithmatex">\(h_i * (t_S + t_T) + t_S + b_r * t_T\)</span> <ul>
-<li>假设记录也按照search-key顺序存储在block中，则只需要一次seek就可以找到第一个符合条件的记录所在的block，之后顺序读取即可</li>
+<li>假设记录也按照search-key顺序存储在block中，则只需要一次seek就可以找到第一个符合条件的记录所在的block，之后顺序读取即可（因为文件是顺序存储的）</li>
 </ul>
 </li>
 </ul>
@@ -3033,7 +3042,6 @@
 <li>直到所有段都读完</li>
 </ul>
 </li>
-<li>需要2<span class="arithmatex">\(b_r\)</span>次block transfer；2<span class="arithmatex">\(b_r\)</span>次seek</li>
 </ol>
 </li>
 <li>
@@ -3042,6 +3050,8 @@
 <li>buffer output 需要单独开一个block，因此每一轮merge M-1段</li>
 <li>每过一轮，段数减少为原来的<span class="arithmatex">\(\lceil \frac{1}{M-1} \rceil\)</span></li>
 <li>直到merge成一个段为止</li>
+</ol>
+</li>
 <li>
 <p>cost(simple): 每个段只分配一个block作为buffer input</p>
 <ol>
@@ -3076,8 +3086,6 @@
 </ul>
 </li>
 </ul>
-</li>
-</ol>
 </li>
 </ul>
 </li>
@@ -3198,7 +3206,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年5月27日 22:22:34</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 20:19:51</span>
       
         <br>
         创建日期:
