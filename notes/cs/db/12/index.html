@@ -2588,29 +2588,45 @@
 <p><center></p>
 <p><img alt="" src="../fig/c17_1.png" width="300" />
 </center></p>
-<p>访问数据的方式简化为两种：
-+ read(X)
-+ write(X)</p>
+<p>访问数据的方式简化为两种：</p>
+<ul>
+<li>read(X)</li>
+<li>write(X)</li>
+</ul>
 <h2 id="transaction-state">Transaction State<a class="headerlink" href="#transaction-state" title="Permanent link">&para;</a></h2>
-<p>事务必须处在如下状态中的某个：<img align="right" alt="" src="../fig/c17_2.png" width="300" />
-+ active
-+ Partially committed
-+ Failed
-+ Aborted
-+ Committed</p>
+<p>事务必须处在如下状态中的某个：<img alt="" src="../fig/c17_2.png" /></p>
+<ul>
+<li>active</li>
+<li>Partially committed</li>
+<li>Failed</li>
+<li>Aborted</li>
+<li>Committed</li>
+</ul>
 <h2 id="concurrent-executions">Concurrent Executions<a class="headerlink" href="#concurrent-executions" title="Permanent link">&para;</a></h2>
-<p>好处：
-+ 提高CPU和disk利用率
-+ 减少平均响应时间</p>
-<p>潜在问题：
-+ Lost Update:
-<img alt="" src="../fig/c17_3.png" width="160" />
-+ Dirty Read:
-<img alt="" src="../fig/c17_4.png" width="160" />
-+ Unrepeatable Read
-<img alt="" src="../fig/c17_5.png" width="160" />
-+ Phantom Problem
+<p>好处：</p>
+<ul>
+<li>提高CPU和disk利用率</li>
+<li>减少平均响应时间</li>
+</ul>
+<p>潜在问题：</p>
+<ul>
+<li>
+<p>Lost Update:
+<img alt="" src="../fig/c17_3.png" width="160" /></p>
+</li>
+<li>
+<p>Dirty Read:
+<img alt="" src="../fig/c17_4.png" width="160" /></p>
+</li>
+<li>
+<p>Unrepeatable Read
+<img alt="" src="../fig/c17_5.png" width="160" /></p>
+</li>
+<li>
+<p>Phantom Problem
 <img alt="" src="../fig/c17_6.png" width="400" /></p>
+</li>
+</ul>
 <h2 id="schedules">Schedules<a class="headerlink" href="#schedules" title="Permanent link">&para;</a></h2>
 <p>Schedule是一组指令序列，指定了并发事务中各个操作的执行顺序。</p>
 <ul>
@@ -2694,7 +2710,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月7日 00:10:23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 23:21:37</span>
       
         <br>
         创建日期:
