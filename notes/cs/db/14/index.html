@@ -2696,9 +2696,11 @@
 </li>
 </ul>
 <h3 id="checkpoints">Checkpoints<a class="headerlink" href="#checkpoints" title="Permanent link">&para;</a></h3>
-<p>每次都从头开始恢复日志会很慢，因此引入检查点（checkpoint）来减少恢复时间，checkpoint相当于是恢复的起点：
-+ 相当于一个快照
-+ 需要记录一个活跃事务表，记录在checkpoint创建时开始但未提交/终止的事务</p>
+<p>每次都从头开始恢复日志会很慢，因此引入检查点（checkpoint）来减少恢复时间，checkpoint相当于是恢复的起点：</p>
+<ul>
+<li>相当于一个快照</li>
+<li>需要记录一个活跃事务表，记录在checkpoint创建时开始但未提交/终止的事务</li>
+</ul>
 <h3 id="log-buffer-database-buffer">Log Buffer &amp; Database Buffer<a class="headerlink" href="#log-buffer-database-buffer" title="Permanent link">&para;</a></h3>
 <p><center></p>
 <p><img alt="" src="../fig/c19_3.png" width="400" />
@@ -2719,16 +2721,21 @@
 </li>
 </ul>
 <h3 id="fuzzy-checkpointing">Fuzzy Checkpointing<a class="headerlink" href="#fuzzy-checkpointing" title="Permanent link">&para;</a></h3>
-<p>checkpoint 是为了减少恢复时间，但每次写日志、写数据都需要I/O操作，可能会影响性能（可能会忽高忽低），因此引入模糊检查点（fuzzy checkpointing）：
-1. 临时停止事务的更新
-2. 日志记录中写入一条 <checkpoint L>，并将其写入磁盘
-3. 记录M个被修改但未写入磁盘的数据buffer block列表
-4. 全部记录完后，可以继续事务的更新
-5. 后台线程将所有M个之前记录的脏数据页写入磁盘，在此期间：
-    + 这些block不能被其他事务修改
-    + 仍遵循WAL，即相关的日志必须先写入磁盘
-6. 在磁盘的固定位置(last_checkpoint)存一个指向该checkpoint 记录的指针
-<center></p>
+<p>checkpoint 是为了减少恢复时间，但每次写日志、写数据都需要I/O操作，可能会影响性能（可能会忽高忽低），
+因此引入模糊检查点（fuzzy checkpointing）：</p>
+<ol>
+<li>临时停止事务的更新</li>
+<li>日志记录中写入一条 <checkpoint L>，并将其写入磁盘</li>
+<li>记录M个被修改但未写入磁盘的数据buffer block列表</li>
+<li>全部记录完后，可以继续事务的更新</li>
+<li>后台线程将所有M个之前记录的脏数据页写入磁盘，在此期间：<ul>
+<li>这些block不能被其他事务修改</li>
+<li>仍遵循WAL，即相关的日志必须先写入磁盘</li>
+</ul>
+</li>
+<li>在磁盘的固定位置(last_checkpoint)存一个指向该checkpoint 记录的指针</li>
+</ol>
+<p><center></p>
 <p><img alt="" src="../fig/c19_4.png" width="400" />
 </center></p>
 <p>这样当系统崩溃时，可以从last_checkpoint指向的checkpoint开始恢复</p>
@@ -2786,26 +2793,33 @@
 <p><img alt="" src="../fig/c19_8.png" width="600" />
 </center></p>
 <h4 id="checkpoint-record">Checkpoint Record<a class="headerlink" href="#checkpoint-record" title="Permanent link">&para;</a></h4>
-<p>包含：
-- 脏页表（DirtyPageTable）和活跃事务列表<br />
-    - 对每个活跃事务，记录该事务最后一条日志记录的LSN<br />
-    - 磁盘固定位置存最近一次完成的检查点日志记录的LSN</p>
+<p>包含：</p>
+<ul>
+<li>脏页表（DirtyPageTable）和活跃事务列表  <ul>
+<li>对每个活跃事务，记录该事务最后一条日志记录的LSN  </li>
+<li>磁盘固定位置存最近一次完成的检查点日志记录的LSN</li>
+</ul>
+</li>
+</ul>
 <p>脏页不会在检查点时立即写盘，而是通过后台线程持续异步刷盘</p>
 <h3 id="aries-recovery">ARIES Recovery<a class="headerlink" href="#aries-recovery" title="Permanent link">&para;</a></h3>
-<p>3个阶段：
-1. Analysis
-2. Redo
-3. Undo</p>
+<p>3个阶段：</p>
+<ol>
+<li>Analysis</li>
+<li>Redo</li>
+<li>Undo</li>
+</ol>
 <h4 id="analysis-phase">Analysis Phase<a class="headerlink" href="#analysis-phase" title="Permanent link">&para;</a></h4>
 <ul>
 <li>从最近的检查点开始，分析日志记录，构建脏页表和活跃事务表。</li>
 <li>将RedoLSN(即redo的起点)设置为脏页表中每个页的RecLSN中的最小值（即所有脏页中最早的没有写入磁盘的日志记录）</li>
 <li>undo-list设置为checkpoint记录中的活跃事务表</li>
 <li>从undo-list中读取每个事务的最后一条日志记录的LSN</li>
-<li>从checkpoint开始向前扫描<ul>
-<li>如果日志记录不在undo-list中，则将其添加到undo-list中</li>
+<li>从checkpoint开始正向扫描到crash处：<ul>
+<li>如果日志记录对应事务不在undo-list中，则将其添加到undo-list中</li>
 <li>当找到一个update log record时:<ul>
 <li>如果该页不在脏页表中，则将其添加到脏页表中，并设置RecLSN为该日志记录的LSN</li>
+<li>如果该页在脏页表中，则更新Page LSN为该日志记录的LSN</li>
 </ul>
 </li>
 <li>如果找到一个 transaction end log record，则将该事务从undo-list中删除</li>
@@ -2813,18 +2827,20 @@
 </ul>
 </li>
 </ul>
-<p>analysis阶段的结果是：
-+ RedoLSN: 最早的脏页日志记录，作为Redo的起点
-+ 脏页表中每个页的RecLSN
-+ undo-list: 需要rollback</p>
+<p>analysis阶段的结果是：</p>
+<ul>
+<li>RedoLSN: 最早的脏页日志记录，作为Redo的起点</li>
+<li>脏页表中每个页的RecLSN</li>
+<li>undo-list: 需要rollback</li>
+</ul>
 <h4 id="redo-phase">Redo Phase<a class="headerlink" href="#redo-phase" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>Repeats history</p>
 </blockquote>
 <ul>
-<li>从RedoLSN开始，向前扫描日志记录，一旦找到一个update log record:<ol>
-<li>如果该页不在脏页表中（这意味着该页数据已经写入磁盘或者未曾修改），或者日志记录的LSN比脏页表中page 的 RecLSN小（这意味着此日志已经写入磁盘），则跳过该日志记录</li>
-<li>否则，从磁盘中取出该页。如果该页的Page LSN小于日志记录的LSN（这意味着该页数据未被更新），则redo该日志记录</li>
+<li>从RedoLSN开始，正向扫描日志记录，一旦找到一个update log record:<ol>
+<li>如果该页不在脏页表中（这意味着该页数据已经写入磁盘），或者日志记录的LSN比脏页表中page 的 RecLSN小（这意味着此日志已经写入磁盘），则跳过该日志记录</li>
+<li>否则，从磁盘中取出该页。如果该页的Page LSN小于日志记录的LSN（这意味着该页数据未被此条日志对应操作更新），则redo该日志记录</li>
 </ol>
 </li>
 </ul>
@@ -2875,7 +2891,7 @@
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月13日 23:48:58</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年6月14日 17:39:34</span>
       
         <br>
         创建日期:
